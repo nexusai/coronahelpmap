@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 <link id="FontMuli" href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&display=swap&subset=latin-ext" rel="stylesheet">
+<!-- <script src="https://www.google.com/recaptcha/api.js?render=_6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq"></script> -->
 
 <title>Sign Up as helper</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -90,6 +91,18 @@
         padding-bottom: 15px;
         text-align: center;
     }
+
+    /* Validation Messages */
+    .alert {
+        display: none;
+        color: #fff;
+    }
+    .alert.success {
+        background-color: #4caf50;
+    }
+    .alert.error {
+        background-color: #d32f2f;
+    }
 </style>
 </head>
 <body>
@@ -130,6 +143,8 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg">Senden</button>
         </div>
+        <div class="alert success">Deine Nachricht wurde übermittelt.</div>
+        <div class="alert error">Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später noch ein mal.</div>
     </form>
     <div class="hint-text">Angebot wieder von der Karte entfernen? <a href="#">Hier wieder abmelden</a></div>
 </div>
