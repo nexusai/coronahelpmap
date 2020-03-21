@@ -7,7 +7,16 @@ const form = document.querySelector('#input_fields');
 const apiKey = '6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq';
 // const apiString = < YOUR BACKEND API > ;
 
- 
+db.collection("helpers").get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            //console.log(doc.id, " => ", doc.data());
+            console.log(doc.data().firstName)
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
 // saving data:
 
 
