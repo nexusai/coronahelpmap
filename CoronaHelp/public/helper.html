@@ -9,8 +9,14 @@
 <!-- <script src="https://www.google.com/recaptcha/api.js?render=_6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq"></script> -->
 
 <title>Sign Up as helper</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Bootstrap css -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Bootstrap js -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 <style type="text/css">
     body{
@@ -31,7 +37,7 @@
         border-radius: 3px;
     }
     .signup-form{
-        width: 390px;
+        /* width: 390px; */
         margin: 30px auto;
     }
     .signup-form form{
@@ -42,7 +48,8 @@
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
         padding: 30px;
     }
-    .signup-form h2 {
+    .signup-form h2,
+    .list-view h2 {
         color: #333;
         font-weight: bold;
         margin-top: 0;
@@ -103,51 +110,159 @@
     .alert.error {
         background-color: #d32f2f;
     }
+    /* helper list */
+    .list-view {
+        margin: 30px auto;
+        background-color: #fff;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 3px;
+    }
+    .list-view h2 span {
+            text-decoration: underline;
+    }
+    .list-group-item.active {
+        background-color: #F48076;
+        border-color: #F48076;
+    }
+    .btn-primary {
+        background: #3598dc;
+    }
+    .btn-primary:hover {
+        background: #2389cd !important;
+    }
 </style>
 </head>
 <body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-lg-5">
+            <div class="signup-form">
+                <form id="input_fields">
+                    <h2>Als Helfer eintragen</h2>
+                    <p>Bitte dieses Formular ausfüllen um dich anzumelden!</p>
+                    <hr>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="typeOfHelp" placeholder="Was kannst du tun?"
+                            required="required">
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6"><input type="text" class="form-control" name="first_name"
+                                    placeholder="Vorname" required="required"></div>
+                            <div class="col-6"><input type="text" class="form-control" name="last_name"
+                                    placeholder="Nachname" required="required"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" name="age" placeholder="Alter" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="address" placeholder="Postleitzahl"
+                            required="required">
+                    </div>
 
-<div class="signup-form">
-    <form id="input_fields">
-        <h2>Als Helfer eintragen</h2>
-        <p>Bitte dieses Formular ausfüllen um dich anzumelden!</p>
-        <hr>
-        <div class="form-group">
-            <input type="text" class="form-control" name="typeOfHelp" placeholder="Was kannst du tun?" required="required">
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="contactInfo" placeholder="Email"
+                            required="required">
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-inline"><input type="checkbox" required="required"> Ich will wissen wenn
+                            in meiner Gegend Hilfe benötigt wird.</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-inline"><input type="checkbox" required="required"> Ich akzeptiere
+                            hiermit die <a href="#">Nutzungs- </a> &amp; <a href="#">Datenschutz-Bestimmungen
+                            </a></label>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg">Senden</button>
+                    </div>
+                    <div class="alert success">Deine Nachricht wurde übermittelt.</div>
+                    <div class="alert error">Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später noch
+                        ein mal.</div>
+                </form>
+                <div class="hint-text">Angebot wieder von der Karte entfernen? <a href="#">Hier wieder abmelden</a>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-xs-6"><input type="text" class="form-control" name="first_name" placeholder="Vorname" required="required"></div>
-                <div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="Nachname" required="required"></div>
-            </div>          
+        <!-- Helper List -->
+        <div class="col-12 col-lg-7">
+            <div class="list-view">
+                <h2>Suche in: <span>Karlsruhe</span></h2>
+                <div class="list-group">
+                    
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">Mein Hund muss Gassi.</h4>
+                            <small>vor 1 Minute</small>
+                        </div>
+                        <h5>Annette Bauer <span class="badge badge-secondary">1,2km</span></h5>
+                        <i class="material-icons">face</i>
+                        <i class="material-icons">accessible</i>
+                        <i class="material-icons">attach_money</i>
+                        <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
+                            varius blandit.</p>
+                        <button type="button" class="btn btn-primary">Nachricht senden</button>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">Mein Hund muss Gassi.</h4>
+                                <small>vor 2 Stunden</small>
+                        </div>
+                        <h5>Annette Bauer <span class="badge badge-secondary">1,2km</span></h5>
+                        <i class="material-icons">face</i>
+                        <i class="material-icons">money_off</i>
+                        <i class="material-icons">local_laundry_service</i>
+                        <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
+                            varius blandit.</p>
+                        <button type="button" class="btn btn-primary">Nachricht senden</button>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">Brauche was zu essen!</h4>
+                                <small>gestern</small>
+                        </div>
+                        <h5>Max Mustermann <span class="badge badge-secondary">4,2km</span></h5>
+                        <i class="material-icons">shopping_cart</i>
+                        <i class="material-icons">attach_money</i>
+                        <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
+                            varius blandit.</p>
+                        <button type="button" class="btn btn-primary">Nachricht senden</button>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">In die Natur</h4>
+                                <small>gestern</small>
+                        </div>
+                        <h5>Max Mustermann <span class="badge badge-secondary">4,2km</span></h5>
+                        <i class="material-icons">nature_people</i>
+                        <i class="material-icons">money_off</i>
+                        <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
+                            varius blandit.</p>
+                        <button type="button" class="btn btn-primary">Nachricht senden</button>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">Brauche Medikamente</h4>
+                                <small>gestern</small>
+                        </div>
+                        <h5>Max Mustermann <span class="badge badge-secondary">4,2km</span></h5>
+                        <i class="material-icons">pregnant_woman</i>
+                        <i class="material-icons">local_pharmacy</i>
+                        <i class="material-icons">money_off</i>
+                        <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
+                            varius blandit.</p>
+                        <button type="button" class="btn btn-primary">Nachricht senden</button>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="number" class="form-control" name="age" placeholder="Alter" required="required">
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" name="address" placeholder="Postleitzahl" required="required">
-        </div>
-        
-        
-        <div class="form-group">
-            <input type="email" class="form-control" name="contactInfo" placeholder="Email" required="required">
-        </div>      
-        <div class="form-group">
-            <label class="checkbox-inline"><input type="checkbox" required="required"> Ich will wissen wenn in meiner Gegend Hilfe benötigt wird.</label>
-        </div>
-        <div class="form-group">
-            <label class="checkbox-inline"><input type="checkbox" required="required"> Ich akzeptiere hiermit die <a href="#">Nutzungs- </a> &amp; <a href="#">Datenschutz-Bestimmungen
-</a></label>
-        </div>
-        
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg">Senden</button>
-        </div>
-        <div class="alert success">Deine Nachricht wurde übermittelt.</div>
-        <div class="alert error">Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später noch ein mal.</div>
-    </form>
-    <div class="hint-text">Angebot wieder von der Karte entfernen? <a href="#">Hier wieder abmelden</a></div>
+    </div>
 </div>
+
         <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
         <script src="/__/firebase/init.js"></script>
