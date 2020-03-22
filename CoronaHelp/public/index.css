@@ -164,10 +164,34 @@ max-width:360px;
 text-align: center;
 padding: 0 20px;}
 
+.map-wrapper .get-it-on-green {
+display: table;
+margin: auto;
+background: rgba(117, 203, 61, 1);
+padding: 15px 45px 20px;
+border-radius: 100px;}
+
+.map-wrapper .get-it-on-green p {
+font-size: 18px;
+line-height: 22px;
+font-weight: 900;
+margin: 0 0 10px;}
+
+.map-wrapper .get-it-on-green a {
+font-size: 34px;
+line-height: 34px;
+display: inline-table;
+margin: 0 15px;
+color: #FFFFFF;}
+
+.map-wrapper .get-it-on-green a.npm {
+transform: scale(1.8);
+margin:0 20px;}
+
 .map-wrapper .get-it-on {
 display: table;
 margin: auto;
-background: rgba(0, 0, 0, 0.15);
+background: rgba(222, 42, 0, 1);
 padding: 15px 45px 20px;
 border-radius: 100px;}
 
