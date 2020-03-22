@@ -12,6 +12,11 @@
 var db = firebase.firestore();
 var helpers = [];
 var searcher = [];
+
+
+
+
+
 var mymap = L.map('mapid').setView([52.520008, 13.404954], 11);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -31,11 +36,14 @@ db.collection("helpers").get().then((querySnapshot) => {
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
         var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
+
     color: 'green',
     fillColor: '#f03',
     fillOpacity: 0.12,
     radius: 500
 }).addTo(mymap);
+
+        circle.bindPopup("I am a circle.");
         //var helper = new add(helperMarker(),25,doc.data().addressLat,doc.data().addressLong,doc.data().firstName,'<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
         //helpers.push(helper)
 

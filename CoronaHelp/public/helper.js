@@ -24,8 +24,8 @@ db.collection("helpers").get()
                     </div>
                     <h5> ${doc.data().firstName } <span class="badge badge-secondary"> 1, 2 km </span></h5>
                     <div class="categories"></div>
-                    <p> Donec id elit non mi porta gravida at eget metus.Maecenas sed diam eget risus varius blandit. </p>
-                    <a href = "${urlFinal}" class="btn btn-primary" > Nachricht senden </button>
+                    <p> ${doc.data().typeOfHelp } </p>
+                    <a href = "${urlFinal}" class="btn btn-primary" > Nachricht </button>
                 </div>`;
 
             var el = document.createElement('article')
