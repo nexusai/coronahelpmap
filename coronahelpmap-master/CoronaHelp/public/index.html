@@ -1,0 +1,218 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Corona Helpmap</title>
+    <meta name="description" content="Corona Helpmap" />
+
+    <meta name="content-language" content="en" />
+    <meta name="language" content="English" />
+    <meta name="robots" content="index, follow, noodp, noydir" />
+    <meta name="googlebot" content="index, follow, noodp, noydir" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="shortcut icon" href="favicon.png" />
+
+    <link rel="canonical" href="https://furcan.github.io/Markers-On-Map/" />
+
+    <meta name="abstract" content="Corona Helpmap">
+    <meta name="author" content="Various" />
+    <meta name="generator" content="Various" />
+    <meta name="designer" content="Various">
+    <meta name="copyright" content="© 2020 Corona Helpmap. All Rights Reserved.">
+
+    <meta name="theme-color" content="#DE2A00" />
+    
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link id="FontMuli" href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&display=swap&subset=latin-ext" rel="stylesheet">
+    <link id="FontConsolas" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin-ext" rel="stylesheet">
+
+    <link rel="stylesheet" href="index.css?v=1.3.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+
+
+    <!-- ↓ Code to change the Language ↓ -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+    var arrLang = new Array();
+    arrLang['eng'] = new Array();
+    arrLang['ger'] = new Array();
+    arrLang['itl'] = new Array();
+    arrLang['spn'] = new Array();
+
+    // English content
+    arrLang['eng']['titel2'] = 'Direct help from the neighborhood';
+    arrLang['eng']['search'] = 'Search';
+    arrLang['eng']['location'] = 'please enter your city';
+    arrLang['eng']['button1.1'] = 'Register as a helper';
+    arrLang['eng']['button1.2'] = 'I want to help!';
+    arrLang['eng']['button2.1'] = 'Enter request';
+    arrLang['eng']['button2.2'] = 'I need Help!';
+
+    // German content 
+    arrLang['ger']['titel2'] = 'Direkte Hilfe aus der Nachbarschaft';
+    arrLang['ger']['search'] = 'Suche';
+    arrLang['ger']['location'] = 'Gib deine Stadt ein';
+    arrLang['ger']['button1.1'] = 'Als Helfer eintragen';
+    arrLang['ger']['button1.2'] = 'Ich kann helfen!';
+    arrLang['ger']['button2.1'] = 'Gesuch eintragen';
+    arrLang['ger']['button2.2'] = 'Ich brauche Hilfe!';
+
+    // Italian content
+    arrLang['itl']['titel2'] = 'Aiuto diretto dal quartiere';
+    arrLang['itl']['search'] = 'Ricerca';
+    arrLang['itl']['location'] = 'entra nella tua città';
+    arrLang['itl']['button1.1'] = 'Registrati come aiuto';
+    arrLang['itl']['button1.2'] = 'Voglio aiutare!';
+    arrLang['itl']['button2.1'] = 'Inserisci richiesta';
+    arrLang['itl']['button2.2'] = 'Ho bisogno di aiuto!';
+
+    // Spanish content
+    arrLang['spn']['titel2'] = 'Ayuda directa del barrio';
+    arrLang['spn']['search'] = 'Buscar';
+    arrLang['spn']['location'] = 'ingresa tu ciudad';
+    arrLang['spn']['button1.1'] = 'Registrarse como ayudante';
+    arrLang['spn']['button1.2'] = '¡Quiero ayudar!';
+    arrLang['spn']['button2.1'] = 'Introducir solicitud';
+    arrLang['spn']['button2.2'] = '¡Necesito ayuda!';
+
+    // Process translation
+    $(function() {
+    $('.translate').click(function() {
+        var lang = $(this).attr('id');
+
+        $('.lang').each(function(index, item) {
+        $(this).text(arrLang[lang][$(this).attr('key')]);
+        });
+    });
+    });
+    </script>
+
+    <!-- ↑ Code to change the Language ↑ -->
+
+
+
+</head>
+
+<body>
+
+<!-- ↓ Code to change the Language ↓ -->
+
+<button id="eng" class="translate">English</button>
+<button id="ger" class="translate">German</button>
+<button id="itl" class="translate">Italian</button>
+<button id="spn" class="translate">Spanish</button>
+
+<!-- ↑ Code to change the Language ↑ -->
+
+    <div id="Wrapper">
+
+        <div class="map-wrapper">
+
+
+
+          <!--  <div class="hotel-search">
+      <div id="findhotels">
+        Get help in:
+      </div>
+
+      <div id="locationField">
+        <input id="zipCode" placeholder="ZIP Code" type="text" />
+      </div>
+
+      
+    </div> -->
+
+
+            <!--<div id="GoogleMaps"></div> -->
+            <div id="mapid"></div>
+            <div class="max-content">
+                <div class="head">
+                    <h1 class="logo" data-toggle="tooltip"><a href="https://coronahelpmap.com/">Corona Helpmap</a></h1>
+                   <p class="description, lang" key="titel2">Direkte Hilfe aus der Nachbarschaft</p><br>
+                   <div class="input-group mb-3">
+                       <input id="searchCity" type="search" class="form-control search" placeholder="Gib deine Stadt ein"
+                           aria-label="Recipient's username" aria-describedby="searchCity-button">
+                       <div class="input-group-append">
+                           <button class="btn btn-success, lang" key="search" type="button" id="searchCity-button">Suche</button>
+                       </div>
+                   </div>
+                </div>
+
+                <div class="get-markersonmap">
+                    <div class="get-it-on">
+                        <p class="lang" key="button1.1" >Als Helfer eintragen</p>
+                        <a class="github, lang" key="button1.2" target="_self" rel="noopener" href="/helper.html">Ich kann helfen!</a>
+                        
+                    </div>
+                </div>
+
+                <div class="get-markersonmap">
+                    <div class="get-it-on">
+                        <p class="lang" key="button2.1" >Gesuch eintragen</p>
+                        <a class="github, lang", key="button2.2" target="_self" rel="noopener" href="">Ich brauche Hilfe!</a>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        
+
+
+
+        <footer id="Footer">
+            <p class="copyright">&copy; 2020 Corona Helpmap. All rights reserved.</p>
+            <a class="github" target="_self" rel="noopener" href="https://coronahelpmap.com/imprint.html">Imprint</a>
+        </footer>
+
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.11.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-aio-1.8.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/833245c2e4.js"></script>
+    <script src="index-tooltip.js"></script>
+    <script src="dist/markers-on-map-1.3.0.js"></script>
+    <script src="index.js?v=1.3.0"></script>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+
+
+
+
+</body>
+
+</html>
