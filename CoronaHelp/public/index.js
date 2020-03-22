@@ -14,6 +14,24 @@ var helpers = [];
 var searcher = [];
 var markers = L.markerClusterGroup();
 
+var greenIcon = L.icon({
+    iconUrl: 'MarkerGreen.png',
+
+    iconSize:     [60, 60], // size of the icon
+    iconAnchor:   [15, 60], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -35] // point from which the popup should open relative to the iconAnchor
+});
+
+var redIcon = L.icon({
+    iconUrl: 'MarkerRed.png',
+
+    iconSize:     [60, 60], // size of the icon
+    iconAnchor:   [15, 60], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -35] // point from which the popup should open relative to the iconAnchor
+});
+
+
+
 let mymap = L.map('mapid').setView([50.627540588378906, 9.958450317382812], 5);
 
 async function searchAddressCoordinates(address) {
@@ -96,7 +114,7 @@ db.collection("helpers").get().then((querySnapshot) => {
         // console.log(`${doc.id} => ${doc.data()}`);
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
-        markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong]));
+        markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}));
 
         /*var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
 
@@ -126,8 +144,9 @@ db.collection("helpers").get().then((querySnapshot) => {
 
             // console.log(`${doc.id} => ${doc.data()}`);
             //console.log(doc.data().firstName);
-            var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
-            searcher.push(search)
+           // var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
+            //searcher.push(search)
+        markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
 
 
         });
