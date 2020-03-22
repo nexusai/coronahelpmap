@@ -8,9 +8,15 @@
 <link id="FontMuli" href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&display=swap&subset=latin-ext" rel="stylesheet">
 
 <title>Sign Up as seeker</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Bootstrap css -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<!-- Bootstrap js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
     body{
         color: #fff;
@@ -90,9 +96,19 @@
         padding-bottom: 15px;
         text-align: center;
     }
+    /* back button */
+    .back-button {
+    color: #fff;
+    }
+    .back-button span{
+    vertical-align: bottom;
+    }
 </style>
 </head>
 <body>
+<a href="/" class="btn back-button mt-3"><span class="material-icons">
+        keyboard_arrow_left
+    </span>zurück</a>
 <div class="signup-form">
     <form id="input_fields">
         <h2>Ich benötige Hilfe</h2>
