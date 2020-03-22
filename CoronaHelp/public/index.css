@@ -105,7 +105,7 @@ width: 100%;
 .max-content {
 display: table;
 width: 100%;
-max-width: 1360px;
+/* max-width: 1360px; */
 margin: auto;
 padding: 60px 50px;}
 /* max content off */
@@ -500,6 +500,17 @@ border-width: 0 5px 5px;}
   border-bottom: 1px solid #E23209;
 }
 
+/* Main buttons */
+.get-it-on-green,
+.get-it-on {
+  filter: drop-shadow(2px 4px 1px black);
+  transition: .1s;
+}
+.get-it-on-green:hover,
+.get-it-on:hover {
+  filter: drop-shadow(0px 0px 0px black);
+  transform: translate(1px, 1px);
+}
 /* Info Section */
 .info-section img{
   width: 80%;
