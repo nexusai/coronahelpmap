@@ -7,6 +7,8 @@ const form = document.querySelector('#input_fields');
 const apiKey = '6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq';
 // const apiString = < YOUR BACKEND API > ;
 
+
+moment.locale('de');
 db.collection("helpers").get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -17,10 +19,23 @@ db.collection("helpers").get()
             var customId = doc.id
             var urlFinal = url+customId
 
+            // Get Timestamp
+            var timestamp, timeFromNow;
+            // Timestamp exists
+            console.log(doc.data())
+            if (doc.data().timestamp) {
+                timestamp = doc.data().timestamp;
+                timeFromNow = moment(timestamp).fromNow()
+            }
+            // Timestamp is unknown or unset
+            else {
+                timeFromNow = 'Zeitpunkt unbekannt'
+            }
+
             // Poplulate Table
             var xmlString = 
                 `<div class="d-flex w-100 justify-content-between">
-                    <h4 class="mb-1">${doc.data().typeOfHelp}</h4> <small> vor 1 Minute </small>
+                    <h4 class="mb-1">${doc.data().typeOfHelp}</h4> <small> ${timeFromNow} </small>
                     </div>
                     <h5> ${doc.data().firstName } <span class="badge badge-secondary"> 1, 2 km </span></h5>
                     <div class="categories"></div>
@@ -73,7 +88,8 @@ form.addEventListener('submit', (e) => {
             saturday: form.saturday.checked,
             sunday: form.sunday.checked,
         },
-        age: form.age.value
+        age: form.age.value,
+        timestamp: moment()._d
     })
 .then(docRef => {
     console.log("Document written with ID: ", docRef.id);

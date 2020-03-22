@@ -63,7 +63,8 @@ exports.addZipHelper = functions.firestore
           contactInfo: snap.data().contactInfo,
           firstName: snap.data().firstName,
           typeOfHelp: snap.data().typeOfHelp,
-          age: snap.data().age
+          age: snap.data().age,
+          timestamp: snap.data().timestamp
           };
 
 
