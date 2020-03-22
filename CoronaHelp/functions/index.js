@@ -65,7 +65,6 @@ exports.addZipHelper = functions.firestore
             firstName: snap.data().firstName,
             typeOfHelp: snap.data().typeOfHelp,
             typeOfPerson: snap.data().typeOfPerson,
-            age: snap.data().age,
             paid: snap.data().paid,
             weekdays: {
               monday: snap.data().weekdays.monday,

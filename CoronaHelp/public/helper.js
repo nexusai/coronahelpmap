@@ -142,7 +142,6 @@ form.addEventListener('submit', (e) => {
             saturday: form.saturday.checked,
             sunday: form.sunday.checked,
         },
-        age: form.age.value,
         timestamp: Date.now()
     })
 .then(docRef => {
@@ -184,14 +183,23 @@ function renderCategories(categories) {
     if (categories.shopping) {
         icons += '<i class="material-icons">shopping_cart</i>';
     }
-    if (categories.nature) {
-        icons += '<i class="material-icons">nature_people</i>';
+    if (categories.pets) {
+        icons += '<i class="material-icons">pets</i>';
+    }
+    if (categories.escort) {
+        icons += '<i class="material-icons">supervisor_account</i>';
+    }
+    if (categories.conversations) {
+        icons += '<i class="material-icons">phone</i>';
     }
     if (categories.handicap) {
         icons += '<i class="material-icons">accessible</i>';
     }
     if (categories.agriculture) {
         icons += '<i class="material-icons">eco</i>';
+    }
+    if (categories.car) {
+        icons += '<i class="material-icons">directions_car</i>';
     }
     if (categories.other) {
         icons += '<i class="material-icons">help</i>';
