@@ -15,9 +15,17 @@ var searcher = [];
 
 
 
+let mymap = L.map('mapid');
+async function updateMap() {
+    const ipResponse = await fetch('https://api.ipify.org/?format=json');
+    const ip = (await ipResponse.json()).ip;
+    const geoResponse = await fetch(`http://ip-api.com/json/${ip}`);
+    const geoJson = await geoResponse.json();
+    mymap.setView([geoJson.lat, geoJson.lon], 11);
+}
+updateMap();
 
-
-var mymap = L.map('mapid').setView([52.520008, 13.404954], 11);
+//var mymap = L.map('mapid').setView([52.520008, 13.404954], 11);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -78,7 +86,7 @@ db.collection("searcher").get().then((querySnapshot) => {
     mapScrollWheel: false,
     markerObjects: helpers.concat(searcher),
 });
-MarkersOnMap.Run('div#GoogleMaps');
+//MarkersOnMap.Run('div#GoogleMaps');
 
 furcanTooltip('[data-toggle="tooltip"]');
 
