@@ -15,6 +15,20 @@ var searcher = [];
 
 let mymap = L.map('mapid').setView([50.627540588378906, 9.958450317382812], 5);
 
+async function searchAddressCoordinates(address) {
+    address = address.replace(/ /g, '+');
+    const result = await fetch(`https://nominatim.openstreetmap.org/search/search?q=${address}&format=json`);
+    const json = await result.json();
+    if (json && json.length > 0) {
+        return {
+            lat: parseFloat(json[0].lat),
+            lon: parseFloat(json[0].lon),
+        };
+    } else {
+        return null;
+    }
+}
+
 async function fallbackUpdateMap() {
     try {
         const ipResponse = await fetch('https://api.ipify.org/?format=json');
