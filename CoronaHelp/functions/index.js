@@ -81,9 +81,12 @@ exports.addZipHelper = functions.firestore
               laundry: snap.data().categories.laundry,
               medication: snap.data().categories.medication,
               shopping: snap.data().categories.shopping,
-              nature: snap.data().categories.nature,
+              pets: snap.data().categories.pets,
+              escort: snap.data().categories.escort,
+              conversations: snap.data().categories.conversations,
               handicap: snap.data().categories.handicap,
               agriculture: snap.data().categories.agriculture,
+              car: snap.data().categories.car,
               other: snap.data().categories.other,
             },
             timestamp: snap.data().timestamp

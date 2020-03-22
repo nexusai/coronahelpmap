@@ -162,7 +162,7 @@
         <!-- Helper List -->
         <div class="col-12 col-lg-7">
             <div class="list-view">
-
+                
                 <h2>Hilfe gesucht in: <div class="input-group mb-3 mt-2">
                        <input id="searchCity" type="search" class="form-control search" placeholder="Gib deine Stadt ein"
                            aria-label="Recipient's username" aria-describedby="searchCity-button">
@@ -170,6 +170,11 @@
                            <button class="btn btn-success" type="button" id="searchCity-button">Suche</button>
                        </div>
                    </div></h2>
+                   <p class="text-muted">Hier sehen Sie, welche Gesuche für Hilfe und Unterstützung es in Ihrer Nähe bereits
+                    gibt. Ist das Passende dabei? Dann schicken Sie dem Suchenden gleich eine
+                    Nachricht, um Kontakt aufzunehmen. Sie bekommen im Anschluss eine
+                    Bestätigungsmail von Corona Helpmap und der wird sich so bald wie möglich per E-
+                    Mail oder Telefon bei Ihnen melden.</p>
                 <div class="list-group" id="seeker-list">
                     
                 </div>
@@ -180,7 +185,11 @@
             <div class="signup-form">
                 <form id="input_fields">
                     <h2>Als Helfer eintragen</h2>
-                    <p>Bitte dieses Formular ausfüllen um dich anzumelden!</p>
+                    <p class="text-muted">Mit diesem Formular wird ein Eintrag in der Liste der Unterstützungsangebote in
+                        Ihrer Nachbarschaft erstellt. Privatpersonen oder Organisationen, die Unterstützung
+                        benötigen, können den Eintrag sehen. Sie können ihn jederzeit verändern oder
+                        löschen. Wir schicken Ihnen dazu gleich noch eine Mail mit allen nötigen Links und
+                        weiteren Infomationen.</p>
                     <hr>
                     <!-- Type of Helper -->
                     <div class="form-check form-check-inline mb-3">
@@ -195,8 +204,9 @@
                     </div>
                     <!-- Type of Help -->
                     <div class="form-group">
-                        <input type="text" class="form-control" name="typeOfHelp" placeholder="Was kannst du tun?"
+                        <input type="text" class="form-control" name="typeOfHelp" placeholder="Was bieten Sie an?*"
                             required="required">
+                            Das wird die Überschrift Ihres Eintrags
                     </div>
                     <!-- Bezahlung -->
                     <div class="input-group mb-3">
@@ -206,9 +216,9 @@
                         </div>
                         <select class="custom-select" id="paid">
                             <option selected>Wähle aus ...</option>
-                            <option value="paid">Nur Bezahlt</option>
-                            <option value="unpaid">Unbezahlt</option>
-                            <option value="both">Egal</option>
+                            <option value="paid">Ich möchte bezahlt werden</option>
+                            <option value="unpaid">Ich arbeite unentgeltlich</option>
+                            <option value="both">Beides</option>
                         </select>
                     </div>
                     <!-- Kategorien -->
@@ -241,21 +251,40 @@
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="nature" value="nature">
-                            <label class="form-check-label" for="nature">
-                                <i class="material-icons">nature_people</i> Natur
+                            <input class="form-check-input" type="checkbox" id="pets" value="pets">
+                            <label class="form-check-label" for="pets">
+                                <i class="material-icons">pets</i> Haustiere
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="escort" value="escort">
+                            <label class="form-check-label" for="escort">
+                                <i class="material-icons">supervisor_account</i> Begleitung (Spaziergänge, Arztbesuche &
+                                Ähnliches)
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="conversations" value="conversations">
+                            <label class="form-check-label" for="conversations">
+                                <i class="material-icons">phone</i> Gespräche (telefonisch)
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="handicap" value="handicap">
                             <label class="form-check-label" for="handicap">
-                                <i class="material-icons">accessible</i> Menschen mit Behinderungen
+                                <i class="material-icons">accessible</i> Erfahrung im Umgang mit Behinderten
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="agriculture" value="agriculture">
                             <label class="form-check-label" for="agriculture">
                                 <i class="material-icons">eco</i> Erntehilfe
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="car" value="car">
+                            <label class="form-check-label" for="car">
+                                <i class="material-icons">directions_car</i> Auto vorhanden
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -303,35 +332,37 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-6"><input type="text" class="form-control" name="first_name"
-                                    placeholder="Vorname" required="required"></div>
+                                    placeholder="Vorname*" required="required"></div>
                             <div class="col-6"><input type="text" class="form-control" name="last_name"
-                                    placeholder="Nachname" required="required"></div>
+                                    placeholder="Nachname*" required="required"></div>
                         </div>
                     </div>
                     <!-- Alter -->
                     <div class="form-group">
-                        <input type="number" class="form-control" name="age" placeholder="Alter" required="required">
+                        <input type="number" class="form-control" name="age" placeholder="Alter">
                     </div>
                     <!-- PLZ -->
                     <div class="form-group">
-                        <input type="text" class="form-control" name="address" placeholder="Postleitzahl"
+                        <input type="text" class="form-control" name="address" placeholder="Anschrift*"
                             required="required">
+                            wird auf der Karte nur ungefähr angezeigt
                     </div>
                     <!-- E-Mail -->
                     <div class="form-group">
-                        <input type="email" class="form-control" name="contactInfo" placeholder="Email"
+                        <input type="email" class="form-control" name="contactInfo" placeholder="E-Mail Adresse*"
                             required="required">
                     </div>
                     <!-- Notifications -->
                     <div class="form-group">
-                        <label class="checkbox-inline"><input type="checkbox" required="required"> Ich will wissen wenn
-                            in meiner Gegend Hilfe benötigt wird.</label>
+                        <label class="checkbox-inline"><input type="checkbox" required="required"> Ich möchte eine
+                            Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe benötigt
+                            wird (kann jederzeit abbestellt werden).*</label>
                     </div>
                     <!-- Datenschutz -->
                     <div class="form-group">
                         <label class="checkbox-inline"><input type="checkbox" required="required"> Ich akzeptiere
                             hiermit die <a href="#">Nutzungs- </a> &amp; <a href="#">Datenschutz-Bestimmungen
-                            </a></label>
+                            </a>*</label>
                     </div>
                     <!-- Submit Button -->
                     <div class="form-group">

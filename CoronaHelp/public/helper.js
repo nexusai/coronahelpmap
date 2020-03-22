@@ -125,9 +125,12 @@ form.addEventListener('submit', (e) => {
             laundry: form.laundry.checked,
             medication: form.medication.checked,
             shopping: form.shopping.checked,
-            nature: form.nature.checked,
+            pets: form.pets.checked,
+            escort: form.escort.checked,
+            conversations: form.conversations.checked,
             handicap: form.handicap.checked,
             agriculture: form.agriculture.checked,
+            car: form.car.checked,
             other: form.other.checked,
         },
         weekdays: {
