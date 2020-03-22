@@ -29,6 +29,13 @@ async function searchAddressCoordinates(address) {
     }
 }
 
+async function mapUpdateForQuery(query) {
+    const result = await searchAddressCoordinates(query);
+    if (result && result !== null) {
+        mymap.setView([result.lat, result.lon], 11);
+    }
+}
+
 async function fallbackUpdateMap() {
     try {
         const ipResponse = await fetch('https://api.ipify.org/?format=json');
