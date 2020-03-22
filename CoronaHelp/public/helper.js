@@ -79,15 +79,16 @@ db.collection("helpers").get()
                 timeFromNow = 'Zeitpunkt unbekannt'
                 
             }
-
+            var randomKm = Math.floor(Math.random() * Math.floor(10));
             // Poplulate Table
+            var categoryIcons = renderCategories(doc.data().categories)
+            var paidIcon = renderPayment(doc.data().paid)
             var xmlString = 
                 `<div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1">${doc.data().typeOfHelp}</h4> <small> ${timeFromNow} </small>
                     </div>
-                    <h5> ${doc.data().firstName } <span class="badge badge-secondary"> 1, 2 km </span></h5>
-                    <div class="categories"></div>
-                    <p> ${doc.data().typeOfHelp } </p>
+                    <h5> ${doc.data().firstName } <span class="badge badge-secondary"> ${randomKm} km </span></h5>
+                    <div class="categories my-2">${paidIcon + categoryIcons}</div>
                     <a href = "${urlFinal}" class="btn btn-primary" > Nachricht </button>
                 </div>`;
 
@@ -166,3 +167,41 @@ form.addEventListener('submit', (e) => {
 
 })
 
+function renderCategories(categories) {
+    var icons = '';
+    if (categories.household) {
+        icons += '<i class="material-icons">house</i>';
+    }
+    if (categories.laundry) {
+        icons += '<i class="material-icons">local_laundry_service</i>';
+    }
+    if (categories.medication) {
+        icons += '<i class="material-icons">local_pharmacy</i>';
+    }
+    if (categories.shopping) {
+        icons += '<i class="material-icons">shopping_cart</i>';
+    }
+    if (categories.nature) {
+        icons += '<i class="material-icons">nature_people</i>';
+    }
+    if (categories.handicap) {
+        icons += '<i class="material-icons">accessible</i>';
+    }
+    if (categories.agriculture) {
+        icons += '<i class="material-icons">eco</i>';
+    }
+    if (categories.other) {
+        icons += '<i class="material-icons">help</i>';
+    }
+    return icons;   
+}
+function renderPayment(paid) {
+    var icon = ''
+    if (paid == 'paid') {
+        icon = '<i class="material-icons">attach_money</i>'
+    }
+    if (paid == 'unpaid') {
+        icon = '<i class="material-icons">money_off</i>'
+    }
+    return icon;
+}
