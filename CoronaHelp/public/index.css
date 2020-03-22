@@ -21,8 +21,8 @@ font-size: 15px;
 line-height:18px;	
 font-weight: 400;
 color:#fff;
-background:#282828;
-background: linear-gradient(to right bottom, #474747, #3f3f3f, #373737, #2f2f2f, #282828);}
+background-color: #f8f9fa !important;
+}
 
 body, iframe, h1, h2, h3, h4, h5, h6, p, pre, a, strong, u, center, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, footer, header, menu, nav, button {
 text-decoration: none !important;
@@ -95,8 +95,9 @@ user-select: none;}
 
 /* Main wrapper on */
 #Wrapper {
-float: left;
-width: 100%;}
+/* float: left; */
+width: 100%;
+}
 /* Main wrapper off */
 
 
@@ -112,8 +113,8 @@ padding: 60px 50px;}
 
 /* Map Area on */
 .map-wrapper {
-float: left;
-width: 100%;
+/* float: left;
+width: 100%; */
 color:#fff;
 background: #502974;
 background: linear-gradient(to right bottom, #E23209, #E9360D, #CC2B06, #BB2D0B, #AC2708);
@@ -473,4 +474,9 @@ border-width: 0 5px 5px;}
 
 .navbar {
   border-bottom: 1px solid #E23209;
+}
+
+/* Info Section */
+.info-section img{
+  width: 80%;
 }
