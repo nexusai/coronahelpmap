@@ -153,6 +153,35 @@
 </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+    <img src="image1.svg" width="50" height="50" class="d-inline-block align-center" alt="">
+    Corona Helpmap
+  </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Language
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item translate" id="eng">English</a>
+          <a class="dropdown-item translate" id="ger">German</a>
+          <a class="dropdown-item translate" id="itl">Italian</a>
+          <a class="dropdown-item translate" id="spn">Spanish</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+</nav>
+
 <a href="/" class="btn back-button mt-3"><span class="material-icons">
         keyboard_arrow_left
     </span>zurück</a>
@@ -164,15 +193,15 @@
             <div class="list-view">
                 
                 <h2>Hilfe gesucht in: <div class="input-group mb-3 mt-2">
-                       <input id="searchCity" type="search" class="form-control search" placeholder="Gib deine Stadt ein"
+                       <input id="searchCity" type="search" class="form-control search" placeholder="PLZ oder Ort"
                            aria-label="Recipient's username" aria-describedby="searchCity-button">
                        <div class="input-group-append">
                            <button class="btn btn-success" type="button" id="searchCity-button">Suche</button>
                        </div>
                    </div></h2>
-                   <p class="text-muted">Hier sehen Sie, welche Gesuche für Hilfe und Unterstützung es in Ihrer Nähe bereits
-                    gibt. Ist das Passende dabei? Dann schicken Sie dem Suchenden gleich eine
-                    Nachricht, um Kontakt aufzunehmen. Sie bekommen im Anschluss eine
+                   <p class="text-muted" style="font-size:90%;">Hier sehen Sie, welche Gesuche für Hilfe und Unterstützung es in Ihrer Nähe bereits
+                    gibt.<br><br>Ist das Passende dabei? Dann schicken Sie dem Suchenden gleich eine
+                    Nachricht, um Kontakt aufzunehmen. <br>Sie bekommen im Anschluss eine
                     Bestätigungsmail von Corona Helpmap und der wird sich so bald wie möglich per E-
                     Mail oder Telefon bei Ihnen melden.</p>
                 <div class="list-group" id="seeker-list">
@@ -185,7 +214,7 @@
             <div class="signup-form">
                 <form id="input_fields">
                     <h2>Als Helfer eintragen</h2>
-                    <p class="text-muted">Mit diesem Formular wird ein Eintrag in der Liste der Unterstützungsangebote in
+                    <p class="text-muted" style="font-size:90%;">Mit diesem Formular wird ein Eintrag in der Liste der Unterstützungsangebote in
                         Ihrer Nachbarschaft erstellt. Privatpersonen oder Organisationen, die Unterstützung
                         benötigen, können den Eintrag sehen. Sie können ihn jederzeit verändern oder
                         löschen. Wir schicken Ihnen dazu gleich noch eine Mail mit allen nötigen Links und
