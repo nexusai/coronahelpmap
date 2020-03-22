@@ -15,14 +15,17 @@ var searcher = [];
 
 
 
-let mymap = L.map('mapid');
+let mymap = L.map('mapid').setView([50.627540588378906, 9.958450317382812], 5);
 async function updateMap() {
-    const ipResponse = await fetch('https://api.ipify.org/?format=json');
-    const ip = (await ipResponse.json()).ip;
-    const geoResponse = await fetch(`http://ip-api.com/json/${ip}`);
-    const geoJson = await geoResponse.json();
-    mymap.setView([geoJson.lat, geoJson.lon], 11);
-}
+    if (navigator.geolocation) {
+      const position = await navigator.geolocation.getCurrentPosition(position => {
+        mymap.setView([position.coords.latitude, position.coords.longitude], 12);
+      }); 
+    } else {
+      // Hier kann man notfalls immer noch die externen IP APIs aufrufen
+    }
+  }
+
 updateMap();
 
 //var mymap = L.map('mapid').setView([52.520008, 13.404954], 11);
