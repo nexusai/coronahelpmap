@@ -98,6 +98,16 @@
         padding-bottom: 15px;
         text-align: center;
     }
+    .signup-form .category,
+    .signup-form .weekdays {
+        color: #000;
+    }
+    .signup-form .category i {
+        vertical-align: bottom;
+    }
+    .signup-form .title {
+        font-weight: 700;
+    }
 
     /* Validation Messages */
     .alert {
@@ -152,10 +162,95 @@
                     <h2>Als Helfer eintragen</h2>
                     <p>Bitte dieses Formular ausfüllen um dich anzumelden!</p>
                     <hr>
+                    <!-- Type of Help -->
                     <div class="form-group">
                         <input type="text" class="form-control" name="typeOfHelp" placeholder="Was kannst du tun?"
                             required="required">
                     </div>
+                    <!-- Bezahlung -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="paid">
+                                <i class="material-icons">attach_money</i></label>
+                        </div>
+                        <select class="custom-select" id="paid">
+                            <option selected>Wähle aus ...</option>
+                            <option value="paid">Nur Bezahlt</option>
+                            <option value="unpaid">Unbezahlt</option>
+                            <option value="both">Egal</option>
+                        </select>
+                    </div>
+                    <!-- Kategorien -->
+                    <div class="form-group category">
+                        <div class="title mb-1">
+                            Kategorien
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="laundry" value="laundry">
+                            <label class="form-check-label" for="inlineCheckbox1">
+                                <i class="material-icons">local_laundry_service</i> Wäsche
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="medication" value="medication">
+                            <label class="form-check-label" for="inlineCheckbox2">
+                                <i class="material-icons">local_pharmacy</i> Medikamente
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="shopping" value="shopping">
+                            <label class="form-check-label" for="inlineCheckbox2">
+                                <i class="material-icons">shopping_cart</i> Einkaufen
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="nature" value="nature">
+                            <label class="form-check-label" for="inlineCheckbox2">
+                                <i class="material-icons">nature_people</i> Natur
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="handicap" value="handicap">
+                            <label class="form-check-label" for="inlineCheckbox2">
+                                <i class="material-icons">accessible</i> Menschen mit Behinderungen
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Wochentage -->
+                    <div class="form-group weekdays">
+                        <div class="title mb-1">
+                            Mögliche Wochentage
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="monday" value="monday">
+                            <label class="form-check-label" for="inlineCheckbox1">Montag</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="tuesday" value="tuesday">
+                            <label class="form-check-label" for="inlineCheckbox2">Dienstag</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="wednesday" value="wednesday">
+                            <label class="form-check-label" for="inlineCheckbox3">Mittwoch</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="thursday" value="thursday">
+                            <label class="form-check-label" for="inlineCheckbox2">Donnerstag</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="friday" value="friday">
+                            <label class="form-check-label" for="inlineCheckbox2">Freitag</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="saturday" value="saturday">
+                            <label class="form-check-label" for="inlineCheckbox2">Samstag</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="sunday" value="sunday">
+                            <label class="form-check-label" for="inlineCheckbox2">Sonntag</label>
+                        </div>
+                    </div>
+                    <!-- Name -->
                     <div class="form-group">
                         <div class="row">
                             <div class="col-6"><input type="text" class="form-control" name="first_name"
@@ -164,35 +259,38 @@
                                     placeholder="Nachname" required="required"></div>
                         </div>
                     </div>
+                    <!-- Alter -->
                     <div class="form-group">
                         <input type="number" class="form-control" name="age" placeholder="Alter" required="required">
                     </div>
+                    <!-- PLZ -->
                     <div class="form-group">
                         <input type="text" class="form-control" name="address" placeholder="Postleitzahl"
                             required="required">
                     </div>
-
-
+                    <!-- E-Mail -->
                     <div class="form-group">
                         <input type="email" class="form-control" name="contactInfo" placeholder="Email"
                             required="required">
                     </div>
+                    <!-- Notifications -->
                     <div class="form-group">
                         <label class="checkbox-inline"><input type="checkbox" required="required"> Ich will wissen wenn
                             in meiner Gegend Hilfe benötigt wird.</label>
                     </div>
+                    <!-- Datenschutz -->
                     <div class="form-group">
                         <label class="checkbox-inline"><input type="checkbox" required="required"> Ich akzeptiere
                             hiermit die <a href="#">Nutzungs- </a> &amp; <a href="#">Datenschutz-Bestimmungen
                             </a></label>
                     </div>
-
+                    <!-- Submit Button -->
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg">Senden</button>
                     </div>
                     <div class="alert success">Deine Nachricht wurde übermittelt.</div>
-                    <div class="alert error">Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später noch
-                        ein mal.</div>
+                    <!-- <div class="alert error">Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später noch
+                        ein mal.</div> -->
                 </form>
                 <div class="hint-text">Angebot wieder von der Karte entfernen? <a href="#">Hier wieder abmelden</a>
                 </div>
@@ -202,22 +300,23 @@
         <div class="col-12 col-lg-7">
             <div class="list-view">
                 <h2>Suche in: <span>Karlsruhe</span></h2>
-                <div class="list-group">
+                <div class="list-group" id="seeker-list">
                     
-                    <a href="#" class="list-group-item list-group-item-action">
+                    <!-- <article class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">Mein Hund muss Gassi.</h4>
                             <small>vor 1 Minute</small>
                         </div>
                         <h5>Annette Bauer <span class="badge badge-secondary">1,2km</span></h5>
-                        <i class="material-icons">face</i>
-                        <i class="material-icons">accessible</i>
-                        <i class="material-icons">attach_money</i>
+                        <div class="categories">
+                            <i class="material-icons">accessible</i>
+                            <i class="material-icons">attach_money</i>
+                        </div>
                         <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
                             varius blandit.</p>
                         <button type="button" class="btn btn-primary">Nachricht senden</button>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    </article>
+                    <article class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">Mein Hund muss Gassi.</h4>
                                 <small>vor 2 Stunden</small>
@@ -229,8 +328,8 @@
                         <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
                             varius blandit.</p>
                         <button type="button" class="btn btn-primary">Nachricht senden</button>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    </article>
+                    <article class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">Brauche was zu essen!</h4>
                                 <small>gestern</small>
@@ -241,8 +340,8 @@
                         <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
                             varius blandit.</p>
                         <button type="button" class="btn btn-primary">Nachricht senden</button>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    </article>
+                    <article class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">In die Natur</h4>
                                 <small>gestern</small>
@@ -253,8 +352,8 @@
                         <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
                             varius blandit.</p>
                         <button type="button" class="btn btn-primary">Nachricht senden</button>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
+                    </article>
+                    <article class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">Brauche Medikamente</h4>
                                 <small>gestern</small>
@@ -266,7 +365,7 @@
                         <p>Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus
                             varius blandit.</p>
                         <button type="button" class="btn btn-primary">Nachricht senden</button>
-                    </a>
+                    </article> -->
                 </div>
             </div>
         </div>
