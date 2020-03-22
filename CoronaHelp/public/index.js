@@ -12,6 +12,7 @@
 var db = firebase.firestore();
 var helpers = [];
 var searcher = [];
+var markers = L.markerClusterGroup();
 
 let mymap = L.map('mapid').setView([50.627540588378906, 9.958450317382812], 5);
 
@@ -95,13 +96,17 @@ db.collection("helpers").get().then((querySnapshot) => {
         // console.log(`${doc.id} => ${doc.data()}`);
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
-        var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
+        markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong]));
+
+        /*var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
 
             color: 'green',
             fillColor: '#f03',
             fillOpacity: 0.12,
             radius: 500
         }).addTo(mymap);
+
+*/
 
         // circle.bindPopup(doc.data().firstName);
 
@@ -127,6 +132,7 @@ db.collection("helpers").get().then((querySnapshot) => {
 
         });
         //console.log(helpers)
+        mymap.addLayer(markers);
 
         MarkersOnMap.Init({
             googleApiKey: 'AIzaSyBDWpSKKqmaBHmKwBobTEjxToXSRk2GkPc', // this key restricted except this project
