@@ -11,7 +11,14 @@ db.collection("helpers").get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             //console.log(doc.id, " => ", doc.data());
-            console.log(doc.data().firstName)
+            //console.log(doc.data().firstName)
+            //console.log(customUrl)
+            var url = "https://coronahelpmap.com/send.html?id="
+            var customId = doc.id
+            var urlFinal = url+customId
+            console.log(urlFinal)
+
+
         });
     })
     .catch(function(error) {
@@ -49,9 +56,4 @@ form.addEventListener('submit', (e) => {
 
 
 })
-
-
-
-
-
 

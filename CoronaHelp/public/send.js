@@ -8,6 +8,10 @@
 
  
 // saving data:
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const receiverId = urlParams.get('id').toString();
+
 
 
 form.addEventListener('submit', (e) => {
@@ -16,8 +20,9 @@ form.addEventListener('submit', (e) => {
         address: form.address.value,
         contactInfo: form.contactInfo.value,
         firstName: form.first_name.value,
-        typeOfHelp: form.typeOfHelp.value,
-        age: form.age.value
+        lastName: form.last_name.value,
+        message: form.typeOfHelp.value,
+        receiverId: receiverId
     })
 .then(docRef => {
     console.log("Document written with ID: ", docRef.id);
