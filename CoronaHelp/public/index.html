@@ -46,9 +46,106 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
         </script>
+
+
+    <!-- ↓ Code to change the Language ↓ -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+    var arrLang = new Array();
+    arrLang['eng'] = new Array();
+    arrLang['ger'] = new Array();
+    arrLang['itl'] = new Array();
+    arrLang['spn'] = new Array();
+
+    // English content
+    arrLang['eng']['titel2'] = 'Direct help from the neighborhood';
+    arrLang['eng']['search'] = 'Search';
+    arrLang['eng']['location'] = 'please enter your city';
+    arrLang['eng']['button1.1'] = 'Register as a helper';
+    arrLang['eng']['button1.2'] = 'I want to help!';
+    arrLang['eng']['button2.1'] = 'Enter request';
+    arrLang['eng']['button2.2'] = 'I need Help!';
+
+    // German content 
+    arrLang['ger']['titel2'] = 'Direkte Hilfe aus der Nachbarschaft';
+    arrLang['ger']['search'] = 'Suche';
+    arrLang['ger']['location'] = 'Gib deine Stadt ein';
+    arrLang['ger']['button1.1'] = 'Als Helfer eintragen';
+    arrLang['ger']['button1.2'] = 'Ich kann helfen!';
+    arrLang['ger']['button2.1'] = 'Gesuch eintragen';
+    arrLang['ger']['button2.2'] = 'Ich brauche Hilfe!';
+
+    // Italian content
+    arrLang['itl']['titel2'] = 'Aiuto diretto dal quartiere';
+    arrLang['itl']['search'] = 'Ricerca';
+    arrLang['itl']['location'] = 'entra nella tua città';
+    arrLang['itl']['button1.1'] = 'Registrati come aiuto';
+    arrLang['itl']['button1.2'] = 'Voglio aiutare!';
+    arrLang['itl']['button2.1'] = 'Inserisci richiesta';
+    arrLang['itl']['button2.2'] = 'Ho bisogno di aiuto!';
+
+    // Spanish content
+    arrLang['spn']['titel2'] = 'Ayuda directa del barrio';
+    arrLang['spn']['search'] = 'Buscar';
+    arrLang['spn']['location'] = 'ingresa tu ciudad';
+    arrLang['spn']['button1.1'] = 'Registrarse como ayudante';
+    arrLang['spn']['button1.2'] = '¡Quiero ayudar!';
+    arrLang['spn']['button2.1'] = 'Introducir solicitud';
+    arrLang['spn']['button2.2'] = '¡Necesito ayuda!';
+
+    // Process translation
+    $(function() {
+    $('.translate').click(function() {
+        var lang = $(this).attr('id');
+
+        $('.lang').each(function(index, item) {
+        $(this).text(arrLang[lang][$(this).attr('key')]);
+        });
+    });
+    });
+    </script>
+
+    <!-- ↑ Code to change the Language ↑ -->
+
+
+
 </head>
 
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Language
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">English</a>
+          <a class="dropdown-item" href="#">German</a>
+          <a class="dropdown-item" href="#">Italian</a>
+          <a class="dropdown-item" href="#">Spanish</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+</nav>
+
+<!-- ↓ Code to change the Language ↓ -->
+
+
+<!-- ↑ Code to change the Language ↑ -->
 
     <div id="Wrapper">
 
@@ -74,28 +171,28 @@
             <div class="max-content">
                 <div class="head">
                     <h1 class="logo" data-toggle="tooltip"><a href="https://coronahelpmap.com/">Corona Helpmap</a></h1>
-                   <p class="description">Direkte Hilfe aus der Nachbarschaft</p><br>
+                   <p class="description lang" key="titel2">Direkte Hilfe aus der Nachbarschaft</p><br>
                    <div class="input-group mb-3">
                        <input id="searchCity" type="search" class="form-control search" placeholder="Gib deine Stadt ein"
                            aria-label="Recipient's username" aria-describedby="searchCity-button">
                        <div class="input-group-append">
-                           <button class="btn btn-success" type="button" id="searchCity-button">Suche</button>
+                           <button class="btn btn-success lang" key="search" type="button" id="searchCity-button">Suche</button>
                        </div>
                    </div>
                 </div>
 
                 <div class="get-markersonmap">
                     <div class="get-it-on">
-                        <p>Als Helfer eintragen</p>
-                        <a class="github" target="_self" rel="noopener" href="/helper.html">Ich kann helfen!</a>
+                        <p class="lang" key="button1.1" >Als Helfer eintragen</p>
+                        <a class="github lang" key="button1.2" target="_self" rel="noopener" href="/helper.html">Ich kann helfen!</a>
                         
                     </div>
                 </div>
 
                 <div class="get-markersonmap">
                     <div class="get-it-on">
-                        <p>Gesuch eintragen</p>
-                        <a class="github" target="_self" rel="noopener" href="">Ich brauche Hilfe!</a>
+                        <p class="lang" key="button2.1" >Gesuch eintragen</p>
+                        <a class="github lang", key="button2.2" target="_self" rel="noopener" href="">Ich brauche Hilfe!</a>
                         
                     </div>
                 </div>
