@@ -13,18 +13,32 @@ var db = firebase.firestore();
 var helpers = [];
 var searcher = [];
 
-
-
 let mymap = L.map('mapid').setView([50.627540588378906, 9.958450317382812], 5);
+
+async function fallbackUpdateMap() {
+    try {
+        const ipResponse = await fetch('https://api.ipify.org/?format=json');
+        const ip = (await ipResponse.json()).ip;
+        const geoResponse = await fetch(`http://ip-api.com/json/${ip}`);
+        const geoJson = await geoResponse.json();
+        mymap.setView([geoJson.lat, geoJson.lon], 11);
+    } catch (err) {
+        mymap.setView([52.520008, 13.404954], 5);
+    }
+}
 async function updateMap() {
     if (navigator.geolocation) {
-      const position = await navigator.geolocation.getCurrentPosition(position => {
-        mymap.setView([position.coords.latitude, position.coords.longitude], 12);
-      }); 
+        const position = await navigator.geolocation.getCurrentPosition(position => {
+            mymap.setView([position.coords.latitude, position.coords.longitude], 12);
+        },
+            error => {
+                console.log(error);
+                fallbackUpdateMap();
+            });
     } else {
-      // Hier kann man notfalls immer noch die externen IP APIs aufrufen
+        fallbackUpdateMap();
     }
-  }
+}
 
 updateMap();
 
@@ -43,19 +57,19 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 db.collection("helpers").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
 
-       // console.log(`${doc.id} => ${doc.data()}`);
+        // console.log(`${doc.id} => ${doc.data()}`);
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
         var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
 
-    color: 'green',
-    fillColor: '#f03',
-    fillOpacity: 0.12,
-    radius: 500
-}).addTo(mymap);
+            color: 'green',
+            fillColor: '#f03',
+            fillOpacity: 0.12,
+            radius: 500
+        }).addTo(mymap);
 
-       // circle.bindPopup(doc.data().firstName);
-        
+        // circle.bindPopup(doc.data().firstName);
+
 
 
 
@@ -65,35 +79,35 @@ db.collection("helpers").get().then((querySnapshot) => {
 
 
     });
-            //console.log(helpers)
+    //console.log(helpers)
 
-db.collection("searcher").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
+    db.collection("searcher").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
 
-       // console.log(`${doc.id} => ${doc.data()}`);
-        //console.log(doc.data().firstName);
-        var search = new add(searcherMarker(),25,doc.data().addressLat,doc.data().addressLong,doc.data().firstName,'<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
-        searcher.push(search)
+            // console.log(`${doc.id} => ${doc.data()}`);
+            //console.log(doc.data().firstName);
+            var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
+            searcher.push(search)
 
+
+        });
+        //console.log(helpers)
+
+        MarkersOnMap.Init({
+            googleApiKey: 'AIzaSyBDWpSKKqmaBHmKwBobTEjxToXSRk2GkPc', // this key restricted except this project
+            googlePlacesApiEnabled: true,
+            mapTypeId: 'terrain',
+            mapHeight: '500px',
+            markerOverlay: false,
+            mapZoomControl: true,
+            mapScrollWheel: false,
+            markerObjects: helpers.concat(searcher),
+        });
+        //MarkersOnMap.Run('div#GoogleMaps');
+
+        furcanTooltip('[data-toggle="tooltip"]');
 
     });
-      //console.log(helpers)
-
-            MarkersOnMap.Init({
-    googleApiKey: 'AIzaSyBDWpSKKqmaBHmKwBobTEjxToXSRk2GkPc', // this key restricted except this project
-    googlePlacesApiEnabled: true,
-    mapTypeId: 'terrain',
-    mapHeight: '500px',
-    markerOverlay: false,
-    mapZoomControl: true,
-    mapScrollWheel: false,
-    markerObjects: helpers.concat(searcher),
-});
-//MarkersOnMap.Run('div#GoogleMaps');
-
-furcanTooltip('[data-toggle="tooltip"]');
-
-});
 
 });
 
@@ -101,13 +115,13 @@ furcanTooltip('[data-toggle="tooltip"]');
 
 
 // DEMO: Markers On Map - Init and Run off
-function add (markerUrl,markerSize,markerLat,markerLong,markerTitle,markerContent) {
-this.markerUrl = markerUrl;
-this.markerSize = markerSize;
-this.markerLat = markerLat;
-this.markerLong = markerLong;
-this.markerTitle = markerTitle;
-this.markerContent = markerContent;
+function add(markerUrl, markerSize, markerLat, markerLong, markerTitle, markerContent) {
+    this.markerUrl = markerUrl;
+    this.markerSize = markerSize;
+    this.markerLat = markerLat;
+    this.markerLong = markerLong;
+    this.markerTitle = markerTitle;
+    this.markerContent = markerContent;
 }
 
 // DEMO: Tooltip on
