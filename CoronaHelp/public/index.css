@@ -91,7 +91,7 @@ margin: 0;}
 -ms-user-select: none;
 user-select: none;}
 /* Reset off */
-
+#mapid { height: 400px; }
 
 /* Main wrapper on */
 #Wrapper {
