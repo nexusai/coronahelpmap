@@ -1,11 +1,60 @@
 
-
 var db = firebase.firestore();
 const form = document.querySelector('#input_fields');
 
 //Secret key provided by Google
 const apiKey = '6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq';
+
 // const apiString = < YOUR BACKEND API > ;
+
+//const geofirestore: GeoFirestore = window.geofirestore
+
+//const geofirestore: GeoFirestore = new GeoFirestore(firestore);
+
+// Create a GeoCollection reference
+//const geocollection: GeoCollectionReference = geofirestore.collection('helpers');
+
+
+async function searchAddressCoordinates(address) {
+    address = address.replace(/ /g, '+');
+    const result = await fetch(`https://nominatim.openstreetmap.org/search/search?q=${address}&format=json`);
+    const json = await result.json();
+    if (json && json.length > 0) {
+        return {
+            lat: parseFloat(json[0].lat),
+            lon: parseFloat(json[0].lon),
+        };
+    } else {
+        return null;
+    }
+}
+// Search handler
+document.querySelector('#searchCity').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        // code for enter
+        var cityInputField = document.getElementById('searchCity').value
+        mapUpdateForQuery(cityInputField)
+    }
+});
+document.querySelector('#searchCity-button').addEventListener('click', function (e) {
+    var cityInputField = document.getElementById('searchCity').value
+    mapUpdateForQuery(cityInputField)
+});
+
+
+
+async function mapUpdateForQuery(query) {
+    const result = await searchAddressCoordinates(query);
+    if (result && result !== null) {
+        
+        console.log(result)
+
+        //mymap.setView([result.lat, result.lon], 11);
+    }
+}
+
+
+
 
 moment.locale('de');
 db.collection("helpers").get()

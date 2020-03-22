@@ -162,7 +162,14 @@
         <!-- Helper List -->
         <div class="col-12 col-lg-7">
             <div class="list-view">
-                <h2>Hilfe gesucht in: <span>Hamburg</span></h2>
+
+                <h2>Hilfe gesucht in: <div class="input-group mb-3">
+                       <input id="searchCity" type="search" class="form-control search" placeholder="Gib deine Stadt ein"
+                           aria-label="Recipient's username" aria-describedby="searchCity-button">
+                       <div class="input-group-append">
+                           <button class="btn btn-success" type="button" id="searchCity-button">Suche</button>
+                       </div>
+                   </div></h2>
                 <div class="list-group" id="seeker-list">
                     
                 </div>
@@ -315,7 +322,9 @@
 
         <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
+        <!--<script src="https://unpkg.com/geofirestore/dist/geofirestore.js"></script> -->
         <script src="/__/firebase/init.js"></script>
+
         <script src="helper.js"></script>
 </body>
 </html>                            
