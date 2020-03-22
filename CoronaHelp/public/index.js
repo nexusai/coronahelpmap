@@ -46,7 +46,7 @@ document.querySelector('#searchCity-button').addEventListener('click', function 
 async function mapUpdateForQuery(query) {
     const result = await searchAddressCoordinates(query);
     if (result && result !== null) {
-        mymap.setView([result.lat, result.lon], 12);
+        mymap.setView([result.lat, result.lon], 13);
     }
 }
 

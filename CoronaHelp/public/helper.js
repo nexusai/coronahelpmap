@@ -85,9 +85,9 @@ db.collection("helpers").get()
             var paidIcon = renderPayment(doc.data().paid)
             var xmlString = 
                 `<div class="d-flex w-100 justify-content-between">
-                    <h4 class="mb-1">${doc.data().typeOfHelp}</h4> <small> ${timeFromNow} </small>
+                    <h4 class="mb-1">${doc.data().firstName}</h4> <small> ${timeFromNow} </small>
                     </div>
-                    <h5> ${doc.data().firstName } <span class="badge badge-secondary"> ${randomKm} km </span></h5>
+                    <h5> ${doc.data().typeOfHelp } <span class="badge badge-secondary"> ${randomKm} km </span></h5>
                     <div class="categories my-2">${paidIcon + categoryIcons}</div>
                     <a href = "${urlFinal}" class="btn btn-primary" > Nachricht </button>
                 </div>`;
