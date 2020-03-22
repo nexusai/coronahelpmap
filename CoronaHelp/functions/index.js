@@ -64,6 +64,7 @@ exports.addZipHelper = functions.firestore
             contactInfo: snap.data().contactInfo,
             firstName: snap.data().firstName,
             typeOfHelp: snap.data().typeOfHelp,
+            typeOfPerson: snap.data().typeOfPerson,
             age: snap.data().age,
             paid: snap.data().paid,
             weekdays: {
@@ -76,11 +77,14 @@ exports.addZipHelper = functions.firestore
               sunday: snap.data().weekdays.sunday,
             },
             categories: {
+              household: snap.data().categories.household,
               laundry: snap.data().categories.laundry,
               medication: snap.data().categories.medication,
               shopping: snap.data().categories.shopping,
               nature: snap.data().categories.nature,
-              handicap: snap.data().categories.handicap
+              handicap: snap.data().categories.handicap,
+              agriculture: snap.data().categories.agriculture,
+              other: snap.data().categories.other,
             },
             timestamp: snap.data().timestamp
 

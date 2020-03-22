@@ -175,6 +175,17 @@
                     <h2>Als Helfer eintragen</h2>
                     <p>Bitte dieses Formular ausfüllen um dich anzumelden!</p>
                     <hr>
+                    <!-- Type of Helper -->
+                    <div class="form-check form-check-inline mb-3">
+                        <input class="form-check-input" type="radio" name="typeOfPerson" id="private"
+                            value="private" checked>
+                        <label class="form-check-label text-body" for="private"> Privatperson</label>
+                    </div>
+                    <div class="form-check form-check-inline mb-3">
+                        <input class="form-check-input" type="radio" name="typeOfPerson" id="organisation"
+                            value="organisation">
+                        <label class="form-check-label text-body" for="organisation"> Organisation</label>
+                    </div>
                     <!-- Type of Help -->
                     <div class="form-group">
                         <input type="text" class="form-control" name="typeOfHelp" placeholder="Was kannst du tun?"
@@ -199,33 +210,51 @@
                             Kategorien
                         </div>
                         <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="household" value="household">
+                            <label class="form-check-label" for="household">
+                                <i class="material-icons">house</i> Haushalt
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="laundry" value="laundry">
-                            <label class="form-check-label" for="inlineCheckbox1">
+                            <label class="form-check-label" for="laundry">
                                 <i class="material-icons">local_laundry_service</i> Wäsche
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="medication" value="medication">
-                            <label class="form-check-label" for="inlineCheckbox2">
+                            <label class="form-check-label" for="medication">
                                 <i class="material-icons">local_pharmacy</i> Medikamente
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="shopping" value="shopping">
-                            <label class="form-check-label" for="inlineCheckbox2">
+                            <label class="form-check-label" for="shopping">
                                 <i class="material-icons">shopping_cart</i> Einkaufen
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="nature" value="nature">
-                            <label class="form-check-label" for="inlineCheckbox2">
+                            <label class="form-check-label" for="nature">
                                 <i class="material-icons">nature_people</i> Natur
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="handicap" value="handicap">
-                            <label class="form-check-label" for="inlineCheckbox2">
+                            <label class="form-check-label" for="handicap">
                                 <i class="material-icons">accessible</i> Menschen mit Behinderungen
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="agriculture" value="agriculture">
+                            <label class="form-check-label" for="agriculture">
+                                <i class="material-icons">eco</i> Erntehilfe
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="other" value="other">
+                            <label class="form-check-label" for="other">
+                                <i class="material-icons">help</i> Sonstiges
                             </label>
                         </div>
                     </div>

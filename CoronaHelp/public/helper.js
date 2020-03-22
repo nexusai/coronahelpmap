@@ -58,7 +58,6 @@ db.collection("helpers").get()
         console.log("Error getting documents: ", error);
     });
 
-
 // saving data:
 
 
@@ -70,12 +69,16 @@ form.addEventListener('submit', (e) => {
         firstName: form.first_name.value,
         typeOfHelp: form.typeOfHelp.value,
         paid: form.paid.value,
+        typeOfPerson: form.typeOfPerson.value,
         categories: {
+            household: form.household.checked,
             laundry: form.laundry.checked,
             medication: form.medication.checked,
             shopping: form.shopping.checked,
             nature: form.nature.checked,
-            handicap: form.handicap.checked
+            handicap: form.handicap.checked,
+            agriculture: form.agriculture.checked,
+            other: form.other.checked,
         },
         weekdays: {
             monday: form.monday.checked,
