@@ -29,6 +29,19 @@ async function searchAddressCoordinates(address) {
     }
 }
 
+document.querySelector('#searchCity').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      // code for enter
+
+    var cityInputField = document.getElementById('searchCity').value
+
+    mapUpdateForQuery(cityInputField)
+
+    }
+});
+
+
+
 async function mapUpdateForQuery(query) {
     const result = await searchAddressCoordinates(query);
     if (result && result !== null) {
