@@ -55,16 +55,35 @@ exports.addZipHelper = functions.firestore
     .document('helpersPreZip/{Id}')
     .onCreate(async (snap, context) => {
         const location = await getLocationData(snap.data().address)
+        console.log(snap.data().timestamp);
           let data = {
           
-          address: snap.data().address,
-          addressLat: location.lat,
-          addressLong: location.lon,
-          contactInfo: snap.data().contactInfo,
-          firstName: snap.data().firstName,
-          typeOfHelp: snap.data().typeOfHelp,
-          age: snap.data().age,
-          timestamp: snap.data().timestamp
+            address: snap.data().address,
+            addressLat: location.lat,
+            addressLong: location.lon,
+            contactInfo: snap.data().contactInfo,
+            firstName: snap.data().firstName,
+            typeOfHelp: snap.data().typeOfHelp,
+            age: snap.data().age,
+            paid: snap.data().paid,
+            weekdays: {
+              monday: snap.data().weekdays.monday,
+              tuesday: snap.data().weekdays.tuesday,
+              wednesday: snap.data().weekdays.wednesday,
+              thursday: snap.data().weekdays.thursday,
+              friday: snap.data().weekdays.friday,
+              saturday: snap.data().weekdays.saturday,
+              sunday: snap.data().weekdays.sunday,
+            },
+            categories: {
+              laundry: snap.data().categories.laundry,
+              medication: snap.data().categories.medication,
+              shopping: snap.data().categories.shopping,
+              nature: snap.data().categories.nature,
+              handicap: snap.data().categories.handicap
+            },
+            timestamp: snap.data().timestamp
+
           };
 
 

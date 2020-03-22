@@ -7,7 +7,6 @@ const form = document.querySelector('#input_fields');
 const apiKey = '6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq';
 // const apiString = < YOUR BACKEND API > ;
 
-
 moment.locale('de');
 db.collection("helpers").get()
     .then(function(querySnapshot) {
@@ -22,7 +21,6 @@ db.collection("helpers").get()
             // Get Timestamp
             var timestamp, timeFromNow;
             // Timestamp exists
-            console.log(doc.data())
             if (doc.data().timestamp) {
                 timestamp = doc.data().timestamp;
                 timeFromNow = moment(timestamp).fromNow()
@@ -30,6 +28,7 @@ db.collection("helpers").get()
             // Timestamp is unknown or unset
             else {
                 timeFromNow = 'Zeitpunkt unbekannt'
+                
             }
 
             // Poplulate Table
@@ -49,7 +48,6 @@ db.collection("helpers").get()
             el.classList.add('list-group-item-action')
             document.querySelector('#seeker-list').append(el)
             // TODO: Poplulate with categories & weekdays
-            // TODO: Populate with Post Date
             // TODO: Populate with distance
 
 
@@ -89,13 +87,13 @@ form.addEventListener('submit', (e) => {
             sunday: form.sunday.checked,
         },
         age: form.age.value,
-        timestamp: moment()._d
+        timestamp: Date.now()
     })
 .then(docRef => {
     console.log("Document written with ID: ", docRef.id);
     console.log("You can now also access .this as expected: ", this.foo);
     console.log("Form Data: ", docRef);
-    form.querySelector('.alert.success').style.display = 'block';
+    form.querySelector('#success-message').style.display = 'block';
     let data = {
           id: docRef.id
           };
@@ -106,8 +104,11 @@ form.addEventListener('submit', (e) => {
     form.reset();
 
 })
-.catch(error => console.error("Error adding document: ", error))
-    form.querySelector('.alert.error').style.display = 'block';
+.catch(error => {
+    form.querySelector('#error-message').style.display = 'block';
+    console.error("Error adding document: ", error)
+})
+    
     //window.location.assign("https://coronahelpmap.com/");
 
 
