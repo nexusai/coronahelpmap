@@ -28,16 +28,17 @@ async function searchAddressCoordinates(address) {
         return null;
     }
 }
-
+// Search handler
 document.querySelector('#searchCity').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
-      // code for enter
-
-    var cityInputField = document.getElementById('searchCity').value
-
-    mapUpdateForQuery(cityInputField)
-
+        // code for enter
+        var cityInputField = document.getElementById('searchCity').value
+        mapUpdateForQuery(cityInputField)
     }
+});
+document.querySelector('#searchCity-button').addEventListener('click', function (e) {
+    var cityInputField = document.getElementById('searchCity').value
+    mapUpdateForQuery(cityInputField)
 });
 
 
