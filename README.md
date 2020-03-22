@@ -1,6 +1,4 @@
-<p align="center"><img src="./localivery_logo.png" width="400"></p>
-
-## Über Localivery
+## Über Corona Helpmap
 
 Die [Corona Helpmap](https://www.coronahelpmap.com) dient zur direkten Nachbarschaftshilfe.
 
