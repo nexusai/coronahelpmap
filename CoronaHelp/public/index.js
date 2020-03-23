@@ -194,6 +194,8 @@ db.collection("helpers").get().then((querySnapshot) => {
 
         });
         //console.log(helpers)
+        mymap.addLayer(markersBlue);
+
         mymap.addLayer(markersGreen);
 
         MarkersOnMap.Init({
