@@ -152,7 +152,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 db.collection("helpers").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
 
-        var url = "send.html?id="
+        var url = "sendtohelper.html?id="
         var customId = doc.id
         var urlFinal = url+customId
         console.log(urlFinal)
@@ -204,7 +204,7 @@ db.collection("helpers").get().then((querySnapshot) => {
     db.collection("searcher").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
 
-        var url = "send.html?id="
+        var url = "sendtoseeker.html?id="
         var customId = doc.id
         var urlFinal = url+customId
         console.log(urlFinal)

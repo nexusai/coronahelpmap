@@ -4,7 +4,7 @@
 
 
 
-const form = document.querySelector('#input_fields');
+    const form = document.querySelector('#input_fields');
 
  
 // saving data:
@@ -13,13 +13,11 @@ const urlParams = new URLSearchParams(queryString);
 const receiverId = urlParams.get('id').toString();
 
 
-
-
-var docRef = db.collection("cities").doc(receiverId);
+var docRef = db.collection("helper").doc(receiverId);
 
 docRef.get().then(function(doc) {
     if (doc.exists) {
-        console.log("Document data:", doc.data());
+        console.log(doc.data().contactInfo;
     } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
