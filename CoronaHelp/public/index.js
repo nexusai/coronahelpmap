@@ -155,7 +155,8 @@ db.collection("helpers").get().then((querySnapshot) => {
         // console.log(`${doc.id} => ${doc.data()}`);
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
-        markersGreen.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}));
+        markersGreen.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}).bindPopup(doc.data().firstName + ' ' + doc.data().lastName +'<br>' + 'Easily customizable.').openPopup());
+
 
         /*var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
 
@@ -188,7 +189,7 @@ db.collection("helpers").get().then((querySnapshot) => {
            // var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
             //searcher.push(search)
        // markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
-        markersBlue.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: blueIcon}));
+        markersBlue.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: blueIcon}).bindPopup(doc.data().firstName + ' ' + doc.data().lastName +'<br>' + 'Easily customizable.').openPopup());
 
 
 
