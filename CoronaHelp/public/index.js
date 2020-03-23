@@ -60,15 +60,15 @@ var blueIcon = L.icon({
 
     iconSize:     [60, 60], // size of the icon
     iconAnchor:   [15, 60], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -35] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [0, -35] // point from which the popup should open relative to the iconAnchor
 });
 
 var greenIcon = L.icon({
     iconUrl: 'MarkerGreen.png',
 
     iconSize:     [60, 60], // size of the icon
-    iconAnchor:   [15, 60], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -35] // point from which the popup should open relative to the iconAnchor
+    iconAnchor:   [30, 60], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -60] // point from which the popup should open relative to the iconAnchor
 });
 
 
@@ -152,10 +152,17 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 db.collection("helpers").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
 
+        var url = "https://coronahelpmap.com/send.html?id="
+        var customId = doc.id
+        var urlFinal = url+customId
+        console.log(urlFinal)
+
+
+        dateCreated = doc.data().timestamp
         // console.log(`${doc.id} => ${doc.data()}`);
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
-        markersGreen.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}).bindPopup(doc.data().firstName + ' ' + doc.data().lastName +'<br>' + 'Easily customizable.').openPopup());
+        markersGreen.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}).bindPopup('<span style="font-size:14pt;font-weight:bold">' + doc.data().firstName + ' ' + doc.data().lastName + '</span>' +'<br><br>' + doc.data().typeOfHelp + '<br><br><a href=' + urlFinal + 'target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px">Nachricht</button></a>').openPopup());
 
 
         /*var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
