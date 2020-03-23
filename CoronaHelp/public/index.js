@@ -12,18 +12,59 @@
 var db = firebase.firestore();
 var helpers = [];
 var searcher = [];
-var markers = L.markerClusterGroup();
 
-var greenIcon = L.icon({
-    iconUrl: 'MarkerGreen.png',
+var markersGreen = L.markerClusterGroup({
+            iconCreateFunction: function (cluster) {
+                    var childCount = cluster.getChildCount();
+
+            var c = ' markerGreen-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+    
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+            },
+            //Disable all of the defaults:
+            //spiderfyOnMaxZoom: false, 
+            showCoverageOnHover: false 
+            //zoomToBoundsOnClick: false
+        });
+
+var markersBlue = L.markerClusterGroup({
+            iconCreateFunction: function (cluster) {
+                    var childCount = cluster.getChildCount();
+
+            var c = ' markerBlue-cluster-';
+            if (childCount < 10) {
+                c += 'small';
+            } else if (childCount < 100) {
+                c += 'medium';
+            } else {
+                c += 'large';
+            }
+    
+            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+            },
+            //Disable all of the defaults:
+            //spiderfyOnMaxZoom: false, 
+            showCoverageOnHover: false 
+            //zoomToBoundsOnClick: false
+        });
+
+var blueIcon = L.icon({
+    iconUrl: 'MarkerBlue.png',
 
     iconSize:     [60, 60], // size of the icon
     iconAnchor:   [15, 60], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -35] // point from which the popup should open relative to the iconAnchor
 });
 
-var redIcon = L.icon({
-    iconUrl: 'MarkerRed.png',
+var greenIcon = L.icon({
+    iconUrl: 'MarkerGreen.png',
 
     iconSize:     [60, 60], // size of the icon
     iconAnchor:   [15, 60], // point of the icon which will correspond to marker's location
@@ -114,7 +155,7 @@ db.collection("helpers").get().then((querySnapshot) => {
         // console.log(`${doc.id} => ${doc.data()}`);
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
-        markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}));
+        markersGreen.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}));
 
         /*var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
 
@@ -146,12 +187,14 @@ db.collection("helpers").get().then((querySnapshot) => {
             //console.log(doc.data().firstName);
            // var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
             //searcher.push(search)
-        markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
+       // markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
+        markersBlue.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: blueIcon}));
+
 
 
         });
         //console.log(helpers)
-        mymap.addLayer(markers);
+        mymap.addLayer(markersGreen);
 
         MarkersOnMap.Init({
             googleApiKey: 'AIzaSyBDWpSKKqmaBHmKwBobTEjxToXSRk2GkPc', // this key restricted except this project

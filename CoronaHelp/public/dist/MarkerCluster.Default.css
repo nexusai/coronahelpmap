@@ -19,6 +19,9 @@
 	background-color: rgba(241, 128, 23, 0.6);
 	}
 
+
+
+
 	/* IE 6-8 fallback colors */
 .leaflet-oldie .marker-cluster-small {
 	background-color: rgb(181, 226, 140);
@@ -58,3 +61,122 @@
 .marker-cluster span {
 	line-height: 30px;
 	}
+
+.markerBlue-cluster {
+	background-clip: padding-box;
+	border-radius: 20px;
+	}
+.markerBlue-cluster div {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-top: 5px;
+
+	text-align: center;
+	border-radius: 15px;
+	font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	}
+.markerBlue-cluster span {
+	line-height: 30px;
+	}
+
+.markerBlue-cluster {
+	background-clip: padding-box;
+	border-radius: 20px;
+	}
+.markerBlue-cluster div {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-top: 5px;
+
+	text-align: center;
+	border-radius: 15px;
+	font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	}
+.markerBlue-cluster span {
+	line-height: 30px;
+	}
+
+
+.markerBlue-cluster-small {
+	background-color: rgba(0, 149, 225, 0.6);
+	}
+.markerBlue-cluster-small div {
+	background-color: rgba(0, 149, 225, 0.6);
+	}
+
+.markerBlue-cluster-medium {
+	background-color: rgba(0, 149, 225, 0.6);
+	}
+.markerBlue-cluster-medium div {
+	background-color: rgba(0, 149, 225, 0.6);
+	}
+
+.markerBlue-cluster-large {
+	background-color: rgba(0, 149, 225, 0.6);
+	}
+.markerBlue-cluster-large div {
+	background-color: rgba(0, 149, 225, 0.6);
+	}
+
+
+.markerGreen-cluster {
+	background-clip: padding-box;
+	border-radius: 20px;
+	}
+.markerGreen-cluster div {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-top: 5px;
+
+	text-align: center;
+	border-radius: 15px;
+	font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	}
+.markerGreen-cluster span {
+	line-height: 30px;
+	}
+
+.markerGreen-cluster {
+	background-clip: padding-box;
+	border-radius: 20px;
+	}
+.markerGreen-cluster div {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-top: 5px;
+
+	text-align: center;
+	border-radius: 15px;
+	font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	}
+.markerGreen-cluster span {
+	line-height: 30px;
+	}
+
+
+.markerGreen-cluster-small {
+	background-color: rgba(117, 203, 61, 0.6);
+	}
+.markerGreen-cluster-small div {
+	background-color: rgba(117, 203, 61, 0.6);
+	}
+
+.markerGreen-cluster-medium {
+	background-color: rgba(117, 203, 61, 0.6);
+	}
+.markerGreen-cluster-medium div {
+	background-color: rgba(117, 203, 61, 0.6);
+	}
+
+.markerGreen-cluster-large {
+	background-color: rgba(117, 203, 61, 0.6);
+	}
+.markerGreen-cluster-large div {
+	background-color: rgba(117, 203, 61, 0.6);
+	}
+
+

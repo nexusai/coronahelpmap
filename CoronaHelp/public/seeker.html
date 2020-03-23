@@ -1,270 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <link id="FontMuli"
-        href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&display=swap&subset=latin-ext"
-        rel="stylesheet">
-    <!-- <script src="https://www.google.com/recaptcha/api.js?render=_6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq"></script> -->
-    <link rel="shortcut icon" href="image1.svg" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<link id="FontMuli" href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&display=swap&subset=latin-ext" rel="stylesheet">
+<!-- <script src="https://www.google.com/recaptcha/api.js?render=_6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq"></script> -->
+<link rel="shortcut icon" href="image1.svg" />
     <link rel="stylesheet" href="index.css?v=1.3.0">
-    <title>Sign Up as helper</title>
-    <!-- Bootstrap css -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Bootstrap js -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- Moment.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
-    <style type="text/css">
-        body {
-            color: #fff;
-            background: #DE2A00 !important;
-            font-family: 'Muli', sans-serif;
-        }
+<title>Sign Up as seeker</title>
+<!-- Bootstrap css -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Bootstrap js -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<!-- Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+<style type="text/css">
+    body{
+        color: #fff;
+        background: #DE2A00 !important;
+        font-family: 'Muli', sans-serif;
+    }
+    .form-control{
+        height: 41px;
+        background: #f2f2f2;
+        box-shadow: none !important;
+        border: none;
+    }
+    .form-control:focus{
+        background: #e2e2e2;
+    }
+    .form-control, .btn{        
+        border-radius: 3px;
+    }
+    .signup-form{
+        /* width: 390px; */
+        margin: 30px auto;
+    }
+    .signup-form form{
+        color: #999;
+        border-radius: 3px;
+        margin-bottom: 15px;
+        background: #fff;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .signup-form h2,
+    .list-view h2 {
+        color: #333;
+        font-weight: bold;
+        margin-top: 0;
+    }
+    .signup-form hr {
+        margin: 0 -30px 20px;
+    }    
+    .signup-form .form-group{
+        margin-bottom: 20px;
+    }
+    .signup-form input[type="checkbox"]{
+        margin-top: 3px;
+    }
+    .signup-form .row div:first-child{
+        padding-right: 10px;
+    }
+    .signup-form .row div:last-child{
+        padding-left: 10px;
+    }
+    .signup-form .btn{        
+        font-size: 16px;
+        font-weight: bold;
+        background: #3598dc;
+        border: none;
+        min-width: 140px;
+    }
+    .signup-form .btn:hover, .signup-form .btn:focus{
+        background: #2389cd !important;
+        outline: none;
+    }
+    .signup-form a{
+        color: #fff;
+        text-decoration: underline;
+    }
+    .signup-form a:hover{
+        text-decoration: none;
+    }
+    .signup-form form a{
+        color: #3598dc;
+        text-decoration: none;
+    }   
+    .signup-form form a:hover{
+        text-decoration: underline;
+    }
+    .signup-form .hint-text {
+        padding-bottom: 15px;
+        text-align: center;
+    }
+    .signup-form .category,
+    .signup-form .weekdays {
+        color: #000;
+    }
+    .signup-form .category i {
+        vertical-align: bottom;
+    }
+    .signup-form .title {
+        font-weight: 700;
+    }
 
-        .form-control {
-            height: 41px;
-            background: #f2f2f2;
-            box-shadow: none !important;
-            border: none;
-        }
-
-        .form-control:focus {
-            background: #e2e2e2;
-        }
-
-        .form-control,
-        .btn {
-            border-radius: 3px;
-        }
-
-        .signup-form {
-            /* width: 390px; */
-            margin: 30px auto;
-        }
-
-        .signup-form form {
-            color: #999;
-            border-radius: 3px;
-            margin-bottom: 15px;
-            background: #fff;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-        }
-
-        .signup-form h2,
-        .list-view h2 {
-            color: #333;
-            font-weight: bold;
-            margin-top: 0;
-        }
-
-        .signup-form hr {
-            margin: 0 -30px 20px;
-        }
-
-        .signup-form .form-group {
-            margin-bottom: 20px;
-        }
-
-        .signup-form input[type="checkbox"] {
-            margin-top: 3px;
-        }
-
-        .signup-form .row div:first-child {
-            padding-right: 10px;
-        }
-
-        .signup-form .row div:last-child {
-            padding-left: 10px;
-        }
-
-        .signup-form .btn {
-            font-size: 16px;
-            font-weight: bold;
-            background: #3598dc;
-            border: none;
-            min-width: 140px;
-        }
-
-        .signup-form .btn:hover,
-        .signup-form .btn:focus {
-            background: #2389cd !important;
-            outline: none;
-        }
-
-        .signup-form a {
-            color: #fff;
+    /* Validation Messages */
+    .alert {
+        display: none;
+        color: #fff;
+    }
+    .alert.success {
+        background-color: #4caf50;
+    }
+    .alert.error {
+        background-color: #d32f2f;
+    }
+    /* helper list */
+    .list-view {
+        margin: 30px auto;
+        background-color: #fff;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 3px;
+    }
+    .list-view h2 span {
             text-decoration: underline;
-        }
-
-        .signup-form a:hover {
-            text-decoration: none;
-        }
-
-        .signup-form form a {
-            color: #3598dc;
-            text-decoration: none;
-        }
-
-        .signup-form form a:hover {
-            text-decoration: underline;
-        }
-
-        .signup-form .hint-text {
-            padding-bottom: 15px;
-            text-align: center;
-        }
-
-        .signup-form .category,
-        .signup-form .weekdays {
-            color: #000;
-        }
-
-        .signup-form .category i {
-            vertical-align: bottom;
-        }
-
-        .signup-form .title {
-            font-weight: 700;
-        }
-
-        /* Validation Messages */
-        .alert {
-            display: none;
-            color: #fff;
-        }
-
-        .alert.success {
-            background-color: #4caf50;
-        }
-
-        .alert.error {
-            background-color: #d32f2f;
-        }
-
-        /* helper list */
-        .list-view {
-            margin: 30px auto;
-            background-color: #fff;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            border-radius: 3px;
-        }
-
-        .list-view h2 span {
-            text-decoration: underline;
-        }
-
-        .list-group-item.active {
-            background-color: #F48076;
-            border-color: #F48076;
-        }
-
-        .btn-primary {
-            background: #3598dc;
-        }
-
-        .btn-primary:hover {
-            background: #2389cd !important;
-        }
-
-        /* back button */
-        .back-button {
-            color: #fff;
-        }
-
-        .back-button span {
-            vertical-align: bottom;
-        }
-    </style>
+    }
+    .list-group-item.active {
+        background-color: #F48076;
+        border-color: #F48076;
+    }
+    .btn-primary {
+        background: #3598dc;
+    }
+    .btn-primary:hover {
+        background: #2389cd !important;
+    }
+    /* back button */
+    .back-button {
+        color: #fff;
+    }
+    .back-button span{
+        vertical-align: bottom;
+    }
+</style>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">
-            <img src="image1.svg" width="50" height="50" class="d-inline-block align-center mr-3" alt="">
-            Corona Helpmap
+    <a class="navbar-brand" href="/">
+    <img src="image1.svg" width="50" height="50" class="d-inline-block align-center mr-3" alt="">
+    Corona Helpmap
+  </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav ">
+      
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Language
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item translate" id="eng">English</a>
+          <a class="dropdown-item translate" id="ger">German</a>
+          <a class="dropdown-item translate" id="itl">Italian</a>
+          <a class="dropdown-item translate" id="spn">Spanish</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+</nav>
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <ul class="navbar-nav ">
-
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Language
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item translate" id="eng">English</a>
-                        <a class="dropdown-item translate" id="ger">German</a>
-                        <a class="dropdown-item translate" id="itl">Italian</a>
-                        <a class="dropdown-item translate" id="spn">Spanish</a>
-                </li>
-
-            </ul>
-
-        </div>
-    </nav>
-
-    <a href="/" class="btn back-button mt-3"><span class="material-icons">
-            keyboard_arrow_left
-        </span>zurück</a>
-    <div class="container-fluid">
-        <div class="row">
-
-            <!-- Helper List -->
-            <div class="col-12">
-                <div class="list-view">
-
-                    <h2>Hilfe gesucht in: <div class="input-group mb-3 mt-3">
-                            <input id="searchCity" type="search" class="form-control search" placeholder="PLZ oder Ort"
-                                aria-label="Recipient's username" aria-describedby="searchCity-button">
-                            <div class="input-group-append">
-                                <button class="btn btn-success" type="button" id="searchCity-button">Suche</button>
-                            </div>
-                        </div>
-                    </h2>
-                    <p class="text-muted" style="font-size:90%;">Hier sehen Sie, welche Gesuche für Hilfe und
-                        Unterstützung es in Ihrer Nähe bereits
-                        gibt.<br><br>Ist das Passende dabei? Dann schicken Sie dem Suchenden gleich eine
-                        Nachricht, um Kontakt aufzunehmen. <br>Sie bekommen im Anschluss eine
-                        Bestätigungsmail von Corona Helpmap und der wird sich so bald wie möglich per E-
-                        Mail oder Telefon bei Ihnen melden.</p>
-                    <div class="list-group" id="seeker-list">
-
-                    </div>
+<a href="/" class="btn back-button mt-3"><span class="material-icons">
+        keyboard_arrow_left
+    </span>zurück</a>
+<div class="container-fluid">
+    <div class="row">
+        
+        <!-- Helper List -->
+        <div class="col-12 col-lg-7">
+            <div class="list-view">
+                
+                <h2>Hilfe angeboten in: <div class="input-group mb-3 mt-3">
+                       <input id="searchCity" type="search" class="form-control search" placeholder="PLZ oder Ort"
+                           aria-label="Recipient's username" aria-describedby="searchCity-button">
+                       <div class="input-group-append">
+                           <button class="btn btn-success" type="button" id="searchCity-button">Suche</button>
+                       </div>
+                   </div></h2>
+                   <p class="text-muted" style="font-size:90%;">Hier sehen Sie, welche Angebote für Hilfe und Unterstützung es in Ihrer Nähe bereits
+                    gibt.<br><br>Ist das Passende dabei? Dann schicken Sie dem Helfer gleich eine
+                    Nachricht, um Kontakt aufzunehmen. <br>Sie bekommen im Anschluss eine
+                    Bestätigungsmail von Corona Helpmap und der Helfer wird sich so bald wie möglich per E-
+                    Mail oder Telefon bei Ihnen melden.</p>
+                <div class="list-group" id="helper-list">
+                    
                 </div>
             </div>
+        </div>
 
-        
+        <div class="col-12 col-lg-5">
+            <div class="signup-form">
+                <form id="input_fields">
+                    <h2>Hilfe erhalten</h2>
+                    <p class="text-muted" style="font-size:90%;">Mit diesem Formular wird ein Eintrag in der Liste der Unterstützungsgesuche in
+                        Ihrer Nachbarschaft erstellt. Privatpersonen oder Organisationen, die Unterstützung
+                        geben, können den Eintrag sehen. Sie können ihn jederzeit verändern oder
+                        löschen. Wir schicken Ihnen dazu gleich noch eine Mail mit allen nötigen Links und
+                        weiteren Infomationen.</p>
+                    
+                    <!-- Type of Helper -->
+                    <div class="form-check form-check-inline mb-3">
+                        <input class="form-check-input" type="radio" name="typeOfPerson" id="private"
+                            value="private" checked>
+                        <label class="form-check-label text-body" for="private"> Privatperson</label>
+                    </div>
+                    <div class="form-check form-check-inline mb-3">
+                        <input class="form-check-input" type="radio" name="typeOfPerson" id="organisation"
+                            value="organisation">
+                        <label class="form-check-label text-body" for="organisation"> Organisation</label>
+                    </div>
+                    <!-- Type of Help -->
+                    <div class="form-group">
+                        <textarea type="text" class="form-control" name="typeOfHelp" placeholder="Was brauchen Sie?*"
+                            required="required" rows="4"></textarea></div>
+                    <!-- Bezahlung -->
+                    <p class="text-body"><strong>Aufwandsentschädigung</strong></p>
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="paid">
+                            <option selected>Wähle aus ...</option>
+                            <option value="paid">Ich möchte gerne etwas bezahlen</option>
+                            <option value="unpaid">Ich suche nach unentgeltlicher Hilfe</option>
+                            <option value="both">Beides</option>
+                        </select>
+                    </div>
+                    <!-- Kategorien -->
+                    <div class="form-group category">
+                        <div class="title mb-1">
+                            Kategorien
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="household" value="household">
+                            <label class="form-check-label" for="household">
+                                <i class="material-icons">house</i> Haushalt
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="laundry" value="laundry">
+                            <label class="form-check-label" for="laundry">
+                                <i class="material-icons">local_laundry_service</i> Wäsche
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="medication" value="medication">
+                            <label class="form-check-label" for="medication">
+                                <i class="material-icons">local_pharmacy</i> Medikamente
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="shopping" value="shopping">
+                            <label class="form-check-label" for="shopping">
+                                <i class="material-icons">shopping_cart</i> Einkaufen
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="pets" value="pets">
+                            <label class="form-check-label" for="pets">
+                                <i class="material-icons">pets</i> Haustiere
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="escort" value="escort">
+                            <label class="form-check-label" for="escort">
+                                <i class="material-icons">supervisor_account</i> Begleitung (Spaziergänge, Arztbesuche &
+                                Ähnliches)
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="conversations" value="conversations">
+                            <label class="form-check-label" for="conversations">
+                                <i class="material-icons">phone</i> Gespräche (telefonisch)
+                            </label>
+                        </div>
+                        
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="agriculture" value="agriculture">
+                            <label class="form-check-label" for="agriculture">
+                                <i class="material-icons">eco</i> Erntehilfe
+                            </label>
+                        </div>
+                        
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="other" value="other">
+                            <label class="form-check-label" for="other">
+                                <i class="material-icons">help</i> Sonstiges
+                            </label>
+                        </div>
+                        <div class="title mb-1">
+                            Fähigkeiten
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="handicap" value="handicap">
+                            <label class="form-check-label" for="handicap">
+                                <i class="material-icons">accessible</i> Erfahrung im Umgang mit Behinderten von Vorteil
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="car" value="car">
+                            <label class="form-check-label" for="car">
+                                <i class="material-icons">directions_car</i> Auto von Vorteil
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Wochentage -->
+                    <div class="form-group weekdays">
+                        <div class="title mb-1">
+                            Mögliche Wochentage
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="monday" value="monday">
+                            <label class="form-check-label" for="inlineCheckbox1">Montag</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="tuesday" value="tuesday">
+                            <label class="form-check-label" for="inlineCheckbox2">Dienstag</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="wednesday" value="wednesday">
+                            <label class="form-check-label" for="inlineCheckbox3">Mittwoch</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="thursday" value="thursday">
+                            <label class="form-check-label" for="inlineCheckbox2">Donnerstag</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="friday" value="friday">
+                            <label class="form-check-label" for="inlineCheckbox2">Freitag</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="saturday" value="saturday">
+                            <label class="form-check-label" for="inlineCheckbox2">Samstag</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="sunday" value="sunday">
+                            <label class="form-check-label" for="inlineCheckbox2">Sonntag</label>
+                        </div>
+                    </div>
+                    <!-- Name -->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6"><input type="text" class="form-control" name="first_name"
+                                    placeholder="Vorname*" required="required"></div>
+                            <div class="col-6"><input type="text" class="form-control" name="last_name"
+                                    placeholder="Nachname*" required="required"></div>
+                        </div>
+                    </div>
+                    <!-- PLZ -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="address" placeholder="Anschrift*"
+                            required="required"></div>
+                    <!-- E-Mail -->
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="contactInfo" placeholder="E-Mail Adresse*"
+                            required="required">
+                    </div>
+                    <!-- Notifications -->
+                    <div class="form-group">
+                        <label class="checkbox-inline"><input type="checkbox" required="required"> Ich möchte eine
+                            Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten
+                            wird (kann jederzeit abbestellt werden).*</label>
+                    </div>
+                    <!-- Datenschutz -->
+                    <div class="form-group">
+                        <label class="checkbox-inline"><input type="checkbox" required="required"> Ich akzeptiere
+                            hiermit die <a href="#">Nutzungs- </a> &amp; <a href="#">Datenschutz-Bestimmungen
+                            </a>*</label>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg">Senden</button>
+                    </div>
+                    <div id="success-message" class="alert success">Deine Nachricht wurde übermittelt.</div>
+                    <div id="error-message" class="alert error">Es gab Probleme bei der Übermittlung deiner Daten.
+                        Versuche es später noch
+                        ein mal.</div>
+                </form>
+                <div class="hint-text">Angebot wieder von der Karte entfernen? <a href="#">Hier wieder abmelden</a>
+                </div>
+            </div>
         </div>
     </div>
-    <footer id="Footer">
-        <p class="copyright">&copy; 2020 Corona Helpmap. All rights reserved.</p>
-        <a class="github" target="_self" rel="noopener" href="https://coronahelpmap.com/imprint.html">Imprint</a>
-    </footer>
+</div>
+<footer id="Footer">
+    <p class="copyright">&copy; 2020 Corona Helpmap. All rights reserved.</p>
+    <a class="github" target="_self" rel="noopener" href="https://coronahelpmap.com/imprint.html">Imprint</a>
+</footer>
 
-    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
-    <!--<script src="https://unpkg.com/geofirestore/dist/geofirestore.js"></script> -->
-    <script src="/__/firebase/init.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-firestore.js"></script>
+        <!--<script src="https://unpkg.com/geofirestore/dist/geofirestore.js"></script> -->
+        <script src="/__/firebase/init.js"></script>
 
-    <script src="helper.js"></script>
+        <script src="seeker.js"></script>
 </body>
+</html>                            
 
-</html>
+

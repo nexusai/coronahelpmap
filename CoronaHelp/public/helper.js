@@ -57,7 +57,7 @@ async function mapUpdateForQuery(query) {
 
 
 moment.locale('de');
-db.collection("helpers").get()
+db.collection("searcher").get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             //console.log(doc.id, " => ", doc.data());
