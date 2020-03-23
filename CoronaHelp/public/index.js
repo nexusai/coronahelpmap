@@ -209,7 +209,7 @@ db.collection("helpers").get().then((querySnapshot) => {
            // var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
             //searcher.push(search)
        // markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
-        markersBlue.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: blueIcon}).bindPopup(doc.data().firstName + ' ' + doc.data().lastName +'<br>' + 'Easily customizable.').openPopup());
+        markersBlue.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}).bindPopup(typeOfPersonConverted + '<br><br>' + '<span style="font-size:14pt;font-weight:bold">' + doc.data().firstName + ' ' + doc.data().lastName + '</span>' + '<br>' + doc.data().typeOfProfession + '<br><br>' + doc.data().typeOfHelp + '<br><br><a href=' + urlFinal + 'target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>').openPopup());
 
 
 
