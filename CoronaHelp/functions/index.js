@@ -65,7 +65,7 @@ exports.addZipHelper = functions.firestore
             contactInfo: snap.data().contactInfo,
             firstName: snap.data().firstName,
             lastName: snap.data().lastName,
-            id: snap.data().id,
+            id: snap.id,
             typeOfHelp: snap.data().typeOfHelp,
             typeOfPerson: snap.data().typeOfPerson,
             paid: snap.data().paid,
@@ -96,7 +96,7 @@ exports.addZipHelper = functions.firestore
           };
 
 
-        db.collection('helpers').doc(snap.data().id).set(data, {merge: true});
+        db.collection('helpers').doc(snap.id).set(data, {merge: true});
 
 
         
@@ -118,7 +118,7 @@ exports.addZipSearcher = functions.firestore
             firstName: snap.data().firstName,
             typeOfProfession: snap.data().typeOfProfession,
             lastName: snap.data().lastName,
-            id: snap.data().id,
+            id: snap.id,
             typeOfHelp: snap.data().typeOfHelp,
             typeOfPerson: snap.data().typeOfPerson,
             paid: snap.data().paid,
@@ -149,7 +149,7 @@ exports.addZipSearcher = functions.firestore
           };
 
 
-        db.collection('searcher').doc(snap.data().id).set(data, {merge: true});
+        db.collection('searcher').doc(snap.id).set(data, {merge: true});
 
 
         

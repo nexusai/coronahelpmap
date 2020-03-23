@@ -12,7 +12,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const receiverId = urlParams.get('id').toString();
 
-
+/*
 var docRef = db.collection("helper").doc(receiverId);
 
 docRef.get().then(function(doc) {
@@ -26,6 +26,7 @@ docRef.get().then(function(doc) {
     console.log("Error getting document:", error);
 });
 
+*/
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();

@@ -12,21 +12,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const receiverId = urlParams.get('id').toString();
 
-
-
-
-var docRef = db.collection("cities").doc(receiverId);
-
-docRef.get().then(function(doc) {
-    if (doc.exists) {
-        console.log("Document data:", doc.data());
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    }
-}).catch(function(error) {
-    console.log("Error getting document:", error);
-});
+//console.log(receiverId)
 
 
 form.addEventListener('submit', (e) => {
