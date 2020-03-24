@@ -134,6 +134,7 @@
         <p>Du bekommst umgehend Bescheid.</p>
         <hr>
         
+        <!-- Name -->
         <div class="form-group">
             <div class="row">
                 <div class="col-6"><input type="text" class="form-control" name="first_name" placeholder="Vorname*"
@@ -142,25 +143,35 @@
                         required="required"></div>
             </div>
         </div>
+        <!-- PLZ -->
         <div class="form-group">
             <input type="text" class="form-control" name="address" placeholder="Postleitzahl" required="required">
         </div>
+        <!-- E-Mail -->
         <div class="form-group">
             <input type="email" class="form-control" name="contactInfo" placeholder="Email" required="required">
-        </div> 
+        </div>
+         <!-- Message  -->
         <div class="form-group">
             <textarea type="text" class="form-control" name="typeOfHelp" placeholder="Nachricht" required="required" rows="6"></textarea>
         </div>
         
-    
+        <!-- Datenschutz -->
         <div class="form-group">
-            <label class="checkbox-inline"><input type="checkbox" required="required"> Ich akzeptiere hiermit die <a href="#">Nutzungs- </a> &amp; <a href="#">Datenschutz-Bestimmungen
-</a></label>
+            <label class="checkbox-inline"><input type="checkbox" required="required"> Ich akzeptiere hiermit die <a href="#">Nutzungs- </a> &amp; <a href="#">Datenschutz-Bestimmungen</a>
+            </label>
         </div>
-        
+        <!-- Submit Button -->
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg">Nachricht senden</button>
         </div>
+        <!-- Validation Messages -->
+        <div id="success-message" class="alert success">Deine Nachricht wurde
+            übermittelt.</div>
+        <div id="error-message" class="alert error">Es gab Probleme bei der Übermittlung
+            deiner Daten.
+            Versuche es später noch
+            ein mal.</div>
     </form>
 </div>
 <footer id="Footer">
