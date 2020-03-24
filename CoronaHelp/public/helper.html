@@ -24,7 +24,7 @@
 <style type="text/css">
     body{
         color: #fff;
-        background: #DE2A00 !important;
+        background: #FFFFFF !important;
         font-family: 'Muli', sans-serif;
     }
     .form-control{
@@ -44,7 +44,10 @@
         margin: 30px auto;
     }
     .signup-form form{
-        color: #999;
+        color: #0c062f;
+        border: 5px;
+        border-style: solid;
+        border-color: #0c062f;
         border-radius: 3px;
         margin-bottom: 15px;
         background: #fff;
@@ -146,7 +149,7 @@
     }
     /* back button */
     .back-button {
-        color: #fff;
+        color: #0c062f;
     }
     .back-button span{
         vertical-align: bottom;
@@ -292,7 +295,7 @@
 
 
 <!-- ↓ Navbar + Corona Helpmap Icon ↓ -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-light" style="background-color: #ffffff;">
     <a class="navbar-brand" href="#">
     <img src="image1.svg" width="50" height="50" class="d-inline-block align-center mr-3" alt="">Corona Helpmap  
     </a>
@@ -306,33 +309,13 @@
     </span>zurück</a>
 
 
-<div class="container-fluid">
-    <div class="row">
-        
-        <!-- Helper List -->
-        <div class="col-12 col-lg-7">
-            <div class="list-view">
-                
-                <h2>Hilfe gesucht in: <div class="input-group mb-3 mt-3">
-                       <input id="searchCity" type="search" class="form-control search" placeholder="PLZ oder Ort"
-                           aria-label="Recipient's username" aria-describedby="searchCity-button">
-                       <div class="input-group-append">
-                           <button class="btn btn-success lang" key="searchloc" type="button" id="searchCity-button">Suchen</button>
-                       </div>
-                   </div></h2>
-                   <p class="text-muted lang" key="paragraph1.0" style="font-size:90%;">Hier sehen Sie, welche Gesuche für Hilfe und Unterstützung es in Ihrer Nähe bereits
-                    gibt.</p>
-                    <p class="text-muted lang" key="paragraph1.1" style="font-size:90%;">Ist das Passende dabei? Dann schicken Sie dem Suchenden gleich eine
-                    Nachricht, um Kontakt aufzunehmen.
-                    Sie bekommen im Anschluss eine Bestätigungsmail von Corona Helpmap und der wird sich so bald wie möglich per E-
-                    Mail oder Telefon bei Ihnen melden.</p>
-                <div class="list-group" id="seeker-list">
-                    
-                </div>
-            </div>
-        </div>
 
-        <div class="col-12 col-lg-5">
+<div class="container-fluid">
+
+
+    <div class="row">
+
+        <div class="col-12 col-lg-5" style="margin:0 auto;">
             <div class="signup-form">
                 <form id="input_fields">
                     <h2 class="lang" key="heading2">Als Helfer eintragen</h2>
@@ -342,7 +325,6 @@
                         löschen. Wir schicken Ihnen dazu gleich noch eine Mail mit allen nötigen Links und
                         weiteren Infomationen.</p>
                     
-                    <!-- Type of Helper -->
                     <div class="form-check form-check-inline mb-3">
                         <input class="form-check-input" type="radio" name="typeOfPerson" id="private"
                             value="private" checked>
@@ -538,6 +520,31 @@
                 </div><a class="hint-text lang" key="unsubscribe" href="#">Hier wieder abmelden</a>
             </div>
         </div>
+        
+        <!-- Helper List 
+        <div class="col-12 col-lg-7">
+            <div class="list-view">
+                
+                <h2>Hilfe gesucht in: <div class="input-group mb-3 mt-3">
+                       <input id="searchCity" type="search" class="form-control search" placeholder="PLZ oder Ort"
+                           aria-label="Recipient's username" aria-describedby="searchCity-button">
+                       <div class="input-group-append">
+                           <button class="btn btn-success lang" key="searchloc" type="button" id="searchCity-button">Suchen</button>
+                       </div>
+                   </div></h2>
+                   <p class="text-muted lang" key="paragraph1.0" style="font-size:90%;">Hier sehen Sie, welche Gesuche für Hilfe und Unterstützung es in Ihrer Nähe bereits
+                    gibt.</p>
+                    <p class="text-muted lang" key="paragraph1.1" style="font-size:90%;">Ist das Passende dabei? Dann schicken Sie dem Suchenden gleich eine
+                    Nachricht, um Kontakt aufzunehmen.
+                    Sie bekommen im Anschluss eine Bestätigungsmail von Corona Helpmap und der wird sich so bald wie möglich per E-
+                    Mail oder Telefon bei Ihnen melden.</p>
+                <div class="list-group" id="seeker-list">
+                    
+                </div>
+            </div>
+        </div>-->
+
+        
     </div>
 </div>
 <footer id="Footer">

@@ -12,6 +12,11 @@
 var db = firebase.firestore();
 var helpers = [];
 var searcher = [];
+const formSeeker = document.querySelector('#input_fields_seeker');
+const formHelper = document.querySelector('#input_fields_helper');
+
+const apiKey = '6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq';
+
 
 var markersGreen = L.markerClusterGroup({
             iconCreateFunction: function (cluster) {
@@ -175,7 +180,7 @@ db.collection("helpers").get().then((querySnapshot) => {
         // console.log(`${doc.id} => ${doc.data()}`);
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
-        markersGreen.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}).bindPopup(typeOfPersonConverted + '<br><br>' + '<span style="font-size:14pt;font-weight:bold">' + doc.data().firstName + ' ' + doc.data().lastName + '</span>' + '<br>' + doc.data().typeOfProfession + '<br><br>' + doc.data().typeOfHelp + '<br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>').openPopup());
+        markersGreen.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}).bindPopup(typeOfPersonConverted + '<br><br>' + '<span style="font-size:14pt;font-weight:bold">' + doc.data().typeOfProfession + ' ' + doc.data().typeOfProfession + '</span>' + '<br>' + doc.data().typeOfProfession + '<br><br>' + doc.data().typeOfHelp + '<br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>').openPopup());
 
 
         /*var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
@@ -229,7 +234,7 @@ db.collection("helpers").get().then((querySnapshot) => {
            // var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
             //searcher.push(search)
        // markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
-        markersBlue.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: blueIcon}).bindPopup(typeOfPersonConverted + '<br><br>' + '<span style="font-size:14pt;font-weight:bold">' + doc.data().firstName + ' ' + doc.data().lastName + '</span>' + '<br>' + doc.data().typeOfProfession + '<br><br>' + doc.data().typeOfHelp + '<br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>').openPopup());
+        markersBlue.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: blueIcon}).bindPopup(typeOfPersonConverted + '<br><br>' + '<span style="font-size:14pt;font-weight:bold">' + doc.data().typeOfProfession + ' ' + doc.data().typeOfProfession + '</span>' + '<br>' + doc.data().typeOfProfession + '<br><br>' + doc.data().typeOfHelp + '<br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>').openPopup());
 
 
 
@@ -257,7 +262,151 @@ db.collection("helpers").get().then((querySnapshot) => {
 
 });
 
+formHelper.addEventListener('submit', (e) => {
+    e.preventDefault();
+    db.collection('helpersPreZip').add({
+        address: form.address.value,
+        contactInfo: form.contactInfo.value,
+        typeOfProfession: form.work.value,
+        typeOfHelp: form.typeOfHelp.value,
+        typeOfPerson: form.typeOfPerson.value,
+        categories: {
+            household: form.household.checked,
+            laundry: form.laundry.checked,
+            medication: form.medication.checked,
+            shopping: form.shopping.checked,
+            pets: form.pets.checked,
+            escort: form.escort.checked,
+            conversations: form.conversations.checked,
+            handicap: form.handicap.checked,
+            agriculture: form.agriculture.checked,
+            car: form.car.checked,
+            other: form.other.checked,
+        },
+        
+        timestamp: Date.now()
+    })
+.then(docRef => {
+    console.log("Document written with ID: ", docRef.id);
+    console.log("You can now also access .this as expected: ", this.foo);
+    console.log("Form Data: ", docRef);
+    form.querySelector('#success-message').style.display = 'block';
+    let data = {
+          id: docRef.id
+          };
 
+          
+    db.collection("helpersPreZip").doc(docRef.id)
+.set(data, {merge: true});
+    form.reset();
+
+})
+.catch(error => {
+    form.querySelector('#error-message').style.display = 'block';
+    console.error("Error adding document: ", error)
+})
+    
+    //window.location.assign("https://coronahelpmap.com/");
+
+
+})
+
+formSeeker.addEventListener('submit', (e) => {
+    e.preventDefault();
+    db.collection('searcherPreZip').add({
+        address: form.address.value,
+        contactInfo: form.contactInfo.value,
+        typeOfProfession: form.work.value,
+        typeOfHelp: form.typeOfHelp.value,
+        typeOfPerson: form.typeOfPerson.value,
+        categories: {
+            household: form.household.checked,
+            laundry: form.laundry.checked,
+            medication: form.medication.checked,
+            shopping: form.shopping.checked,
+            pets: form.pets.checked,
+            escort: form.escort.checked,
+            conversations: form.conversations.checked,
+            handicap: form.handicap.checked,
+            agriculture: form.agriculture.checked,
+            car: form.car.checked,
+            other: form.other.checked,
+        },
+        
+        timestamp: Date.now()
+    })
+.then(docRef => {
+    console.log("Document written with ID: ", docRef.id);
+    console.log("You can now also access .this as expected: ", this.foo);
+    console.log("Form Data: ", docRef);
+    form.querySelector('#success-message').style.display = 'block';
+    let data = {
+          id: docRef.id
+          };
+
+          
+    db.collection("searcherPreZip").doc(docRef.id)
+.set(data, {merge: true});
+    form.reset();
+
+})
+.catch(error => {
+    form.querySelector('#error-message').style.display = 'block';
+    console.error("Error adding document: ", error)
+})
+    
+    //window.location.assign("https://coronahelpmap.com/");
+
+
+})
+
+function renderCategories(categories) {
+    var icons = '';
+    if (categories.household) {
+        icons += '<i class="material-icons">house</i>';
+    }
+    if (categories.laundry) {
+        icons += '<i class="material-icons">local_laundry_service</i>';
+    }
+    if (categories.medication) {
+        icons += '<i class="material-icons">local_pharmacy</i>';
+    }
+    if (categories.shopping) {
+        icons += '<i class="material-icons">shopping_cart</i>';
+    }
+    if (categories.pets) {
+        icons += '<i class="material-icons">pets</i>';
+    }
+    if (categories.escort) {
+        icons += '<i class="material-icons">supervisor_account</i>';
+    }
+    if (categories.conversations) {
+        icons += '<i class="material-icons">phone</i>';
+    }
+    if (categories.handicap) {
+        icons += '<i class="material-icons">accessible</i>';
+    }
+    if (categories.agriculture) {
+        icons += '<i class="material-icons">eco</i>';
+    }
+    if (categories.car) {
+        icons += '<i class="material-icons">directions_car</i>';
+    }
+    if (categories.other) {
+        icons += '<i class="material-icons">help</i>';
+    }
+    return icons;   
+}
+function renderPayment(paid) {
+    var icon = ''
+    if (paid == 'paid') {
+        icon = '<i class="material-icons">attach_money</i>'
+    }
+    if (paid == 'unpaid') {
+        icon = '<i class="material-icons">money_off</i>'
+    }
+    return icon;
+}
 
 
 // DEMO: Markers On Map - Init and Run off
