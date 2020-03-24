@@ -56,7 +56,7 @@ var markersBlue = L.markerClusterGroup({
         });
 
 var blueIcon = L.icon({
-    iconUrl: 'MarkerBlue.png',
+    iconUrl: 'assets/img/MarkerBlue.png',
 
     iconSize:     [60, 60], // size of the icon
     iconAnchor:   [30, 60], // point of the icon which will correspond to marker's location
@@ -64,7 +64,7 @@ var blueIcon = L.icon({
 });
 
 var greenIcon = L.icon({
-    iconUrl: 'MarkerGreen.png',
+    iconUrl: 'assets/img/MarkerGreen.png',
 
     iconSize:     [60, 60], // size of the icon
     iconAnchor:   [30, 60], // point of the icon which will correspond to marker's location
