@@ -207,20 +207,18 @@
 
 <body>
 
-<nav class="navbar navbar-light" style="background-color: #ffffff;">
-    <a class="navbar-brand" href="#">
+<nav class="navbar navbar-light d-flex justify-content-space justify-content-between" style="background-color: #ffffff;">
+    <a class="navbar-brand order-1" href="#">
     <img src="image1.svg" width="50" height="50" class="d-inline-block align-center mr-3" alt=""><strong>Corona Helpmap</strong></a>
-    <ul class="nav navbar-nav">
-           <div class="input-group mb-3">
-                       <input id="searchCity" type="search" class="form-control search lang" key="enterCity" placeholder="Adresse, z.B. Graefestraße 7"
-                           aria-label="Recipient's username" aria-describedby="searchCity-button">
-                       <div class="input-group-append">
-                           <button class="btn btn-success lang" key="search" type="button" id="searchCity-button">Suche</button>
-                       </div>
-                   </div>
-        </ul>
+    <div class="input-group order-3 order-md-2">
+        <input id="searchCity" type="search" class="form-control search lang" key="enterCity" placeholder="Adresse, z.B. Graefestraße 7"
+            aria-label="Recipient's username" aria-describedby="searchCity-button">
+        <div class="input-group-append">
+            <button class="btn btn-success lang" key="search" type="button" id="searchCity-button">Suche</button>
+        </div>
+    </div>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler order-2 order-md-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
