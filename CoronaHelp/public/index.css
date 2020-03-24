@@ -91,7 +91,7 @@ margin: 0;}
 -ms-user-select: none;
 user-select: none;}
 /* Reset off */
-#mapid { height: 64vh; }
+#mapid { height: 55vh; }
 
 /* Main wrapper on */
 #Wrapper {
@@ -115,11 +115,21 @@ padding: 60px 50px;}
 .map-wrapper {
 /* float: left;
 width: 100%; */
+color:#007bff;
+background: #ffffff;
+background: linear-gradient(to right bottom, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff);
+position:relative;}
+
+/*
+.map-wrapper {
+ float: left;
+width: 100%; 
 color:#fff;
 background: #502974;
 background: linear-gradient(to right bottom, #E23209, #E9360D, #CC2B06, #BB2D0B, #AC2708);
 position:relative;}
 
+*/
 .map-wrapper div#GoogleMaps {
 color:#20112e;
 width:100%;
@@ -134,7 +144,7 @@ width: 100%;
 max-width: 360px;}
 
 .map-wrapper .head h1.logo {
-color:#fff;
+color:#0c062f;
 font-size: 38px;
 line-height: 38px;
 font-weight:900;
@@ -144,7 +154,7 @@ margin: 0 0 25px;}
 color:inherit;}
 
 .map-wrapper .head h1.logo a:hover {
-color:#FFFFFF;}
+color:#0c062f;}
 
 .map-wrapper .head h1.logo a i {
 transform:scale(.9) translateY(2px);
@@ -153,8 +163,8 @@ min-width:30px;
 margin-left:6px;}
 
 .map-wrapper .head p.description {
-color:#FFFFFF;
-font-size: 16px;
+color:rgb(72, 72, 72);
+font-size: 18px;
 line-height: 20px;}
 
 .map-wrapper .get-markersonmap {
@@ -169,7 +179,7 @@ display: table;
 margin: auto;
 background: #28a745;
 padding: 15px 45px 20px;
-border-radius: 100px;}
+border-radius: 6px;}
 
 .map-wrapper .get-it-on-green p {
 font-size: 18px;
@@ -178,7 +188,7 @@ font-weight: 900;
 margin: 0 0 10px;}
 
 .map-wrapper .get-it-on-green a {
-font-size: 34px;
+font-size: 17px;
 line-height: 34px;
 display: inline-table;
 margin: 0 15px;
@@ -193,7 +203,7 @@ display: table;
 margin: auto;
 background: rgb(0, 150, 222);
 padding: 15px 45px 20px;
-border-radius: 100px;}
+border-radius: 6px;}
 
 .map-wrapper .get-it-on p {
 font-size: 18px;
@@ -202,7 +212,7 @@ font-weight: 900;
 margin: 0 0 10px;}
 
 .map-wrapper .get-it-on a {
-font-size: 34px;
+font-size: 17px;
 line-height: 34px;
 display: inline-table;
 margin: 0 15px;
@@ -219,6 +229,20 @@ margin:0 20px;}
 background: #474747;
 float: left;
 width: 100%;}
+
+.center-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: auto;
+    max-width: 200px;
+    text-align: center;
+}
+.center-nav li{
+  text-align: center;
+  width:100%;
+}
 
 .container.advanced,
 .container.remarker,
@@ -497,7 +521,15 @@ border-width: 0 5px 5px;}
 /* Tooltip off */
 
 .navbar {
-  border-bottom: 1px solid #E23209;
+  border-bottom: 1px solid #FFFFFF;
+  position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: auto;
+    /*max-width: 200px;*/
+    text-align: center;
+
 }
 
 /* Main buttons */

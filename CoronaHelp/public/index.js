@@ -128,10 +128,10 @@ async function updateMap() {
         },
             error => {
                 console.log(error);
-                fallbackUpdateMap();
+                //fallbackUpdateMap();
             });
     } else {
-        fallbackUpdateMap();
+       // fallbackUpdateMap();
     }
 }
 

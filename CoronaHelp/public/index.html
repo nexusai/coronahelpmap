@@ -200,14 +200,24 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-light" style="background-color: #ffffff;">
     <a class="navbar-brand" href="#">
-    <img src="image1.svg" width="50" height="50" class="d-inline-block align-center mr-3" alt="">Corona Helpmap
-    
-  </a>
+    <img src="image1.svg" width="50" height="50" class="d-inline-block align-center mr-3" alt=""><strong>Corona Helpmap</strong></a>
+    <ul class="nav navbar-nav">
+           <div class="input-group mb-3">
+                       <input id="searchCity" type="search" class="form-control search lang" key="enterCity" placeholder="Adresse, z.B. Graefestraße 7"
+                           aria-label="Recipient's username" aria-describedby="searchCity-button">
+                       <div class="input-group-append">
+                           <button class="btn btn-success lang" key="search" type="button" id="searchCity-button">Suche</button>
+                       </div>
+                   </div>
+        </ul>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
+
 
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav">
@@ -234,7 +244,7 @@
 
 
 
-    <div id="Wrapper" class="bg-light">
+    <div id="Wrapper" class="bg-light" style="background-color: #ffffff !important;">
 
         <div class="map-wrapper">
 
@@ -257,37 +267,31 @@
             <div id="mapid"></div>
             <div class="max-content">
                 <div class="head">
-                    <h1 class="logo" data-toggle="tooltip"><a href="https://coronahelpmap.com/">Corona Helpmap</a></h1>
-                   <p class="description lang" key="titel2">Direkte Hilfe aus der Nachbarschaft</p><br>
-                   <div class="input-group mb-3">
-                       <input id="searchCity" type="search" class="form-control search lang" key="enterCity" placeholder="Gib deine Stadt ein"
-                           aria-label="Recipient's username" aria-describedby="searchCity-button">
-                       <div class="input-group-append">
-                           <button class="btn btn-success lang" key="search" type="button" id="searchCity-button">Suche</button>
-                       </div>
-                   </div>
-                </div>
+                    <h1 class="logo" data-toggle="tooltip" style="font-weight:600"><a href="/">Direkte Hilfe aus der Nachbarschaft.</a></h1>
+                    <p class="description lang" key="titel2">Wir beweisen, dass unsere Ziele mit gemeinsamer sozialer Verantwortung erreichbar sind. </p><br>
 
+                   
+                </div>
+                   <div class="get-markersonmap mb-4">
+                    <div class="get-it-on">
+                        <a class="github lang" ,="" key="button2.2" target="_self" rel="noopener" href="/seeker.html">Jetzt direkt Hilfe erhalten</a>
+                        
+                    </div>
+
+                </div>
                 <div class="get-markersonmap mb-4">
                     <div class="get-it-on-green">
-                        <p class="lang" key="button1.1" >Als Helfer eintragen</p>
-                        <a class="github lang" key="button1.2" target="_self" rel="noopener" href="/helper.html">Ich kann helfen!</a>
+                        <a class="github lang" ,="" key="button1.2" target="_self" rel="noopener" href="/helper.html">Jetzt direkt Hilfe anbieten</a>
                         
                     </div>
+                    
                 </div>
-
-                <div class="get-markersonmap mb-4">
-                    <div class="get-it-on">
-                        <p class="lang" key="button2.1" >Hilfe suchen</p>
-                        <a class="github lang", key="button2.2" target="_self" rel="noopener" href="/seeker.html">Ich brauche Hilfe!</a>
-                        
-                    </div>
-                </div>
+                
 
             </div>
         </div>
 
-        <section class="info-section bg-light m-5">
+        <section class="info-section bg-light m-5" style="background-color: #ffffff !important;">
             <div class="row my-5">
               <div class="col-12 col-sm-4 col-md-3 d-flex justify-content-center align-items-start">
                 <img src="image1.svg" alt="Logo">
