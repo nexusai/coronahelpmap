@@ -265,23 +265,23 @@ db.collection("helpers").get().then((querySnapshot) => {
 formHelper.addEventListener('submit', (e) => {
     e.preventDefault();
     db.collection('helpersPreZip').add({
-        address: form.address.value,
-        contactInfo: form.contactInfo.value,
-        typeOfProfession: form.work.value,
-        typeOfHelp: form.typeOfHelp.value,
-        typeOfPerson: form.typeOfPerson.value,
+        address: formHelper.address.value,
+        contactInfo: formHelper.contactInfo.value,
+        typeOfProfession: formHelper.work.value,
+        typeOfHelp: formHelper.typeOfHelp.value,
+        typeOfPerson: formHelper.typeOfPerson.value,
         categories: {
-            household: form.household.checked,
-            laundry: form.laundry.checked,
-            medication: form.medication.checked,
-            shopping: form.shopping.checked,
-            pets: form.pets.checked,
-            escort: form.escort.checked,
-            conversations: form.conversations.checked,
-            handicap: form.handicap.checked,
-            agriculture: form.agriculture.checked,
-            car: form.car.checked,
-            other: form.other.checked,
+            household: formHelper.household.checked,
+            laundry: formHelper.laundry.checked,
+            medication: formHelper.medication.checked,
+            shopping: formHelper.shopping.checked,
+            pets: formHelper.pets.checked,
+            escort: formHelper.escort.checked,
+            conversations: formHelper.conversations.checked,
+            handicap: formHelper.handicap.checked,
+            agriculture: formHelper.agriculture.checked,
+            car: formHelper.car.checked,
+            other: formHelper.other.checked,
         },
         
         timestamp: Date.now()
@@ -290,7 +290,7 @@ formHelper.addEventListener('submit', (e) => {
     console.log("Document written with ID: ", docRef.id);
     console.log("You can now also access .this as expected: ", this.foo);
     console.log("Form Data: ", docRef);
-    form.querySelector('#success-message').style.display = 'block';
+    formHelper.querySelector('#success-message').style.display = 'block';
     let data = {
           id: docRef.id
           };
@@ -298,11 +298,11 @@ formHelper.addEventListener('submit', (e) => {
           
     db.collection("helpersPreZip").doc(docRef.id)
 .set(data, {merge: true});
-    form.reset();
+    formHelper.reset();
 
 })
 .catch(error => {
-    form.querySelector('#error-message').style.display = 'block';
+    formHelper.querySelector('#error-message').style.display = 'block';
     console.error("Error adding document: ", error)
 })
     
@@ -314,23 +314,23 @@ formHelper.addEventListener('submit', (e) => {
 formSeeker.addEventListener('submit', (e) => {
     e.preventDefault();
     db.collection('searcherPreZip').add({
-        address: form.address.value,
-        contactInfo: form.contactInfo.value,
-        typeOfProfession: form.work.value,
-        typeOfHelp: form.typeOfHelp.value,
-        typeOfPerson: form.typeOfPerson.value,
+        address: formSeeker.address.value,
+        contactInfo: formSeeker.contactInfo.value,
+        typeOfProfession: formSeeker.work.value,
+        typeOfHelp: formSeeker.typeOfHelp.value,
+        typeOfPerson: formSeeker.typeOfPerson.value,
         categories: {
-            household: form.household.checked,
-            laundry: form.laundry.checked,
-            medication: form.medication.checked,
-            shopping: form.shopping.checked,
-            pets: form.pets.checked,
-            escort: form.escort.checked,
-            conversations: form.conversations.checked,
-            handicap: form.handicap.checked,
-            agriculture: form.agriculture.checked,
-            car: form.car.checked,
-            other: form.other.checked,
+            household: formSeeker.household.checked,
+            laundry: formSeeker.laundry.checked,
+            medication: formSeeker.medication.checked,
+            shopping: formSeeker.shopping.checked,
+            pets: formSeeker.pets.checked,
+            escort: formSeeker.escort.checked,
+            conversations: formSeeker.conversations.checked,
+            handicap: formSeeker.handicap.checked,
+            agriculture: formSeeker.agriculture.checked,
+            car: formSeeker.car.checked,
+            other: formSeeker.other.checked,
         },
         
         timestamp: Date.now()
@@ -339,7 +339,7 @@ formSeeker.addEventListener('submit', (e) => {
     console.log("Document written with ID: ", docRef.id);
     console.log("You can now also access .this as expected: ", this.foo);
     console.log("Form Data: ", docRef);
-    form.querySelector('#success-message').style.display = 'block';
+    formSeeker.querySelector('#success-message').style.display = 'block';
     let data = {
           id: docRef.id
           };
@@ -347,11 +347,11 @@ formSeeker.addEventListener('submit', (e) => {
           
     db.collection("searcherPreZip").doc(docRef.id)
 .set(data, {merge: true});
-    form.reset();
+    formSeeker.reset();
 
 })
 .catch(error => {
-    form.querySelector('#error-message').style.display = 'block';
+    formSeeker.querySelector('#error-message').style.display = 'block';
     console.error("Error adding document: ", error)
 })
     
