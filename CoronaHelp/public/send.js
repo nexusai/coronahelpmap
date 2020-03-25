@@ -1,12 +1,8 @@
 
-
-    var db = firebase.firestore();
-
-
+const db = firebase.firestore();
 
 const form = document.querySelector('#input_fields');
 
- 
 // saving data:
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -14,10 +10,7 @@ const receiverId = urlParams.get('id').toString();
 
 //var docRef = db.collection("helpers").doc(receiverId);
 
-
-
-
-form.addEventListener('submit',async (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
         const docRefHelper = db.collection("helpers").doc(receiverId);
@@ -27,7 +20,7 @@ form.addEventListener('submit',async (e) => {
         var docSeeker = await docRefSeeker.get();
 
         if (!docHelper.exists) {
-            docHelper = docSeeker
+            docHelper = docSeeker;
         }
         
         const mailadresse = docHelper.data().contactInfo;
@@ -46,22 +39,8 @@ form.addEventListener('submit',async (e) => {
         console.log("Document written with ID: ", docRef.id);
         form.reset();
         form.querySelector('#success-message').style.display = 'block';
-    })
-    .catch(error => {
+    }).catch(error => {
         form.querySelector('#error-message').style.display = 'block';
         console.error("Error adding document: ", error)
-    })
-
-    
-
-
-
-
-
-})
-
-
-
-
-
-
+    });
+});
