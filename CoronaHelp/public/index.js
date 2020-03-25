@@ -144,7 +144,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 db.collection("helpers").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-
         var url = "send.html?id="
         var customId = doc.id
         var urlFinal = url + customId
@@ -165,26 +164,6 @@ db.collection("helpers").get().then((querySnapshot) => {
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
         markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], { icon: greenIcon }).bindPopup(typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp + '"</i><br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>').openPopup());
-
-
-        /*var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
-
-            color: 'green',
-            fillColor: '#f03',
-            fillOpacity: 0.12,
-            radius: 500
-        }).addTo(mymap);
-
-*/
-
-        // circle.bindPopup(doc.data().firstName);
-
-
-
-
-
-        //var helper = new add(helperMarker(),25,doc.data().addressLat,doc.data().addressLong,doc.data().firstName,'<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
-        //helpers.push(helper)
 
 
     });
@@ -250,7 +229,7 @@ db.collection("helpers").get().then((querySnapshot) => {
 formHelper.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = formHelper.contactInfo.value;
-    console.log('email', email);
+    const coordinates = searchAddressCoordinates(formHelper.address.value);
     var actionCodeSettings = {
         // URL you want to redirect back to. The domain (www.example.com) for this
         // URL must be whitelisted in the Firebase Console.
@@ -266,9 +245,11 @@ formHelper.addEventListener('submit', (e) => {
             console.log('Signin Link was sent to', email);
             window.localStorage.setItem('emailForSignIn', email);
         }).catch(error => console.log('error', error));
-    db.collection('helpersPreZip').add({
+    db.collection('helpers').add({
         address: formHelper.address.value,
         contactInfo: formHelper.contactInfo.value,
+        addressLat: coordinates.lat,
+        addressLon: coordinates.lon,
         typeOfProfession: formHelper.work.value,
         typeOfHelp: formHelper.typeOfHelp.value,
         typeOfPerson: formHelper.typeOfPerson.value,
@@ -320,6 +301,7 @@ formSeeker.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log('searcher submit');
     const email = formSeeker.contactInfo.value;
+    const coordinates = searchAddressCoordinates(formHelper.address.value);
     console.log('email', email);
     var actionCodeSettings = {
         // URL you want to redirect back to. The domain (www.example.com) for this
@@ -336,8 +318,10 @@ formSeeker.addEventListener('submit', (e) => {
             console.log('Signin Link was sent to', email);
             window.localStorage.setItem('emailForSignIn', email);
         }).catch(error => console.log('error', error));
-    db.collection('searcherPreZip').add({
+    db.collection('searcher').add({
         address: formSeeker.address.value,
+        addressLat: coordinates.lat,
+        addressLon: coordinates.lon,
         contactInfo: formSeeker.contactInfo.value,
         typeOfProfession: formSeeker.work.value,
         typeOfHelp: formSeeker.typeOfHelp.value,
