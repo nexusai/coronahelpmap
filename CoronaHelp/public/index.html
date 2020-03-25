@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Corona Helpmap. Bringt Menschen und Nachbarschaften zusammen.</title> 
+    <title>Corona Helpmap. Bringt Menschen und Nachbarschaften zusammen.</title>
     <meta name="description" content="Corona Helpmap ermöglicht die Vernetzung von Menschen und Organisationen im
 näheren und etwas weiteren Umkreis, um Hilfsangebote und -gesuche
 zusammenzubringen." />
@@ -306,13 +306,13 @@ zusammenzubringen." />
 
                                     <!-- Type of Helper -->
                                     <div class="form-check form-check-inline mb-3">
-                                        <input class="form-check-input" type="radio" name="typeOfPerson" id="private"
+                                        <input class="form-check-input" type="radio" name="accountType" id="private"
                                             value="private" checked>
                                         <label class="form-check-label text-body" for="private">
                                             Privatperson</label>
                                     </div>
                                     <div class="form-check form-check-inline mb-3">
-                                        <input class="form-check-input" type="radio" name="typeOfPerson"
+                                        <input class="form-check-input" type="radio" name="accountType"
                                             id="organisation" value="organisation">
                                         <label class="form-check-label text-body" for="organisation">
                                             Organisation</label>
@@ -320,7 +320,7 @@ zusammenzubringen." />
 
                                     <!-- Job -->
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="work" placeholder="Beruf*"
+                                        <input type="text" class="form-control" name="profession" placeholder="Beruf*"
                                             required="required"></div>
 
                                     <!-- PLZ -->
@@ -330,12 +330,12 @@ zusammenzubringen." />
 
                                     <!-- E-Mail -->
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="contactInfo"
+                                        <input type="email" class="form-control" name="email"
                                             placeholder="E-Mail Adresse*" required="required">
                                     </div>
                                     <!-- Type of Help -->
                                     <div class="form-group">
-                                        <textarea type="text" class="form-control" name="typeOfHelp"
+                                        <textarea type="text" class="form-control" name="requestDescription"
                                             placeholder="Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen."
                                             required="required" rows="4"></textarea></div>
                                     <!-- Bezahlung 
@@ -438,15 +438,12 @@ zusammenzubringen." />
                                     <!-- Notifications -->
                                     <div class="form-group">
                                         <label class="checkbox-inline"><input type="checkbox" required="required">
-                                            Ich möchte eine
-                                            Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten
-                                            wird (kann jederzeit abbestellt werden).*</label>
+                                            Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten wird (kann jederzeit abbestellt werden).*</label>
                                     </div>
                                     <!-- Datenschutz -->
                                     <div class="form-group">
                                         <label class="checkbox-inline"><input type="checkbox" required="required">
-                                            Ich akzeptiere
-                                            hiermit die <a href="#">Nutzungs- </a> &amp; <a
+                                            Hiermit akzeptiere ich die <a href="#">Nutzungs- </a> &amp; <a
                                                 href="#">Datenschutz-Bestimmungen
                                             </a>*</label>
                                     </div>
@@ -454,12 +451,8 @@ zusammenzubringen." />
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg">Senden</button>
                                     </div>
-                                    <div id="success-message" class="alert success">Deine Nachricht wurde
-                                        übermittelt.</div>
-                                    <div id="error-message" class="alert error">Es gab Probleme bei der Übermittlung
-                                        deiner Daten.
-                                        Versuche es später noch
-                                        ein mal.</div>
+                                    <div id="success-message" class="alert success">Deine Nachricht wurde übermittelt.</div>
+                                    <div id="error-message" class="alert error">Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später erneut.</div>
                                 </form>
                                 <!--<div class="hint-text">Angebot wieder von der Karte entfernen? <a href="#">Hier wieder abmelden</a>
                 </div>-->
@@ -481,20 +474,20 @@ zusammenzubringen." />
                                     <!--<p class="text-muted lang" key="paragraph2" style="font-size:90%;"></p>-->
 
                                     <div class="form-check form-check-inline mb-3">
-                                        <input class="form-check-input" type="radio" name="typeOfPerson" id="private"
+                                        <input class="form-check-input" type="radio" name="accountType" id="private"
                                             value="private" checked>
                                         <label class="form-check-label text-body lang" key="privatperson" for="private">
                                             Privatperson</label>
                                     </div>
                                     <div class="form-check form-check-inline mb-3">
-                                        <input class="form-check-input" type="radio" name="typeOfPerson"
+                                        <input class="form-check-input" type="radio" name="accountType"
                                             id="organisation" value="organisation">
                                         <label class="form-check-label text-body lang" key="organization"
                                             for="organisation"> Organisation</label>
                                     </div>
                                     <!-- Job -->
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="work" placeholder="Beruf*"
+                                        <input type="text" class="form-control" name="profession" placeholder="Beruf*"
                                             required="required"></div>
                                     <!-- PLZ -->
                                     <div class="form-group">
@@ -502,24 +495,14 @@ zusammenzubringen." />
                                             required="required"></div>
                                     <!-- E-Mail -->
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="contactInfo"
+                                        <input type="email" class="form-control" name="email"
                                             placeholder="E-Mail Adresse*" required="required">
                                     </div>
                                     <!-- Type of Help -->
                                     <div class="form-group">
-                                        <textarea type="text" class="form-control" name="typeOfHelp"
+                                        <textarea type="text" class="form-control" name="helpDescription"
                                             placeholder="Was bieten Sie an?*" required="required" rows="4"></textarea>
                                     </div>
-                                    <!-- Bezahlung -->
-                                    <!--<p class="text-body"><strong class="lang" key="expense_allowance">Aufwandsentschädigung</strong></p>
-                    <div class="input-group mb-3">
-                        <select class="custom-select" id="paid">
-                            <option class="lang" key="choose" selected>Wähle aus ...</option>
-                            <option class="lang" key="paidy" value="paid">Ich möchte bezahlt werden</option>
-                            <option class="lang" key="paidn" value="unpaid">Ich arbeite unentgeltlich</option>
-                            <option class="lang" key="both" value="both">Beides</option>
-                        </select>
-                    </div>-->
                                     <!-- Kategorien -->
                                     <div class="form-group category">
                                         <div class="title mb-1 lang" key="categories">
@@ -723,16 +706,15 @@ zusammenzubringen." />
 
             </div>
 
-            
-
-        
 
 
-        <footer id="Footer">
-            <p class="copyright">&copy; 2020 Corona Helpmap. All rights reserved.</p>
-            <a class="github lang" key="imprint" target="_self" rel="noopener"
-                href="imprint.html">Impressum</a>
-        </footer>
+
+
+
+            <footer id="Footer">
+                <p class="copyright">&copy; 2020 Corona Helpmap. All rights reserved.</p>
+                <a class="github lang" key="imprint" target="_self" rel="noopener" href="imprint.html">Impressum</a>
+            </footer>
 
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>

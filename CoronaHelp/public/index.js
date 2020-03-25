@@ -1,19 +1,12 @@
-/*!
-* Markers On Map ('https://github.com/furcan/Markers-On-Map')
-* Version: 1.3.0
-* Author: Furkan MT ('https://github.com/furcan')
-* Copyright 2019 Markers On Map, MIT Licence ('https://opensource.org/licenses/MIT')*
-*/
+let db = firebase.firestore();
+let auth = firebase.auth();
 
-// DEMO: Markers On Map - Init and Run on
-
-var db = firebase.firestore();
-var helpers = [];
-var searcher = [];
 const formSeeker = document.querySelector('#input_fields_seeker');
 const formHelper = document.querySelector('#input_fields_helper');
-
 const apiKey = '6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq';
+
+// The currently logged in (firebase) user
+let user;
 
 // The coordinates the map centers on by default.
 let fallbackCoordinates = [50.627540588378906, 9.958450317382812];
@@ -25,8 +18,10 @@ let mymap = L.map('mapid').setView(fallbackCoordinates, 5);
 updateMapApproximately();
 // Try to get more precise coordinates via the Geolocation API
 updateMapPrecisely();
+// Load all users and show them on the map
+loadUsers();
 
-var markers = L.markerClusterGroup({
+let markers = L.markerClusterGroup({
     iconCreateFunction: function (cluster) {
         var childCount = cluster.getChildCount();
         var c = ' markerGreen-cluster-';
@@ -45,6 +40,14 @@ var markers = L.markerClusterGroup({
     zoomToBoundsOnClick: true
 });
 
+// Guarantees that there is always a user signed in (anonymously)
+auth.onAuthStateChanged((updatedUser) => {
+    if (updatedUser) {
+        user = updatedUser;
+    } else {
+        auth.signInAnonymously();
+    }
+});
 
 var blueIcon = L.icon({
     iconUrl: 'MarkerBlue.png',
@@ -107,7 +110,6 @@ async function updateMapApproximately(zoomLevel = 12) {
         const geoJson = await geoResponse.json();
         // Update the fallback coordinates for the app
         fallbackCoordinates = [geoJson.lat, geoJson.lon];
-        console.log()
     } catch (err) {
         console.log(err);
     }
@@ -130,7 +132,7 @@ async function updateMapPrecisely(zoomLevel = 12) {
     }
 }
 
-//var mymap = L.map('mapid').setView([52.520008, 13.404954], 11);
+// Add title to map
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -141,229 +143,149 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoiZ2FuZ2hhbmciLCJhIjoiY2pxdmp2bXhqMHc1ZzQzb2NpOWY5NmRuMCJ9.LTrUYDuCAPXnJ-0vzQ9gsQ'
 }).addTo(mymap);
 
+// Loads all users and shows them on the map
+async function loadUsers() {
+    const snapshot = await db.collection('usersPublic').get();
+    snapshot.forEach((doc) => {
+        const url = "send.html?id=";
+        const customId = doc.id;
+        const urlFinal = url + customId;
+        console.log(urlFinal);
 
-db.collection("helpers").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-        var url = "send.html?id="
-        var customId = doc.id
-        var urlFinal = url + customId
-        console.log(urlFinal)
+        const accountType = doc.data().accountType;
 
-        var typeOfPerson = doc.data().typeOfPerson
-
-        var typeOfPersonConverted;
-        if (typeOfPerson == "private") {
-            typeOfPersonConverted = "Privatperson";
+        let accountTypeConverted;
+        if (accountType == "private") {
+            accountTypeConverted = "Privatperson";
         }
         else {
-            typeOfPersonConverted = "Organisation";
+            accountTypeConverted = "Organisation";
         }
-
-        var dateCreated = doc.data().timestamp
-        // console.log(`${doc.id} => ${doc.data()}`);
-        //console.log(doc.data().firstName);
-        //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
-        markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], { icon: greenIcon }).bindPopup(typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp + '"</i><br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>').openPopup());
-
-
-    });
-    //console.log(helpers)
-
-    db.collection("searcher").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-
-            var url = "send.html?id="
-            var customId = doc.id
-            var urlFinal = url + customId
-            console.log(urlFinal)
-
-            var typeOfPerson = doc.data().typeOfPerson
-
-            var typeOfPersonConverted;
-            if (typeOfPerson == "private") {
-                typeOfPersonConverted = "Privatperson";
-            }
-            else {
-                typeOfPersonConverted = "Organisation";
-            }
-
-            var dateCreated = doc.data().timestamp
-            // console.log(`${doc.id} => ${doc.data()}`);
-            //console.log(doc.data().firstName);
-            // var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
-            //searcher.push(search)
-            // markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
+        
+        if (doc.isHelper) {
             markers.addLayer(
                 L.marker(
-                    [doc.data().addressLat, doc.data().addressLong],
+                    [doc.data().location.latitude, doc.data().location.longitude], 
+                    { icon: greenIcon })
+                .bindPopup( accountTypeConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' 
+                            + doc.data().profession + '</span>' + '<br><br><i>"' + doc.data().helpDescription
+                            + '"</i><br><br><a href=' + urlFinal 
+                            + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>')
+                .openPopup());
+        } else if (doc.isRequester) {
+            markers.addLayer(
+                L.marker(
+                    [doc.data().location.latitude, doc.data().location.longitude],
                     { icon: blueIcon })
-                    .bindPopup(
-                        typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">'
-                        + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp
-                        + '"<br><br><a href=' + urlFinal
-                        + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>')
-                    .openPopup());
-        });
-        //console.log(helpers)
-        mymap.addLayer(markers);
-
-
-        MarkersOnMap.Init({
-            googleApiKey: 'AIzaSyBDWpSKKqmaBHmKwBobTEjxToXSRk2GkPc', // this key restricted except this project
-            googlePlacesApiEnabled: true,
-            mapTypeId: 'terrain',
-            mapHeight: '500px',
-            markerOverlay: false,
-            mapZoomControl: true,
-            mapScrollWheel: false,
-            markerObjects: helpers.concat(searcher),
-        });
-        //MarkersOnMap.Run('div#GoogleMaps');
-
-        furcanTooltip('[data-toggle="tooltip"]');
-
+                .bindPopup(
+                    accountTypeConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">'
+                    + doc.data().profession + '</span>' + '<br><br><i>"' + doc.data().requestDescription
+                    + '"<br><br><a href=' + urlFinal
+                    + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>')
+                .openPopup());
+        }
     });
+    mymap.addLayer(markers);
+    MarkersOnMap.Init({
+        googleApiKey: 'AIzaSyBDWpSKKqmaBHmKwBobTEjxToXSRk2GkPc', // this key restricted except this project
+        googlePlacesApiEnabled: true,
+        mapTypeId: 'terrain',
+        mapHeight: '500px',
+        markerOverlay: false,
+        mapZoomControl: true,
+        mapScrollWheel: false,
+        markerObjects: markers,
+    });
+    furcanTooltip('[data-toggle="tooltip"]');
+}
 
+async function createUser(data) {
+    console.log('data', data);
+    if (!user) throw new Exception('No user is logged in (not even anonymously).');
+    try {
+        const coordinates = await searchAddressCoordinates(data.address);
+        console.log('coordinates', coordinates);
+        const ref = db.collection('users').doc(user.uid);
+        await ref.set({
+            ...data,
+            location: new firebase.firestore.GeoPoint(coordinates.lat, coordinates.lon),
+            uid: user.uid,
+            emailValidated: false,
+            createdAt: new firebase.firestore.FieldValue.serverTimestamp(),
+        });
+        const actionCodeSettings = {
+            url: `https://www.coronahelpmap.com/finishSignUp?id=${user.uid}`,
+            handleCodeInApp: true,
+        };
+        await auth.sendSignInLinkToEmail(data.email, actionCodeSettings);
+        window.localStorage.setItem('emailForSignIn', data.email);
+    } catch (err) {
+        console.log('err', err);
+        throw err;
+    }
+}
+
+formHelper.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        createUser({
+            isHelper: true,
+            address: formHelper.address.value,
+            email: formHelper.email.value,
+            profession: formHelper.work.value,
+            helpDescription: formHelper.helpDescription.value,
+            accountType: formHelper.accountType.value,
+            categories: {
+                household: formHelper.household.checked,
+                laundry: formHelper.laundry.checked,
+                medication: formHelper.medication.checked,
+                shopping: formHelper.shopping.checked,
+                pets: formHelper.pets.checked,
+                escort: formHelper.escort.checked,
+                conversations: formHelper.conversations.checked,
+                handicap: formHelper.handicap.checked,
+                agriculture: formHelper.agriculture.checked,
+                car: formHelper.car.checked,
+                other: formHelper.other.checked,
+            }
+        }).then(() => formHelper.querySelector('#success-message').style.display = 'block');
+        formHelper.reset();
+    } catch(error) {
+        formHelper.querySelector('#error-message').style.display = 'block';
+        console.error("Error adding document: ", error)
+    }
 });
 
-formHelper.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = formHelper.contactInfo.value;
-    const coordinates = searchAddressCoordinates(formHelper.address.value);
-    var actionCodeSettings = {
-        // URL you want to redirect back to. The domain (www.example.com) for this
-        // URL must be whitelisted in the Firebase Console.
-        url: 'https://www.coronahelpmap.com/finishSignUp?id=1234',
-        // This must be true.
-        handleCodeInApp: true
-      };
-    firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
-        .then(function () {
-            // The link was successfully sent. Inform the user.
-            // Save the email locally so you don't need to ask the user for it again
-            // if they open the link on the same device.
-            console.log('Signin Link was sent to', email);
-            window.localStorage.setItem('emailForSignIn', email);
-        }).catch(error => console.log('error', error));
-    db.collection('helpers').add({
-        address: formHelper.address.value,
-        contactInfo: formHelper.contactInfo.value,
-        addressLat: coordinates.lat,
-        addressLon: coordinates.lon,
-        typeOfProfession: formHelper.work.value,
-        typeOfHelp: formHelper.typeOfHelp.value,
-        typeOfPerson: formHelper.typeOfPerson.value,
-        categories: {
-            household: formHelper.household.checked,
-            laundry: formHelper.laundry.checked,
-            medication: formHelper.medication.checked,
-            shopping: formHelper.shopping.checked,
-            pets: formHelper.pets.checked,
-            escort: formHelper.escort.checked,
-            conversations: formHelper.conversations.checked,
-            handicap: formHelper.handicap.checked,
-            agriculture: formHelper.agriculture.checked,
-            car: formHelper.car.checked,
-            other: formHelper.other.checked,
-        },
-
-        timestamp: Date.now()
-    })
-        .then(docRef => {
-            console.log("Document written with ID: ", docRef.id);
-            console.log("You can now also access .this as expected: ", this.foo);
-            console.log("Form Data: ", docRef);
-            formHelper.querySelector('#success-message').style.display = 'block';
-            let data = {
-                id: docRef.id
-            };
-            db.collection("helpers").doc(docRef.id)
-                .set(data, { merge: true });
-            formHelper.reset();
-
-
-
-        })
-        .catch(error => {
-            formHelper.querySelector('#error-message').style.display = 'block';
-            console.error("Error adding document: ", error)
-        })
-
-    //window.location.assign("https://coronahelpmap.com/");
-
-
-})
-
 formSeeker.addEventListener('submit', (e) => {
-    
     e.preventDefault();
-    console.log('searcher submit');
-    const email = formSeeker.contactInfo.value;
-    const coordinates = searchAddressCoordinates(formHelper.address.value);
-    console.log('email', email);
-    var actionCodeSettings = {
-        // URL you want to redirect back to. The domain (www.example.com) for this
-        // URL must be whitelisted in the Firebase Console.
-        url: 'https://www.coronahelpmap.com/finishSignUp?id=1234',
-        // This must be true.
-        handleCodeInApp: true
-      };
-    firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
-        .then(function () {
-            // The link was successfully sent. Inform the user.
-            // Save the email locally so you don't need to ask the user for it again
-            // if they open the link on the same device.
-            console.log('Signin Link was sent to', email);
-            window.localStorage.setItem('emailForSignIn', email);
-        }).catch(error => console.log('error', error));
-    db.collection('searcher').add({
-        address: formSeeker.address.value,
-        addressLat: coordinates.lat,
-        addressLon: coordinates.lon,
-        contactInfo: formSeeker.contactInfo.value,
-        typeOfProfession: formSeeker.work.value,
-        typeOfHelp: formSeeker.typeOfHelp.value,
-        typeOfPerson: formSeeker.typeOfPerson.value,
-        categories: {
-            household: formSeeker.household.checked,
-            laundry: formSeeker.laundry.checked,
-            medication: formSeeker.medication.checked,
-            shopping: formSeeker.shopping.checked,
-            pets: formSeeker.pets.checked,
-            escort: formSeeker.escort.checked,
-            conversations: formSeeker.conversations.checked,
-            handicap: formSeeker.handicap.checked,
-            agriculture: formSeeker.agriculture.checked,
-            car: formSeeker.car.checked,
-            other: formSeeker.other.checked,
-        },
-
-        timestamp: Date.now()
-    })
-        .then(docRef => {
-            console.log("Document written with ID: ", docRef.id);
-            console.log("You can now also access .this as expected: ", this.foo);
-            console.log("Form Data: ", docRef);
-            formSeeker.querySelector('#success-message').style.display = 'block';
-            let data = {
-                id: docRef.id
-            };
-
-
-            db.collection("searcher").doc(docRef.id)
-                .set(data, { merge: true });
-            formSeeker.reset();
-
-        })
-        .catch(error => {
-            formSeeker.querySelector('#error-message').style.display = 'block';
-            console.error("Error adding document: ", error)
-        })
-
-    //window.location.assign("https://coronahelpmap.com/");
-
-
-})
+    try {
+        createUser({
+            isRequester: true,
+            address: formSeeker.address.value,
+            email: formSeeker.email.value,
+            profession: formSeeker.profession.value,
+            requestDescription: formSeeker.requestDescription.value,
+            accountType: formSeeker.accountType.value,
+            categories: {
+                household: formSeeker.household.checked,
+                laundry: formSeeker.laundry.checked,
+                medication: formSeeker.medication.checked,
+                shopping: formSeeker.shopping.checked,
+                pets: formSeeker.pets.checked,
+                escort: formSeeker.escort.checked,
+                conversations: formSeeker.conversations.checked,
+                handicap: formSeeker.handicap.checked,
+                agriculture: formSeeker.agriculture.checked,
+                car: formSeeker.car.checked,
+                other: formSeeker.other.checked,
+            },
+        }).then(() => formHelper.querySelector('#success-message').style.display = 'block');
+        formHelper.reset();
+    } catch (error) {
+        formSeeker.querySelector('#error-message').style.display = 'block';
+        console.error("Error adding document: ", error)
+    }
+});
 
 function renderCategories(categories) {
     var icons = '';
@@ -402,6 +324,7 @@ function renderCategories(categories) {
     }
     return icons;
 }
+
 function renderPayment(paid) {
     var icon = ''
     if (paid == 'paid') {
@@ -449,4 +372,5 @@ $(window).on('load', function () {
         });
     }, 1000);
 });
+
 // DEMO: Map Markers Title Tooltip off
