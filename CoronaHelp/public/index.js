@@ -277,9 +277,7 @@ formHelper.addEventListener('submit', (e) => {
             let data = {
                 id: docRef.id
             };
-
-
-            db.collection("helpersPreZip").doc(docRef.id)
+            db.collection("helpers").doc(docRef.id)
                 .set(data, { merge: true });
             formHelper.reset();
 
@@ -352,7 +350,7 @@ formSeeker.addEventListener('submit', (e) => {
             };
 
 
-            db.collection("searcherPreZip").doc(docRef.id)
+            db.collection("searcher").doc(docRef.id)
                 .set(data, { merge: true });
             formSeeker.reset();
 
