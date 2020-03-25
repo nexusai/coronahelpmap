@@ -4,7 +4,7 @@ Die [Corona Helpmap](https://www.coronahelpmap.com) dient zur direkten Nachbarsc
 
 ## Über #wirvsvirus
 
-Dieses Projekt würde als Beitrag zum [#wirvsvirus Hackathon](https://wirvsvirushackathon.org/) der deutschen Bundesregierung entwickelt.
+Dieses Projekt wurde als Beitrag zum [#wirvsvirus Hackathon](https://wirvsvirushackathon.org/) der deutschen Bundesregierung entwickelt.
 
 ## Probier's aus
 

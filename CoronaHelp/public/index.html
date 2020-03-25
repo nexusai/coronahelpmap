@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Corona Helpmap</title>
-    <meta name="description" content="Corona Helpmap" />
+    <title>Corona Helpmap. Bringt Menschen und Nachbarschaften zusammen.</title> 
+    <meta name="description" content="Corona Helpmap ermöglicht die Vernetzung von Menschen und Organisationen im
+näheren und etwas weiteren Umkreis, um Hilfsangebote und -gesuche
+zusammenzubringen." />
 
     <meta name="content-language" content="en" />
     <meta name="language" content="English" />
@@ -13,7 +15,7 @@
     <meta name="googlebot" content="index, follow, noodp, noydir" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="shortcut icon" href="image1.svg" />
 
     <link rel="canonical" href="https://furcan.github.io/Markers-On-Map/" />
 
@@ -24,76 +26,713 @@
     <meta name="copyright" content="© 2020 Corona Helpmap. All Rights Reserved.">
 
     <meta name="theme-color" content="#DE2A00" />
-    
+
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link id="FontMuli" href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&display=swap&subset=latin-ext" rel="stylesheet">
-    <link id="FontConsolas" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin-ext" rel="stylesheet">
+    <link id="FontMuli"
+        href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&display=swap&subset=latin-ext"
+        rel="stylesheet">
+    <link id="FontConsolas" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin-ext"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="index.css?v=1.3.0">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-  crossorigin=""/>
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="dist/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="dist/MarkerCluster.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+
+
+
+
+    <!-- ↓ Code to change the Language ↓ -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        var arrLang = new Array();
+        arrLang['eng'] = new Array();
+        arrLang['ger'] = new Array();
+        arrLang['itl'] = new Array();
+        arrLang['spn'] = new Array();
+        arrLang['fra'] = new Array();
+        arrLang['arb'] = new Array();
+
+        // English content
+        arrLang['eng']['lang'] = 'Language';
+        arrLang['eng']['titel2'] = 'Direct help from the neighborhood';
+        arrLang['eng']['enterCity'] = 'Please enter your City';
+        arrLang['eng']['search'] = 'Search';
+        arrLang['eng']['location'] = 'please enter your city';
+        arrLang['eng']['button1.1'] = 'Register as a helper';
+        arrLang['eng']['button1.2'] = 'I want to help!';
+        arrLang['eng']['button2.1'] = 'Enter request';
+        arrLang['eng']['button2.2'] = 'I need Help!';
+        arrLang['eng']['descr1t'] = 'translation: #TODO';
+        arrLang['eng']['descr1b'] = 'translation: #TODO';
+        arrLang['eng']['descr2t'] = 'translation: #TODO';
+        arrLang['eng']['descr2b'] = 'translation: #TODO';
+        arrLang['eng']['descr2b1'] = 'translation: #TODO';
+        arrLang['eng']['descr3t'] = 'translation: #TODO';
+        arrLang['eng']['descr3b'] = 'translation: #TODO';
+        arrLang['eng']['imprint'] = 'translation: #TODO';
+
+        // German content 
+        arrLang['ger']['lang'] = 'Sprache';
+        arrLang['ger']['titel2'] = 'Direkte Hilfe aus der Nachbarschaft';
+        arrLang['ger']['enterCity'] = 'Gib deine Stadt ein';
+        arrLang['ger']['search'] = 'Suche';  //TODO (placeholder)
+        arrLang['ger']['location'] = 'Gib deine Stadt ein';
+        arrLang['ger']['button1.1'] = 'Als Helfer eintragen';
+        arrLang['ger']['button1.2'] = 'Ich kann helfen!';
+        arrLang['ger']['button2.1'] = 'Gesuch eintragen';
+        arrLang['ger']['button2.2'] = 'Ich brauche Hilfe!';
+        arrLang['ger']['descr1t'] = 'Was ist die Corona Helpmap?';
+        arrLang['ger']['descr1b'] = 'Die Helpmap ermöglicht die Vernetzung von Menschen und Organisationen im näheren und etwas weiteren Umkreis, um Hilfsangebote und -gesuche zusammenzubringen. Das Vermittlungsportal kann von Privatpersonen ebenso wie von relevanten Unternehmen genutzt werden, etwa aus den Bereichen (Lebensmittel-)Einzelhandel, Pflege oder Pharmazie. Die Nutzung des Portals selbst ist immer kostenfrei. Die vermittelten Leistungen können ehrenamtlich oder kostenpflichtig sein, dies ist individuelle Verhandlungssache zwischen Helfern und Hilfesuchenden. Kommerzielle Gesuche und Angebote sind klar als solche gekennzeichnet.';
+        arrLang['ger']['descr2t'] = 'Helfen, nicht anstecken!';
+        arrLang['ger']['descr2b'] = 'Es gibt eine Reihe anerkannter Vorsichtsmaßnahmen, die Sie treffen sollten, damit Sie sich nicht selbst gefährden oder andere Menschen mit dem Coronavirus anstecken. Dies gilt besonders, wenn Sie sich Personen aus den sogenannten Risikogruppen nähern – also älteren Menschen und Menschen mit Vorerkrankungen. Seien Sie verantwortungsbewußt. Meiden Sie unbedingt den Kontakt zu anderen, wenn Sie selbst Erkältungssymptome haben! Und nehmen Sie sich Zeit für diese rund ';
+        arrLang['ger']['descr2b1'] = '30-minütige Hygiene- und Desinfektionsschulung'; //TODO hyperlink
+        arrLang['ger']['descr3t'] = 'Tipps zur Sicherheit';
+        arrLang['ger']['descr3b'] = 'Die Corona Helpmap verbindet Menschen, die sich vorher nicht kannten. Wir glauben, dass die meisten Teilnehmenden tatsächlich Unterstützung leisten wollen. Dennoch ist es sicherlich sinnvoll, sich einige Gedanken zur eigenen Sicherheit zu machen und zu überlegen, wie man sich vor Betrug schützen kann. Wir haben für Sie einige Hinweise zusammengestellt.';
+        arrLang['ger']['imprint'] = 'Impressum';
+
+        // Italian content
+        arrLang['itl']['lang'] = 'Linguaggio';
+        arrLang['itl']['titel2'] = 'Aiuto diretto dal quartiere';
+        arrLang['itl']['enterCity'] = 'entra nella tua città';
+        arrLang['itl']['search'] = 'Ricerca';
+        arrLang['itl']['location'] = 'entra nella tua città';
+        arrLang['itl']['button1.1'] = 'Registrati come aiuto';
+        arrLang['itl']['button1.2'] = 'Voglio aiutare!';
+        arrLang['itl']['button2.1'] = 'Inserisci richiesta';
+        arrLang['itl']['button2.2'] = 'Ho bisogno di aiuto!';
+        arrLang['itl']['descr1t'] = 'translation: #TODO';
+        arrLang['itl']['descr1b'] = 'translation: #TODO';
+        arrLang['itl']['descr2t'] = 'translation: #TODO';
+        arrLang['itl']['descr2b'] = 'translation: #TODO';
+        arrLang['itl']['descr2b1'] = 'translation: #TODO';
+        arrLang['itl']['descr3t'] = 'translation: #TODO';
+        arrLang['itl']['descr3b'] = 'translation: #TODO';
+        arrLang['itl']['imprint'] = 'translation: #TODO';
+
+        // Spanish content
+        arrLang['spn']['lang'] = 'Idioma';
+        arrLang['spn']['titel2'] = 'Ayuda directa del barrio';
+        arrLang['spn']['enterCity'] = 'ingresa tu ciudad';
+        arrLang['spn']['search'] = 'Buscar';
+        arrLang['spn']['location'] = 'ingresa tu ciudad';
+        arrLang['spn']['button1.1'] = 'Registrarse como ayudante';
+        arrLang['spn']['button1.2'] = '¡Quiero ayudar!';
+        arrLang['spn']['button2.1'] = 'Introducir solicitud';
+        arrLang['spn']['button2.2'] = '¡Necesito ayuda!';
+        arrLang['spn']['descr1t'] = 'translation: #TODO';
+        arrLang['spn']['descr1b'] = 'translation: #TODO';
+        arrLang['spn']['descr2t'] = 'translation: #TODO';
+        arrLang['spn']['descr2b'] = 'translation: #TODO';
+        arrLang['spn']['descr2b1'] = 'translation: #TODO';
+        arrLang['spn']['descr3t'] = 'translation: #TODO';
+        arrLang['spn']['descr3b'] = 'translation: #TODO';
+        arrLang['spn']['imprint'] = 'translation: #TODO';
+
+        // French content
+        arrLang['fra']['lang'] = 'Langue';
+        arrLang['fra']['titel2'] = 'translation: #TODO';
+        arrLang['fra']['enterCity'] = 'translation: #TODO';
+        arrLang['fra']['search'] = 'translation: #TODO';
+        arrLang['fra']['location'] = 'translation: #TODO';
+        arrLang['fra']['button1.1'] = 'translation: #TODO';
+        arrLang['fra']['button1.2'] = 'translation: #TODO';
+        arrLang['fra']['button2.1'] = 'translation: #TODO';
+        arrLang['fra']['button2.2'] = 'translation: #TODO';
+        arrLang['fra']['descr1t'] = 'translation: #TODO';
+        arrLang['fra']['descr1b'] = 'translation: #TODO';
+        arrLang['fra']['descr2t'] = 'translation: #TODO';
+        arrLang['fra']['descr2b'] = 'translation: #TODO';
+        arrLang['fra']['descr2b1'] = 'translation: #TODO';
+        arrLang['fra']['descr3t'] = 'translation: #TODO';
+        arrLang['fra']['descr3b'] = 'translation: #TODO';
+        arrLang['fra']['imprint'] = 'translation: #TODO';
+
+        // Arabic content
+        arrLang['arb']['lang'] = 'لغة';
+        arrLang['arb']['titel2'] = 'translation: #TODO';
+        arrLang['arb']['enterCity'] = 'translation: #TODO';
+        arrLang['arb']['search'] = 'translation: #TODO';
+        arrLang['arb']['location'] = 'translation: #TODO';
+        arrLang['arb']['button1.1'] = 'translation: #TODO';
+        arrLang['arb']['button1.2'] = 'translation: #TODO';
+        arrLang['arb']['button2.1'] = 'translation: #TODO';
+        arrLang['arb']['button2.2'] = 'translation: #TODO';
+        arrLang['arb']['descr1t'] = 'translation: #TODO';
+        arrLang['arb']['descr1b'] = 'translation: #TODO';
+        arrLang['arb']['descr2t'] = 'translation: #TODO';
+        arrLang['arb']['descr2b'] = 'translation: #TODO';
+        arrLang['arb']['descr2b1'] = 'translation: #TODO';
+        arrLang['arb']['descr3t'] = 'translation: #TODO';
+        arrLang['arb']['descr3b'] = 'translation: #TODO';
+        arrLang['arb']['imprint'] = 'translation: #TODO';
+
+
+        // Process translation
+        $(function () {
+            $('.translate').click(function () {
+                var lang = $(this).attr('id');
+
+                $('.lang').each(function (index, item) {
+                    $(this).text(arrLang[lang][$(this).attr('key')]);
+                });
+            });
+        });
+    </script>
+
+    <!-- ↑ Code to change the Language ↑ -->
+
+
 
 </head>
 
 <body>
 
-    <div id="Wrapper">
-
-        <div class="map-wrapper">
-
-
-
-          <!--  <div class="hotel-search">
-      <div id="findhotels">
-        Get help in:
-      </div>
-
-      <div id="locationField">
-        <input id="zipCode" placeholder="ZIP Code" type="text" />
-      </div>
-
-      
-    </div> -->
-
-
-            <!--<div id="GoogleMaps"></div> -->
-            <div id="mapid"></div>
-            <div class="max-content">
-                <div class="head">
-                    <h1 class="logo" data-toggle="tooltip"><a href="https://coronahelpmap.com/">Corona Helpmap</a></h1>
-                   <p class="description">Direkte Hilfe aus der Nachbarschaft</p><br>
-
-                   <input type="text" placeholder="Gib deine Stadt ein" class="search" onkeydown="search(this)"/>  
-                    
-                </div>
-
-                <div class="get-markersonmap">
-                    <div class="get-it-on">
-                        <p>Als Helfer eintragen</p>
-                        <a class="github" target="_self" rel="noopener" href="/helper.html">Ich kann helfen!</a>
-                        
-                    </div>
-                </div>
-
-                <div class="get-markersonmap">
-                    <div class="get-it-on">
-                        <p>Gesuch eintragen</p>
-                        <a class="github" target="_self" rel="noopener" href="">Ich brauche Hilfe!</a>
-                        
-                    </div>
-                </div>
-
+    <nav class="navbar navbar-light d-flex justify-content-space justify-content-between"
+        style="background-color: #ffffff;">
+        <a class="navbar-brand order-1" href="#">
+            <img src="image1.svg" width="50" height="50" class="d-inline-block align-center mr-3" alt=""><strong>Corona
+                Helpmap</strong></a>
+        <div class="input-group order-3 order-md-2">
+            <input id="searchCity" type="search" class="form-control search lang" key="enterCity"
+                placeholder="Ort, Land oder PLZ" aria-label="Recipient's username" aria-describedby="searchCity-button">
+            <div class="input-group-append">
+                <button class="btn btn-success lang" key="search" type="button" id="searchCity-button">Suche</button>
             </div>
         </div>
 
-        
+        <button class="navbar-toggler order-2 order-md-3" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+
+        <div class="collapse navbar-collapse justify-content-end order-2 order-md-3" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+
+                <!-- ↓ Code to change the Language ↓ -->
+                <li class="nav-item dropdown text-right">
+                    <a class="nav-link dropdown-toggle lang" key="lang" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Language
+                    </a>
+                    <div class="dropdown-menu text-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item translate" id="eng">English</a>
+                        <a class="dropdown-item translate" id="ger">German</a>
+                        <a class="dropdown-item translate" id="itl">Italian</a>
+                        <a class="dropdown-item translate" id="spn">Spanish</a>
+                        <a class="dropdown-item translate" id="fra">French</a>
+                        <a class="dropdown-item translate" id="arb">Arabic</a>
+                </li>
+                <!-- ↑ Code to change the Language ↑ -->
+
+            </ul>
+
+        </div>
+    </nav>
+
+
+
+    <div id="Wrapper" class="bg-light" style="background-color: #ffffff !important;">
+
+        <div class="map-wrapper">
+
+            <div id="mapid"></div>
+
+        </div>
+        <section class="info-section bg-light p-5" style="background-color: #ffffff !important;">
+            <div class="row">
+                <!-- Website Description -->
+                <div class="col-12 col-lg-4 website-description">
+                    <div class="head">
+                        <h1 class="logo" data-toggle="tooltip" style="font-weight:600"><a href="/">Direkte Hilfe aus
+                                der Nachbarschaft.</a></h1>
+                        <p class="description lang" key="titel2">Wir beweisen, dass unsere Ziele mit gemeinsamer
+                            sozialer Verantwortung erreichbar sind. </p><br>
+                    </div>
+                </div>
+                <!-- Forms -->
+                <div class="col-12 col-lg-7 offset-lg-1">
+                    <ul class="nav nav-tabs form-nav" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="true">Hilfe erhalten</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                aria-controls="profile" aria-selected="false">Helfen</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <!-- CONTENT 1 -->
+
+
+
+
+
+                            <div class="signup-form">
+                                <form id="input_fields_seeker">
+                                    <!--<h2>Hilfe erhalten</h2>-->
+                                    <!--<p class="text-muted" style="font-size:90%;"></p>-->
+
+                                    <!-- Type of Helper -->
+                                    <div class="form-check form-check-inline mb-3">
+                                        <input class="form-check-input" type="radio" name="typeOfPerson" id="private"
+                                            value="private" checked>
+                                        <label class="form-check-label text-body" for="private">
+                                            Privatperson</label>
+                                    </div>
+                                    <div class="form-check form-check-inline mb-3">
+                                        <input class="form-check-input" type="radio" name="typeOfPerson"
+                                            id="organisation" value="organisation">
+                                        <label class="form-check-label text-body" for="organisation">
+                                            Organisation</label>
+                                    </div>
+
+                                    <!-- Job -->
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="work" placeholder="Beruf*"
+                                            required="required"></div>
+
+                                    <!-- PLZ -->
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="address" placeholder="Anschrift*"
+                                            required="required"></div>
+
+                                    <!-- E-Mail -->
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="contactInfo"
+                                            placeholder="E-Mail Adresse*" required="required">
+                                    </div>
+                                    <!-- Type of Help -->
+                                    <div class="form-group">
+                                        <textarea type="text" class="form-control" name="typeOfHelp"
+                                            placeholder="Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen."
+                                            required="required" rows="4"></textarea></div>
+                                    <!-- Bezahlung 
+                    <p class="text-body"><strong>Aufwandsentschädigung</strong></p>
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="paid">
+                            <option selected>Wähle aus ...</option>
+                            <option value="paid">Ich möchte gerne etwas bezahlen</option>
+                            <option value="unpaid">Ich suche nach unentgeltlicher Hilfe</option>
+                            <option value="both">Beides</option>
+                        </select>
+                    </div>-->
+                                    <!-- Kategorien -->
+                                    <div class="form-group category">
+                                        <div class="title mb-1">
+                                            Kategorien
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="household"
+                                                value="household">
+                                            <label class="form-check-label" for="household">
+                                                <i class="material-icons">house</i> Haushalt
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="laundry"
+                                                value="laundry">
+                                            <label class="form-check-label" for="laundry">
+                                                <i class="material-icons">local_laundry_service</i> Wäsche
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="medication"
+                                                value="medication">
+                                            <label class="form-check-label" for="medication">
+                                                <i class="material-icons">local_pharmacy</i> Medikamente
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="shopping"
+                                                value="shopping">
+                                            <label class="form-check-label" for="shopping">
+                                                <i class="material-icons">shopping_cart</i> Einkaufen
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="pets" value="pets">
+                                            <label class="form-check-label" for="pets">
+                                                <i class="material-icons">pets</i> Haustiere
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="escort" value="escort">
+                                            <label class="form-check-label" for="escort">
+                                                <i class="material-icons">supervisor_account</i> Begleitung
+                                                (Spaziergänge, Arztbesuche &
+                                                Ähnliches)
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="conversations"
+                                                value="conversations">
+                                            <label class="form-check-label" for="conversations">
+                                                <i class="material-icons">phone</i> Gespräche (telefonisch)
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="agriculture"
+                                                value="agriculture">
+                                            <label class="form-check-label" for="agriculture">
+                                                <i class="material-icons">eco</i> Erntehilfe
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="other" value="other">
+                                            <label class="form-check-label" for="other">
+                                                <i class="material-icons">help</i> Sonstiges
+                                            </label>
+                                        </div>
+                                        <div class="title mb-1">
+                                            Fähigkeiten
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="handicap"
+                                                value="handicap">
+                                            <label class="form-check-label" for="handicap">
+                                                <i class="material-icons">accessible</i> Erfahrung im Umgang mit
+                                                Behinderten von Vorteil
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="car" value="car">
+                                            <label class="form-check-label" for="car">
+                                                <i class="material-icons">directions_car</i> Auto von Vorteil
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!-- Notifications -->
+                                    <div class="form-group">
+                                        <label class="checkbox-inline"><input type="checkbox" required="required">
+                                            Ich möchte eine
+                                            Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten
+                                            wird (kann jederzeit abbestellt werden).*</label>
+                                    </div>
+                                    <!-- Datenschutz -->
+                                    <div class="form-group">
+                                        <label class="checkbox-inline"><input type="checkbox" required="required">
+                                            Ich akzeptiere
+                                            hiermit die <a href="#">Nutzungs- </a> &amp; <a
+                                                href="#">Datenschutz-Bestimmungen
+                                            </a>*</label>
+                                    </div>
+                                    <!-- Submit Button -->
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-lg">Senden</button>
+                                    </div>
+                                    <div id="success-message" class="alert success">Deine Nachricht wurde
+                                        übermittelt.</div>
+                                    <div id="error-message" class="alert error">Es gab Probleme bei der Übermittlung
+                                        deiner Daten.
+                                        Versuche es später noch
+                                        ein mal.</div>
+                                </form>
+                                <!--<div class="hint-text">Angebot wieder von der Karte entfernen? <a href="#">Hier wieder abmelden</a>
+                </div>-->
+                            </div>
+
+                            <!--FORMULAR ENDE-->
+
+                        </div>
+
+
+
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                            <!--FORMULAR 2 START-->
+
+                            <div class="signup-form">
+                                <form id="input_fields_helper">
+                                    <!--<h2 class="lang" key="heading2">Als Helfer eintragen</h2>-->
+                                    <!--<p class="text-muted lang" key="paragraph2" style="font-size:90%;"></p>-->
+
+                                    <div class="form-check form-check-inline mb-3">
+                                        <input class="form-check-input" type="radio" name="typeOfPerson" id="private"
+                                            value="private" checked>
+                                        <label class="form-check-label text-body lang" key="privatperson" for="private">
+                                            Privatperson</label>
+                                    </div>
+                                    <div class="form-check form-check-inline mb-3">
+                                        <input class="form-check-input" type="radio" name="typeOfPerson"
+                                            id="organisation" value="organisation">
+                                        <label class="form-check-label text-body lang" key="organization"
+                                            for="organisation"> Organisation</label>
+                                    </div>
+                                    <!-- Job -->
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="work" placeholder="Beruf*"
+                                            required="required"></div>
+                                    <!-- PLZ -->
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="address" placeholder="Anschrift*"
+                                            required="required"></div>
+                                    <!-- E-Mail -->
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="contactInfo"
+                                            placeholder="E-Mail Adresse*" required="required">
+                                    </div>
+                                    <!-- Type of Help -->
+                                    <div class="form-group">
+                                        <textarea type="text" class="form-control" name="typeOfHelp"
+                                            placeholder="Was bieten Sie an?*" required="required" rows="4"></textarea>
+                                    </div>
+                                    <!-- Bezahlung -->
+                                    <!--<p class="text-body"><strong class="lang" key="expense_allowance">Aufwandsentschädigung</strong></p>
+                    <div class="input-group mb-3">
+                        <select class="custom-select" id="paid">
+                            <option class="lang" key="choose" selected>Wähle aus ...</option>
+                            <option class="lang" key="paidy" value="paid">Ich möchte bezahlt werden</option>
+                            <option class="lang" key="paidn" value="unpaid">Ich arbeite unentgeltlich</option>
+                            <option class="lang" key="both" value="both">Beides</option>
+                        </select>
+                    </div>-->
+                                    <!-- Kategorien -->
+                                    <div class="form-group category">
+                                        <div class="title mb-1 lang" key="categories">
+                                            Kategorien
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="household"
+                                                value="household">
+                                            <i class="material-icons">house</i>
+                                            <label class="form-check-label lang" key="household" for="household">
+                                                Haushalt
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="laundry"
+                                                value="laundry">
+                                            <i class="material-icons">local_laundry_service</i>
+                                            <label class="form-check-label lang" key="laundry" for="laundry">
+                                                Wäsche
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="medication"
+                                                value="medication">
+                                            <i class="material-icons">local_pharmacy</i>
+                                            <label class="form-check-label label" key="medication" for="medication">
+                                                Medikamente
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="shopping"
+                                                value="shopping">
+                                            <i class="material-icons">shopping_cart</i>
+                                            <label class="form-check-label lang" key="shopping" for="shopping">
+                                                Einkaufen
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="pets" value="pets">
+                                            <i class="material-icons">pets</i>
+                                            <label class="form-check-label lang" key="pets" for="pets">
+                                                Haustiere
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="escort" value="escort">
+                                            <i class="material-icons">supervisor_account</i>
+                                            <label class="form-check-label lang" key="escort" for="escort">
+                                                Begleitung (Spaziergänge, Arztbesuche &
+                                                Ähnliches)
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="conversations"
+                                                value="conversations">
+                                            <i class="material-icons">phone</i>
+                                            <label class="form-check-label lang" key="conversations"
+                                                for="conversations">
+                                                Gespräche (telefonisch)
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="agriculture"
+                                                value="agriculture">
+                                            <i class="material-icons">eco</i>
+                                            <label class="form-check-label lang" key="agriculture" for="agriculture">
+                                                Erntehilfe
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="other" value="other">
+                                            <i class="material-icons">help</i>
+                                            <label class="form-check-label lang" key="other" for="other">
+                                                Sonstiges
+                                            </label>
+                                        </div>
+                                        <div class="title mb-1 lang" key="skills">
+                                            Fähigkeiten
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="handicap"
+                                                value="handicap">
+                                            <i class="material-icons">accessible</i>
+                                            <label class="form-check-label lang" key="handicap" for="handicap">
+                                                Erfahrung im Umgang mit Behinderten
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="car" value="car">
+                                            <i class="material-icons">directions_car</i>
+                                            <label class="form-check-label lang" key="car" for="car">
+                                                Auto vorhanden
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Notifications -->
+                                    <div class="form-group">
+                                        <label class="checkbox-inline"><input type="checkbox" required="required">
+                                            Ich möchte eine
+                                            Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe benötigt
+                                            wird (kann jederzeit abbestellt werden).*</label>
+                                    </div>
+
+                                    <!-- Datenschutz -->
+                                    <div class="form-group">
+                                        <label class="checkbox-inline"><input type="checkbox" required="required">
+                                            Ich akzeptiere
+                                            hiermit die <a href="#">Nutzungs- </a> &amp; <a
+                                                href="#">Datenschutz-Bestimmungen
+                                            </a>*</label>
+                                    </div>
+                                    <!-- Submit Button -->
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-lg lang"
+                                            key="confirm">Senden</button>
+                                    </div>
+                                    <div id="success-message" class="alert success lang" key="success">Deine
+                                        Nachricht wurde übermittelt.</div>
+                                    <div id="error-message" class="alert error lang" key="failed">Es gab Probleme
+                                        bei der Übermittlung deiner Daten.
+                                        Versuche es später noch ein mal.</div>
+                                </form>
+                                <!--<div class="lang" key="delete1">Angebot wieder von der Karte entfernen? 
+                </div><a class="hint-text lang" key="unsubscribe" href="#">Hier wieder abmelden</a>-->
+                            </div>
+                            <!--FORMULAR 2 ENDE-->
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section bg-light p-5" style="background-color: #ffffff !important;">
+            <div class="row my-5">
+                <div class="col-12 col-sm-4 col-md-3 d-flex justify-content-center align-items-start">
+                    <img src="image1.svg" alt="Logo">
+                </div>
+                <div class="col-12 col-sm-8 col-md-9">
+                    <h2 class="lang" key="descr1t">Was ist die Corona Helpmap?</h2>
+                    <p class="lang" key="descr1b"> Die Helpmap ermöglicht die Vernetzung von Menschen und Organisationen
+                        im näheren und etwas
+                        weiteren
+                        Umkreis, um Hilfsangebote und -gesuche zusammenzubringen. Das Vermittlungsportal kann von
+                        Privatpersonen
+                        ebenso wie von relevanten Unternehmen genutzt werden, etwa aus den Bereichen
+                        (Lebensmittel-)Einzelhandel, Pflege oder Pharmazie. Die Nutzung des Portals selbst ist immer
+                        kostenfrei.
+                        Die vermittelten Leistungen können ehrenamtlich oder kostenpflichtig sein, dies ist individuelle
+                        Verhandlungssache zwischen Helfern und Hilfesuchenden. Kommerzielle Gesuche und Angebote sind
+                        klar als
+                        solche gekennzeichnet.
+                    </p>
+                </div>
+
+            </div>
+            <div class="row my-5">
+                <div class="col-12 col-sm-4 col-md-3 d-flex justify-content-center align-items-start">
+                    <img src="help-icon.svg" alt="">
+                </div>
+                <div class="col-12 col-sm-8 col-md-9">
+                    <h2 class="lang" key="descr2t">Helfen, nicht anstecken!</h2>
+                    <p class="lang" key="descr2b">Es gibt eine Reihe anerkannter Vorsichtsmaßnahmen, die Sie treffen
+                        sollten, damit Sie sich nicht
+                        selbst
+                        gefährden oder andere Menschen mit dem Coronavirus anstecken. Dies gilt besonders, wenn Sie sich
+                        Personen
+                        aus den sogenannten Risikogruppen nähern – also älteren Menschen und Menschen mit
+                        Vorerkrankungen.
+                        Seien
+                        Sie verantwortungsbewußt. Meiden Sie unbedingt den Kontakt zu anderen, wenn Sie selbst
+                        Erkältungssymptome
+                        haben! Und nehmen Sie sich Zeit für diese rund
+                        <a href="https://www.easy-lms.com/de/hygiene-und-desinfektionsschulung/course-45046">30-minütige
+                            Hygiene- und Desinfektionsschulung
+                        </a>
+                    </p>
+
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col-12 col-sm-4 col-md-3 d-flex justify-content-center align-items-start">
+                    <img src="tips.svg" alt="">
+                </div>
+                <div class="col-12 col-sm-8 col-md-9">
+                    <h2 class="lang" key="descr3t">Tipps zur Sicherheit</h2>
+                    <p class="lang" key="descr3b">Die Corona Helpmap verbindet Menschen, die sich vorher nicht kannten.
+                        Wir glauben, dass die
+                        meisten
+                        Teilnehmenden tatsächlich Unterstützung leisten wollen. Dennoch ist es sicherlich
+                        sinnvoll, sich einige
+                        Gedanken zur eigenen Sicherheit zu machen und zu überlegen, wie man sich vor Betrug
+                        schützen kann. Wir
+                        haben für Sie einige Hinweise zusammengestellt. </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
 
 
 
         <footer id="Footer">
             <p class="copyright">&copy; 2020 Corona Helpmap. All rights reserved.</p>
-            <a class="github" target="_self" rel="noopener" href="https://coronahelpmap.com/imprint.html">Imprint</a>
+            <a class="github lang" key="imprint" target="_self" rel="noopener"
+                href="https://coronahelpmap.com/imprint.html">Impressum</a>
         </footer>
 
     </div>
@@ -101,23 +740,29 @@
     <script src="/__/firebase/7.11.0/firebase-firestore.js"></script>
     <script src="/__/firebase/init.js"></script>
 
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-  crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
 
-    
+    <script src="dist/leaflet.markercluster.js"></script>
+
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-aio-1.8.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://kit.fontawesome.com/833245c2e4.js"></script>
     <script src="index-tooltip.js"></script>
+    <script src="dist/leaflet.markercluster-src.js"></script>
+    <script src="dist/leaflet.markercluster.js"></script>
+    <script src="dist/markers-on-map-1.3.0.js"></script>
+    <script src="dist/markers-on-map-1.3.0.js"></script>
     <script src="dist/markers-on-map-1.3.0.js"></script>
     <script src="index.js?v=1.3.0"></script>
-    
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
+    <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
 
