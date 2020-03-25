@@ -26,7 +26,7 @@ updateMapApproximately();
 // Try to get more precise coordinates via the Geolocation API
 updateMapPrecisely();
 
-var markersGreen = L.markerClusterGroup({
+var markers = L.markerClusterGroup({
     iconCreateFunction: function (cluster) {
         var childCount = cluster.getChildCount();
         var c = ' markerGreen-cluster-';
@@ -45,26 +45,6 @@ var markersGreen = L.markerClusterGroup({
     //zoomToBoundsOnClick: false
 });
 
-var markersBlue = L.markerClusterGroup({
-    iconCreateFunction: function (cluster) {
-        var childCount = cluster.getChildCount();
-
-        var c = ' markerBlue-cluster-';
-        if (childCount < 10) {
-            c += 'small';
-        } else if (childCount < 100) {
-            c += 'medium';
-        } else {
-            c += 'large';
-        }
-
-        return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
-    },
-    //Disable all of the defaults:
-    //spiderfyOnMaxZoom: false, 
-    showCoverageOnHover: false 
-    //zoomToBoundsOnClick: false
-});
 
 var blueIcon = L.icon({
     iconUrl: 'MarkerBlue.png',
@@ -184,7 +164,7 @@ db.collection("helpers").get().then((querySnapshot) => {
         // console.log(`${doc.id} => ${doc.data()}`);
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
-        markersGreen.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}).bindPopup(typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp + '"</i><br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>').openPopup());
+        markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}).bindPopup(typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp + '"</i><br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>').openPopup());
 
 
         /*var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
@@ -234,7 +214,7 @@ db.collection("helpers").get().then((querySnapshot) => {
            // var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
             //searcher.push(search)
        // markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
-        markersBlue.addLayer(
+        markers.addLayer(
             L.marker(
                 [doc.data().addressLat, doc.data().addressLong], 
                 {icon: blueIcon})
@@ -246,9 +226,8 @@ db.collection("helpers").get().then((querySnapshot) => {
             .openPopup());
         });
         //console.log(helpers)
-        mymap.addLayer(markersBlue);
+        mymap.addLayer(markers);
 
-        mymap.addLayer(markersGreen);
 
         MarkersOnMap.Init({
             googleApiKey: 'AIzaSyBDWpSKKqmaBHmKwBobTEjxToXSRk2GkPc', // this key restricted except this project
