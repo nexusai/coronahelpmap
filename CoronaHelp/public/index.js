@@ -7,8 +7,6 @@
 
 // DEMO: Markers On Map - Init and Run on
 
-
-
 var db = firebase.firestore();
 var helpers = [];
 var searcher = [];
@@ -17,48 +15,56 @@ const formHelper = document.querySelector('#input_fields_helper');
 
 const apiKey = '6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq';
 
+// The coordinates the map centers on by default.
+let fallbackCoordinates = [50.627540588378906, 9.958450317382812];
+// The precise coordinates. Is set by the updateMapPrecisely(), if the Geolocation API query was successful and precise coordinates are known.
+let preciseCoordinates;
+
+let mymap = L.map('mapid').setView(fallbackCoordinates, 5);
+// Center the approximate location of the user without using the Geolocation API, which might not be allowed by the user
+updateMapApproximately();
+// Try to get more precise coordinates via the Geolocation API
+updateMapPrecisely();
 
 var markersGreen = L.markerClusterGroup({
-            iconCreateFunction: function (cluster) {
-                    var childCount = cluster.getChildCount();
-
-            var c = ' markerGreen-cluster-';
-            if (childCount < 10) {
-                c += 'small';
-            } else if (childCount < 100) {
-                c += 'medium';
-            } else {
-                c += 'large';
-            }
-    
-            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
-            },
-            //Disable all of the defaults:
-            //spiderfyOnMaxZoom: false, 
-            showCoverageOnHover: false 
-            //zoomToBoundsOnClick: false
-        });
+    iconCreateFunction: function (cluster) {
+        var childCount = cluster.getChildCount();
+        var c = ' markerGreen-cluster-';
+        if (childCount < 10) {
+            c += 'small';
+        } else if (childCount < 100) {
+            c += 'medium';
+        } else {
+            c += 'large';
+        }
+        return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+    },
+    //Disable all of the defaults:
+    //spiderfyOnMaxZoom: false, 
+    showCoverageOnHover: false 
+    //zoomToBoundsOnClick: false
+});
 
 var markersBlue = L.markerClusterGroup({
-            iconCreateFunction: function (cluster) {
-                    var childCount = cluster.getChildCount();
+    iconCreateFunction: function (cluster) {
+        var childCount = cluster.getChildCount();
 
-            var c = ' markerBlue-cluster-';
-            if (childCount < 10) {
-                c += 'small';
-            } else if (childCount < 100) {
-                c += 'medium';
-            } else {
-                c += 'large';
-            }
-    
-            return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
-            },
-            //Disable all of the defaults:
-            //spiderfyOnMaxZoom: false, 
-            showCoverageOnHover: false 
-            //zoomToBoundsOnClick: false
-        });
+        var c = ' markerBlue-cluster-';
+        if (childCount < 10) {
+            c += 'small';
+        } else if (childCount < 100) {
+            c += 'medium';
+        } else {
+            c += 'large';
+        }
+
+        return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+    },
+    //Disable all of the defaults:
+    //spiderfyOnMaxZoom: false, 
+    showCoverageOnHover: false 
+    //zoomToBoundsOnClick: false
+});
 
 var blueIcon = L.icon({
     iconUrl: 'MarkerBlue.png',
@@ -75,10 +81,6 @@ var greenIcon = L.icon({
     iconAnchor:   [30, 60], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, -60] // point from which the popup should open relative to the iconAnchor
 });
-
-
-
-let mymap = L.map('mapid').setView([50.627540588378906, 9.958450317382812], 5);
 
 async function searchAddressCoordinates(address) {
     address = address.replace(/ /g, '+');
@@ -106,41 +108,47 @@ document.querySelector('#searchCity-button').addEventListener('click', function 
     mapUpdateForQuery(cityInputField)
 });
 
-
-
-async function mapUpdateForQuery(query) {
+// Requests the coordinates for the query and centers the map on these coordinates.
+async function mapUpdateForQuery(query, zoomLevel = 13) {
     const result = await searchAddressCoordinates(query);
     if (result && result !== null) {
-        mymap.setView([result.lat, result.lon], 13);
+        preciseCoordinates = [result.lat, result.lon];
+        mymap.setView(preciseCoordinates, zoomLevel);
     }
 }
 
-async function fallbackUpdateMap() {
+// Tries to get an approximate geolocation via external APIs without using the Geolocation API of the browser.
+// Updates the map accordingly.
+async function updateMapApproximately(zoomLevel = 12) {
     try {
         const ipResponse = await fetch('https://api.ipify.org/?format=json');
         const ip = (await ipResponse.json()).ip;
         const geoResponse = await fetch(`http://ip-api.com/json/${ip}`);
         const geoJson = await geoResponse.json();
-        mymap.setView([geoJson.lat, geoJson.lon], 11);
+        // Update the fallback coordinates for the app
+        fallbackCoordinates = [geoJson.lat, geoJson.lon];
+        console.log()
     } catch (err) {
-        mymap.setView([52.520008, 13.404954], 5);
+        console.log(err);
     }
-}
-async function updateMap() {
-    if (navigator.geolocation) {
-        const position = await navigator.geolocation.getCurrentPosition(position => {
-            mymap.setView([position.coords.latitude, position.coords.longitude], 12);
-        },
-            error => {
-                console.log(error);
-                //fallbackUpdateMap();
-            });
-    } else {
-       // fallbackUpdateMap();
-    }
+    if (preciseCoordinates == null) { // Only update if we dont have more precise coordinates already
+        mymap.setView(fallbackCoordinates, zoomLevel);
+    } 
 }
 
-updateMap();
+// Tries to get a precise geolocation via the Geolocation API of the browser.
+// Updates the map accordingly.
+async function updateMapPrecisely(zoomLevel = 12) {
+    if (navigator.geolocation) {
+        await navigator.geolocation.getCurrentPosition(position => {
+            preciseCoordinates = [position.coords.latitude, position.coords.longitude];
+            mymap.setView(preciseCoordinates, zoomLevel);
+        },
+        error => {
+            console.log(error);
+        });
+    }
+}
 
 //var mymap = L.map('mapid').setView([52.520008, 13.404954], 11);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -166,15 +174,11 @@ db.collection("helpers").get().then((querySnapshot) => {
 
         var typeOfPersonConverted;
         if(typeOfPerson=="private"){
-        typeOfPersonConverted="Privatperson";
+            typeOfPersonConverted="Privatperson";
         }
         else{
-        typeOfPersonConverted="Organisation";
+            typeOfPersonConverted="Organisation";
         }
-
-
-
-
 
         var dateCreated = doc.data().timestamp
         // console.log(`${doc.id} => ${doc.data()}`);
@@ -224,20 +228,22 @@ db.collection("helpers").get().then((querySnapshot) => {
         typeOfPersonConverted="Organisation";
         }
 
-
-
-
-
         var dateCreated = doc.data().timestamp
             // console.log(`${doc.id} => ${doc.data()}`);
             //console.log(doc.data().firstName);
            // var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
             //searcher.push(search)
        // markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
-        markersBlue.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: blueIcon}).bindPopup(typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp + '"<br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>').openPopup());
-
-
-
+        markersBlue.addLayer(
+            L.marker(
+                [doc.data().addressLat, doc.data().addressLong], 
+                {icon: blueIcon})
+            .bindPopup(
+                typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' 
+                + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp 
+                + '"<br><br><a href=' + urlFinal 
+                + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>')
+            .openPopup());
         });
         //console.log(helpers)
         mymap.addLayer(markersBlue);
