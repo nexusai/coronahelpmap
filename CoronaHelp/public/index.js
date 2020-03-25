@@ -275,6 +275,17 @@ formHelper.addEventListener('submit', (e) => {
     console.log("Document written with ID: ", docRef.id);
     console.log("You can now also access .this as expected: ", this.foo);
     console.log("Form Data: ", docRef);
+
+
+
+
+
+
+
+
+
+
+
     formHelper.querySelector('#success-message').style.display = 'block';
     let data = {
           id: docRef.id
@@ -284,6 +295,8 @@ formHelper.addEventListener('submit', (e) => {
     db.collection("helpersPreZip").doc(docRef.id)
 .set(data, {merge: true});
     formHelper.reset();
+
+
 
 })
 .catch(error => {
