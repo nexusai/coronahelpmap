@@ -316,9 +316,9 @@ cursor: pointer;}
 /* Footer on */
 footer#Footer  {
 padding:40px 20px;
-color:#FFFFFF;
+color:#000000;
 background: #502974;
-background: linear-gradient(to left top, #AC2708, #B62402, #C32501, #D02B05, #DD2E05);
+background: linear-gradient(to left top, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF, #FFFFFF);
 float: left;
 width: 100%;}
 
