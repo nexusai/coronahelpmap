@@ -40,9 +40,9 @@ var markers = L.markerClusterGroup({
         return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
     },
     //Disable all of the defaults:
-    //spiderfyOnMaxZoom: false, 
-    showCoverageOnHover: false 
-    //zoomToBoundsOnClick: false
+    spiderfyOnMaxZoom: true, 
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true
 });
 
 
