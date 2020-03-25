@@ -14,7 +14,7 @@ const apiKey = '6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq';
 // Create a GeoCollection reference
 //const geocollection: GeoCollectionReference = geofirestore.collection('helpers');
 
-
+// Searches for the coordinates of a given address
 async function searchAddressCoordinates(address) {
     address = address.replace(/ /g, '+');
     const result = await fetch(`https://nominatim.openstreetmap.org/search/search?q=${address}&format=json`);
@@ -41,8 +41,6 @@ document.querySelector('#searchCity-button').addEventListener('click', function 
     mapUpdateForQuery(cityInputField)
 });
 
-
-
 async function mapUpdateForQuery(query) {
     const result = await searchAddressCoordinates(query);
     if (result && result !== null) {
@@ -52,9 +50,6 @@ async function mapUpdateForQuery(query) {
         //mymap.setView([result.lat, result.lon], 11);
     }
 }
-
-
-
 
 moment.locale('de');
 db.collection("searcher").get()
@@ -111,8 +106,9 @@ db.collection("searcher").get()
 // saving data:
 
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     db.collection('helpersPreZip').add({
         address: form.address.value,
         contactInfo: form.contactInfo.value,
@@ -146,24 +142,21 @@ form.addEventListener('submit', (e) => {
         },
         timestamp: Date.now()
     })
-.then(docRef => {
-    console.log("Document written with ID: ", docRef.id);
-    console.log("You can now also access .this as expected: ", this.foo);
-    console.log("Form Data: ", docRef);
-    form.querySelector('#success-message').style.display = 'block';
-    let data = {
-          id: docRef.id
-          };
+    .then(docRef => {
+        
 
-          
-    db.collection("helpersPreZip").doc(docRef.id)
-.set(data, {merge: true});
-    form.reset();
-
-})
-.catch(error => {
-    form.querySelector('#error-message').style.display = 'block';
-    console.error("Error adding document: ", error)
+        console.log("Document written with ID: ", docRef.id);
+        console.log("Form Data: ", docRef);
+        form.querySelector('#success-message').style.display = 'block';
+        let data = {
+            id: docRef.id
+        };
+        db.collection("helpersPreZip").doc(docRef.id).set(data, {merge: true});
+        form.reset();
+    })
+    .catch(error => {
+        form.querySelector('#error-message').style.display = 'block';
+        console.error("Error adding document: ", error)
 })
     
     //window.location.assign("https://coronahelpmap.com/");

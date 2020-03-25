@@ -40,7 +40,7 @@ var markers = L.markerClusterGroup({
         return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
     },
     //Disable all of the defaults:
-    spiderfyOnMaxZoom: true, 
+    spiderfyOnMaxZoom: true,
     showCoverageOnHover: false,
     zoomToBoundsOnClick: true
 });
@@ -49,17 +49,17 @@ var markers = L.markerClusterGroup({
 var blueIcon = L.icon({
     iconUrl: 'MarkerBlue.png',
 
-    iconSize:     [60, 60], // size of the icon
-    iconAnchor:   [30, 60], // point of the icon which will correspond to marker's location
-    popupAnchor:  [0, -60] // point from which the popup should open relative to the iconAnchor
+    iconSize: [60, 60], // size of the icon
+    iconAnchor: [30, 60], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -60] // point from which the popup should open relative to the iconAnchor
 });
 
 var greenIcon = L.icon({
     iconUrl: 'MarkerGreen.png',
 
-    iconSize:     [60, 60], // size of the icon
-    iconAnchor:   [30, 60], // point of the icon which will correspond to marker's location
-    popupAnchor:  [0, -60] // point from which the popup should open relative to the iconAnchor
+    iconSize: [60, 60], // size of the icon
+    iconAnchor: [30, 60], // point of the icon which will correspond to marker's location
+    popupAnchor: [0, -60] // point from which the popup should open relative to the iconAnchor
 });
 
 async function searchAddressCoordinates(address) {
@@ -113,7 +113,7 @@ async function updateMapApproximately(zoomLevel = 12) {
     }
     if (preciseCoordinates == null) { // Only update if we dont have more precise coordinates already
         mymap.setView(fallbackCoordinates, zoomLevel);
-    } 
+    }
 }
 
 // Tries to get a precise geolocation via the Geolocation API of the browser.
@@ -124,9 +124,9 @@ async function updateMapPrecisely(zoomLevel = 12) {
             preciseCoordinates = [position.coords.latitude, position.coords.longitude];
             mymap.setView(preciseCoordinates, zoomLevel);
         },
-        error => {
-            console.log(error);
-        });
+            error => {
+                console.log(error);
+            });
     }
 }
 
@@ -147,24 +147,24 @@ db.collection("helpers").get().then((querySnapshot) => {
 
         var url = "send.html?id="
         var customId = doc.id
-        var urlFinal = url+customId
+        var urlFinal = url + customId
         console.log(urlFinal)
 
         var typeOfPerson = doc.data().typeOfPerson
 
         var typeOfPersonConverted;
-        if(typeOfPerson=="private"){
-            typeOfPersonConverted="Privatperson";
+        if (typeOfPerson == "private") {
+            typeOfPersonConverted = "Privatperson";
         }
-        else{
-            typeOfPersonConverted="Organisation";
+        else {
+            typeOfPersonConverted = "Organisation";
         }
 
         var dateCreated = doc.data().timestamp
         // console.log(`${doc.id} => ${doc.data()}`);
         //console.log(doc.data().firstName);
         //var marker = L.marker([doc.data().addressLat, doc.data().addressLong]).addTo(mymap);
-        markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: greenIcon}).bindPopup(typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp + '"</i><br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>').openPopup());
+        markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], { icon: greenIcon }).bindPopup(typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp + '"</i><br><br><a href=' + urlFinal + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>').openPopup());
 
 
         /*var circle = L.circle([doc.data().addressLat, doc.data().addressLong], {
@@ -193,37 +193,37 @@ db.collection("helpers").get().then((querySnapshot) => {
     db.collection("searcher").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
 
-        var url = "send.html?id="
-        var customId = doc.id
-        var urlFinal = url+customId
-        console.log(urlFinal)
+            var url = "send.html?id="
+            var customId = doc.id
+            var urlFinal = url + customId
+            console.log(urlFinal)
 
-        var typeOfPerson = doc.data().typeOfPerson
+            var typeOfPerson = doc.data().typeOfPerson
 
-        var typeOfPersonConverted;
-        if(typeOfPerson=="private"){
-        typeOfPersonConverted="Privatperson";
-        }
-        else{
-        typeOfPersonConverted="Organisation";
-        }
+            var typeOfPersonConverted;
+            if (typeOfPerson == "private") {
+                typeOfPersonConverted = "Privatperson";
+            }
+            else {
+                typeOfPersonConverted = "Organisation";
+            }
 
-        var dateCreated = doc.data().timestamp
+            var dateCreated = doc.data().timestamp
             // console.log(`${doc.id} => ${doc.data()}`);
             //console.log(doc.data().firstName);
-           // var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
+            // var search = new add(searcherMarker(), 25, doc.data().addressLat, doc.data().addressLong, doc.data().firstName, '<h3 style="text-align:center;margin:0 0 10px;">' + doc.data().firstName + ", " + doc.data().age.toString() + '</h3><p style="text-align:center; margin:0 0 10px;">' + doc.data().typeOfHelp + '</p><button style="display:table;margin:auto;padding:8px 12px;border-radius:20px;font-weight:700;background:#DE2A00;color:#fff;cursor:pointer;">' + doc.data().contactInfo + '</button>');
             //searcher.push(search)
-       // markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
-        markers.addLayer(
-            L.marker(
-                [doc.data().addressLat, doc.data().addressLong], 
-                {icon: blueIcon})
-            .bindPopup(
-                typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' 
-                + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp 
-                + '"<br><br><a href=' + urlFinal 
-                + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>')
-            .openPopup());
+            // markers.addLayer(L.marker([doc.data().addressLat, doc.data().addressLong], {icon: redIcon}));
+            markers.addLayer(
+                L.marker(
+                    [doc.data().addressLat, doc.data().addressLong],
+                    { icon: blueIcon })
+                    .bindPopup(
+                        typeOfPersonConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">'
+                        + doc.data().typeOfProfession + '</span>' + '<br><br><i>"' + doc.data().typeOfHelp
+                        + '"<br><br><a href=' + urlFinal
+                        + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>')
+                    .openPopup());
         });
         //console.log(helpers)
         mymap.addLayer(markers);
@@ -249,6 +249,23 @@ db.collection("helpers").get().then((querySnapshot) => {
 
 formHelper.addEventListener('submit', (e) => {
     e.preventDefault();
+    const email = formHelper.contactInfo.value;
+    console.log('email', email);
+    var actionCodeSettings = {
+        // URL you want to redirect back to. The domain (www.example.com) for this
+        // URL must be whitelisted in the Firebase Console.
+        url: 'https://www.coronahelpmap.com/finishSignUp?id=1234',
+        // This must be true.
+        handleCodeInApp: true
+      };
+    firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+        .then(function () {
+            // The link was successfully sent. Inform the user.
+            // Save the email locally so you don't need to ask the user for it again
+            // if they open the link on the same device.
+            console.log('Signin Link was sent to', email);
+            window.localStorage.setItem('emailForSignIn', email);
+        }).catch(error => console.log('error', error));
     db.collection('helpersPreZip').add({
         address: formHelper.address.value,
         contactInfo: formHelper.contactInfo.value,
@@ -268,49 +285,57 @@ formHelper.addEventListener('submit', (e) => {
             car: formHelper.car.checked,
             other: formHelper.other.checked,
         },
-        
+
         timestamp: Date.now()
     })
-.then(docRef => {
-    console.log("Document written with ID: ", docRef.id);
-    console.log("You can now also access .this as expected: ", this.foo);
-    console.log("Form Data: ", docRef);
+        .then(docRef => {
+            console.log("Document written with ID: ", docRef.id);
+            console.log("You can now also access .this as expected: ", this.foo);
+            console.log("Form Data: ", docRef);
+            formHelper.querySelector('#success-message').style.display = 'block';
+            let data = {
+                id: docRef.id
+            };
+
+
+            db.collection("helpersPreZip").doc(docRef.id)
+                .set(data, { merge: true });
+            formHelper.reset();
 
 
 
+        })
+        .catch(error => {
+            formHelper.querySelector('#error-message').style.display = 'block';
+            console.error("Error adding document: ", error)
+        })
 
-
-
-
-
-
-
-
-    formHelper.querySelector('#success-message').style.display = 'block';
-    let data = {
-          id: docRef.id
-          };
-
-          
-    db.collection("helpersPreZip").doc(docRef.id)
-.set(data, {merge: true});
-    formHelper.reset();
-
-
-
-})
-.catch(error => {
-    formHelper.querySelector('#error-message').style.display = 'block';
-    console.error("Error adding document: ", error)
-})
-    
     //window.location.assign("https://coronahelpmap.com/");
 
 
 })
 
 formSeeker.addEventListener('submit', (e) => {
+    
     e.preventDefault();
+    console.log('searcher submit');
+    const email = formSeeker.contactInfo.value;
+    console.log('email', email);
+    var actionCodeSettings = {
+        // URL you want to redirect back to. The domain (www.example.com) for this
+        // URL must be whitelisted in the Firebase Console.
+        url: 'https://www.coronahelpmap.com/finishSignUp?id=1234',
+        // This must be true.
+        handleCodeInApp: true
+      };
+    firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+        .then(function () {
+            // The link was successfully sent. Inform the user.
+            // Save the email locally so you don't need to ask the user for it again
+            // if they open the link on the same device.
+            console.log('Signin Link was sent to', email);
+            window.localStorage.setItem('emailForSignIn', email);
+        }).catch(error => console.log('error', error));
     db.collection('searcherPreZip').add({
         address: formSeeker.address.value,
         contactInfo: formSeeker.contactInfo.value,
@@ -330,29 +355,29 @@ formSeeker.addEventListener('submit', (e) => {
             car: formSeeker.car.checked,
             other: formSeeker.other.checked,
         },
-        
+
         timestamp: Date.now()
     })
-.then(docRef => {
-    console.log("Document written with ID: ", docRef.id);
-    console.log("You can now also access .this as expected: ", this.foo);
-    console.log("Form Data: ", docRef);
-    formSeeker.querySelector('#success-message').style.display = 'block';
-    let data = {
-          id: docRef.id
-          };
+        .then(docRef => {
+            console.log("Document written with ID: ", docRef.id);
+            console.log("You can now also access .this as expected: ", this.foo);
+            console.log("Form Data: ", docRef);
+            formSeeker.querySelector('#success-message').style.display = 'block';
+            let data = {
+                id: docRef.id
+            };
 
-          
-    db.collection("searcherPreZip").doc(docRef.id)
-.set(data, {merge: true});
-    formSeeker.reset();
 
-})
-.catch(error => {
-    formSeeker.querySelector('#error-message').style.display = 'block';
-    console.error("Error adding document: ", error)
-})
-    
+            db.collection("searcherPreZip").doc(docRef.id)
+                .set(data, { merge: true });
+            formSeeker.reset();
+
+        })
+        .catch(error => {
+            formSeeker.querySelector('#error-message').style.display = 'block';
+            console.error("Error adding document: ", error)
+        })
+
     //window.location.assign("https://coronahelpmap.com/");
 
 
@@ -393,7 +418,7 @@ function renderCategories(categories) {
     if (categories.other) {
         icons += '<i class="material-icons">help</i>';
     }
-    return icons;   
+    return icons;
 }
 function renderPayment(paid) {
     var icon = ''
