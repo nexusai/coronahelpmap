@@ -42,7 +42,29 @@ exports.addLocationData = functions.firestore
         location: new firebase.firestore.GeoPoint(coords.lat, coords.lon),
       });
     }
-  })
+  });
+
+exports.makeContact = functions.firestore.
+  document('contactRequests')
+  .onCreate(async (snap, context) => {
+    try {
+      const receiverEmailAddress = (await admin.auth().getUser(snap.data().receiverUid)).email;
+      const senderEmailAddress = (await admin.auth().getUser(snap.data().senderUid)).email;
+      const message = snap.data().message;
+      if (receiverEmailAddress) {
+        admin.firestore().collection('mail').add({
+          to: senderEmailAddress,
+          message: {
+            subject: 'You received a message from a user of coronahelpmap.com',
+            html: `Message: ${message}. Please send your answer to the user directly: ${receiverEmailAdress}`,
+          },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    
+  });
 
 /*
 
