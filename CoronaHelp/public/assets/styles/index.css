@@ -620,8 +620,8 @@ border-width: 0 5px 5px;}
 /* Tooltip off */
 
 .navbar {
-  border-bottom: 1px solid #FFFFFF;
-  position: absolute;
+    border-bottom: 2px solid rgb(223, 104, 78);  
+    position: absolute;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -636,6 +636,27 @@ border-width: 0 5px 5px;}
 .navbar-brand {
     margin-right: 0;
 }
+.navbar button:focus,
+.navbar button.focus {
+    box-shadow: 0 0 0 0.2rem rgba(223, 104, 78, 0.42);
+}
+.navbar-toggler {
+    font-size: 19px !important;
+}
+.navbar-toggler .material-icon {
+    font-size: 12px;
+}
+.navbar-toggler .dropdown-icon {
+    font-size: 12px;
+}
+.list-group-item {
+    width: 20% !important;
+}
+.btn-outline-dark:hover {
+    background-color: #df684e !important;
+    border-color: #df684e !important;
+    cursor: pointer;
+}
 @media screen and (max-width: 767px) {
     .navbar .input-group {
         width: 100%;
@@ -643,6 +664,11 @@ border-width: 0 5px 5px;}
     }
     .btn-primary {
         width: 100%;
+    }
+}
+@media screen and (max-width: 575px) {
+    .list-group-item {
+        width: 100% !important;
     }
 }
 
@@ -665,9 +691,19 @@ border-width: 0 5px 5px;}
 
 
 /* Info Section */
+.form-section {
+    border-top: 1px solid rgb(223, 38, 0);
+}
 .info-section img{
   width: 44%;
 }
 .coronahelpmap-red {
-    color: #DE2A00;
+    color: #DE2A00 !important;
+}
+
+.box-shadow-h {
+    box-shadow: 8px 8px rgb(223, 104, 78);
+    -moz-box-shadow: 8px 8px rgb(223, 104, 78);
+    -webkit-box-shadow: 8px 8px rgb(223, 104, 78);
+    border: 1px solid rgb(223, 38, 0);
 }
