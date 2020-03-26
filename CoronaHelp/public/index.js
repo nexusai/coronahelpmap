@@ -199,7 +199,7 @@ async function loadUsers() {
     furcanTooltip('[data-toggle="tooltip"]');
 }
 
-async function createUser(data) {
+async function createUser(data, email) {
     console.log('data', data);
     if (!user) throw new Exception('No user is logged in (not even anonymously).');
     try {
@@ -217,8 +217,8 @@ async function createUser(data) {
             url: `https://www.coronahelpmap.com/finishSignUp?id=${user.uid}`,
             handleCodeInApp: true,
         };
-        await auth.sendSignInLinkToEmail(data.email, actionCodeSettings);
-        window.localStorage.setItem('emailForSignIn', data.email);
+        await auth.sendSignInLinkToEmail(email, actionCodeSettings);
+        window.localStorage.setItem('emailForSignIn', email);
     } catch (err) {
         console.log('err', err);
         throw err;
@@ -231,7 +231,6 @@ formHelper.addEventListener('submit', async (e) => {
         createUser({
             isHelper: true,
             address: formHelper.address.value,
-            email: formHelper.email.value,
             profession: formHelper.work.value,
             helpDescription: formHelper.helpDescription.value,
             accountType: formHelper.accountType.value,
@@ -248,7 +247,7 @@ formHelper.addEventListener('submit', async (e) => {
                 car: formHelper.car.checked,
                 other: formHelper.other.checked,
             }
-        }).then(() => formHelper.querySelector('#success-message').style.display = 'block');
+        }, formHelper.email.value,).then(() => formHelper.querySelector('#success-message').style.display = 'block');
         formHelper.reset();
     } catch(error) {
         formHelper.querySelector('#error-message').style.display = 'block';
@@ -262,7 +261,6 @@ formSeeker.addEventListener('submit', (e) => {
         createUser({
             isRequester: true,
             address: formSeeker.address.value,
-            email: formSeeker.email.value,
             profession: formSeeker.profession.value,
             requestDescription: formSeeker.requestDescription.value,
             accountType: formSeeker.accountType.value,
@@ -279,7 +277,7 @@ formSeeker.addEventListener('submit', (e) => {
                 car: formSeeker.car.checked,
                 other: formSeeker.other.checked,
             },
-        }).then(() => formHelper.querySelector('#success-message').style.display = 'block');
+        }, formSeeker.email.value).then(() => formHelper.querySelector('#success-message').style.display = 'block');
         formHelper.reset();
     } catch (error) {
         formSeeker.querySelector('#error-message').style.display = 'block';
