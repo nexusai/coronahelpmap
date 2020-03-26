@@ -74,126 +74,286 @@ zusammenzubringen." />
         var arrLang = new Array();
         arrLang['eng'] = new Array();
         arrLang['ger'] = new Array();
+        arrLang['fra'] = new Array();
         arrLang['itl'] = new Array();
         arrLang['spn'] = new Array();
-        arrLang['fra'] = new Array();
         arrLang['arb'] = new Array();
-
-        // English content
-        arrLang['eng']['lang'] = 'Language';
-        arrLang['eng']['titel2'] = 'Direct help from the neighborhood';
-        arrLang['eng']['enterCity'] = 'Please enter your City';
-        arrLang['eng']['search'] = 'Search';
-        arrLang['eng']['location'] = 'please enter your city';
-        arrLang['eng']['button1.1'] = 'Register as a helper';
-        arrLang['eng']['button1.2'] = 'I want to help!';
-        arrLang['eng']['button2.1'] = 'Enter request';
-        arrLang['eng']['button2.2'] = 'I need Help!';
-        arrLang['eng']['descr1t'] = 'translation: #TODO';
-        arrLang['eng']['descr1b'] = 'translation: #TODO';
-        arrLang['eng']['descr2t'] = 'translation: #TODO';
-        arrLang['eng']['descr2b'] = 'translation: #TODO';
-        arrLang['eng']['descr2b1'] = 'translation: #TODO';
-        arrLang['eng']['descr3t'] = 'translation: #TODO';
-        arrLang['eng']['descr3b'] = 'translation: #TODO';
-        arrLang['eng']['imprint'] = 'translation: #TODO';
-
+                
+                
+                
         // German content 
         arrLang['ger']['lang'] = 'Sprache';
-        arrLang['ger']['titel2'] = 'Direkte Hilfe aus der Nachbarschaft';
-        arrLang['ger']['enterCity'] = 'Gib deine Stadt ein';
-        arrLang['ger']['search'] = 'Suche';  //TODO (placeholder)
-        arrLang['ger']['location'] = 'Gib deine Stadt ein';
-        arrLang['ger']['button1.1'] = 'Als Helfer eintragen';
-        arrLang['ger']['button1.2'] = 'Ich kann helfen!';
-        arrLang['ger']['button2.1'] = 'Gesuch eintragen';
-        arrLang['ger']['button2.2'] = 'Ich brauche Hilfe!';
-        arrLang['ger']['descr1t'] = 'Was ist die Corona Helpmap?';
-        arrLang['ger']['descr1b'] = 'Die Helpmap ermöglicht die Vernetzung von Menschen und Organisationen im näheren und etwas weiteren Umkreis, um Hilfsangebote und -gesuche zusammenzubringen. Das Vermittlungsportal kann von Privatpersonen ebenso wie von relevanten Unternehmen genutzt werden, etwa aus den Bereichen (Lebensmittel-)Einzelhandel, Pflege oder Pharmazie. Die Nutzung des Portals selbst ist immer kostenfrei. Die vermittelten Leistungen können ehrenamtlich oder kostenpflichtig sein, dies ist individuelle Verhandlungssache zwischen Helfern und Hilfesuchenden. Kommerzielle Gesuche und Angebote sind klar als solche gekennzeichnet.';
-        arrLang['ger']['descr2t'] = 'Helfen, nicht anstecken!';
-        arrLang['ger']['descr2b'] = 'Es gibt eine Reihe anerkannter Vorsichtsmaßnahmen, die Sie treffen sollten, damit Sie sich nicht selbst gefährden oder andere Menschen mit dem Coronavirus anstecken. Dies gilt besonders, wenn Sie sich Personen aus den sogenannten Risikogruppen nähern – also älteren Menschen und Menschen mit Vorerkrankungen. Seien Sie verantwortungsbewußt. Meiden Sie unbedingt den Kontakt zu anderen, wenn Sie selbst Erkältungssymptome haben! Und nehmen Sie sich Zeit für diese rund ';
-        arrLang['ger']['descr2b1'] = '30-minütige Hygiene- und Desinfektionsschulung'; //TODO hyperlink
-        arrLang['ger']['descr3t'] = 'Tipps zur Sicherheit';
-        arrLang['ger']['descr3b'] = 'Die Corona Helpmap verbindet Menschen, die sich vorher nicht kannten. Wir glauben, dass die meisten Teilnehmenden tatsächlich Unterstützung leisten wollen. Dennoch ist es sicherlich sinnvoll, sich einige Gedanken zur eigenen Sicherheit zu machen und zu überlegen, wie man sich vor Betrug schützen kann. Wir haben für Sie einige Hinweise zusammengestellt.';
+        arrLang['ger']['plz'] = 'Ort, Land oder PLZ';  //TODO (placeholder)
+        arrLang['ger']['heading1'] = 'Direkte Hilfe aus der Nachbarschaft';
+        arrLang['ger']['heading2'] = 'Wir beweisen, dass unsere Ziele mit gemeinsamer sozialer Verantwortung erreichbar sind.';
+        arrLang['ger']['getHelp'] = 'Hilfe erhalten';
+        arrLang['ger']['giveHelp'] = 'Helfen';
+        arrLang['ger']['privatperson'] = 'Privatperson';
+        arrLang['ger']['organization'] = 'Organisation';
+        arrLang['ger']['job'] = 'Beruf';  //TODO (placeholder)
+        arrLang['ger']['address'] = 'Anschrift*';
+        arrLang['ger']['email'] = 'E-Mail Adresse*';
+        arrLang['ger']['description'] = 'Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen.';
+        arrLang['ger']['offer'] = 'Was bieten Sie an?*';
+        arrLang['ger']['categories'] = 'Kategorien';
+        arrLang['ger']['household'] = 'Haushalt';
+        arrLang['ger']['laundry'] = 'Wäsche';
+        arrLang['ger']['medication'] = 'Medikamente';
+        arrLang['ger']['shopping'] = 'Einkaufen';
+        arrLang['ger']['pets'] = 'Haustiere';
+        arrLang['ger']['escort'] = 'Begleitung (Spaziergänge, Arztbesuche & Ähnliches)';
+        arrLang['ger']['conversations'] = 'Gespräche (telefonisch)';
+        arrLang['ger']['agriculture'] = 'Erntehilfe';
+        arrLang['ger']['other'] = 'Sonstiges';
+        arrLang['ger']['required'] = 'Erforderlich';
+        arrLang['ger']['handicap'] = 'Erfahrung im Umgang mit Behinderten';
+        arrLang['ger']['car'] = 'Auto vorhanden';
+        arrLang['ger']['notificationGetHelp'] = 'Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten wird (kann jederzeit abbestellt werden).';
+        arrLang['ger']['notificationOffer'] = 'Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe benötigt wird (kann jederzeit abbestellt werden)';
+        arrLang['ger']['dataPolicy1'] = 'Ich akzeptiere hiermit die ';
+        arrLang['ger']['dataPolicy2'] = 'Nutzungs- ';
+        arrLang['ger']['dataPolicy1'] = ' Datenschutz-Bestimmungen';
+        arrLang['ger']['confirm'] = 'Senden';
+        arrLang['ger']['messageSuccessful'] = 'Deine Nachricht wurde übermittelt.';
+        arrLang['ger']['messageFailed'] = 'Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später noch ein mal.';
+        arrLang['ger']['description1h'] = 'Was ist die Corona Helpmap?';
+        arrLang['ger']['description1b'] = 'Die Helpmap ermöglicht die Vernetzung von Menschen und Organisationen im näheren und etwas weiteren Umkreis, um Hilfsangebote und -gesuche zusammenzubringen. Das Vermittlungsportal kann von Privatpersonen ebenso wie von relevanten Unternehmen genutzt werden, etwa aus den Bereichen (Lebensmittel-)Einzelhandel, Pflege oder Pharmazie. Die Nutzung des Portals selbst ist immer kostenfrei. Die vermittelten Leistungen können ehrenamtlich oder kostenpflichtig sein, dies ist individuelle Verhandlungssache zwischen Helfern und Hilfesuchenden. Kommerzielle Gesuche und Angebote sind klar als solche gekennzeichnet.';
+        arrLang['ger']['description2h'] = 'Helfen, nicht anstecken!';
+        arrLang['ger']['description2b1'] = 'Es gibt eine Reihe anerkannter Vorsichtsmaßnahmen, die Sie treffen sollten, damit Sie sich nicht selbst gefährden oder andere Menschen mit dem Coronavirus anstecken. Dies gilt besonders, wenn Sie sich Personen aus den sogenannten Risikogruppen nähern – also älteren Menschen und Menschen mit Vorerkrankungen. Seien Sie verantwortungsbewußt. Meiden Sie unbedingt den Kontakt zu anderen, wenn Sie selbst Erkältungssymptome haben! Und nehmen Sie sich Zeit für diese rund';
+        arrLang['ger']['description3b2'] = '30-minütige Hygiene- und Desinfektionsschulung';
+        arrLang['ger']['description3h'] = 'Tipps zur Sicherheit';
+        arrLang['ger']['description3b'] = 'Die Corona Helpmap verbindet Menschen, die sich vorher nicht kannten. Wir glauben, dass die meisten Teilnehmenden tatsächlich Unterstützung leisten wollen. Dennoch ist es sicherlich sinnvoll, sich einige Gedanken zur eigenen Sicherheit zu machen und zu überlegen, wie man sich vor Betrug schützen kann. Wir haben für Sie einige Hinweise zusammengestellt.';
         arrLang['ger']['imprint'] = 'Impressum';
 
+        // English content 
+        arrLang['eng']['lang'] = 'Language';
+        arrLang['eng']['plz'] = 'City, country or zip code';  //TODO (placeholder)
+        arrLang['eng']['heading1'] = 'Direct help from the neighborhood';
+        arrLang['eng']['heading2'] = 'We prove that our goals can be achieved with shared social responsibility.';
+        arrLang['eng']['getHelp'] = 'Get help';
+        arrLang['eng']['giveHelp'] = 'Help';
+        arrLang['eng']['privatperson'] = 'Private citizen';
+        arrLang['eng']['organization'] = 'Organization';
+        arrLang['eng']['job'] = 'Job';  //TODO (placeholder)
+        arrLang['eng']['address'] = 'Adress*';  //TODO (placeholder)
+        arrLang['eng']['email'] = 'E-Mail*';  //TODO (placeholder)
+        arrLang['eng']['description'] = 'Description: e.g. Help with the care and everyday support of sick, elderly, disabled or lonely people.';
+        arrLang['eng']['offer'] = 'Was bieten Sie an?*';
+        arrLang['eng']['categories'] = 'Categories';
+        arrLang['eng']['household'] = 'Household';
+        arrLang['eng']['laundry'] = 'Laundry';
+        arrLang['eng']['medication'] = 'Medication';
+        arrLang['eng']['shopping'] = 'Shopping';
+        arrLang['eng']['pets'] = 'Pets';
+        arrLang['eng']['escort'] = 'Accompaniment (walks, doctor visits, etc.)';
+        arrLang['eng']['conversations'] = 'Conversations (by phone)';
+        arrLang['eng']['agriculture'] = 'Harvesting aid';
+        arrLang['eng']['other'] = 'Other';
+        arrLang['eng']['required'] = 'Required';
+        arrLang['eng']['handicap'] = 'Experience in dealing with disabled people';
+        arrLang['eng']['car'] = 'Car available';
+        arrLang['eng']['notificationGetHelp'] = 'I would like to receive a message when help is available in my neighborhood (can be canceled at any time).'; //TODO Box verschiebt sich
+        arrLang['eng']['notificationOffer'] = 'I would like to receive a message if help is needed in my neighborhood (can be canceled at any time)'; //TODO Hyperlink
+        arrLang['eng']['dataPolicy1'] = 'I accept the ';
+        arrLang['eng']['dataPolicy2'] = 'terms of use';
+        arrLang['eng']['dataPolicy1'] = ' the privacy policy';
+        arrLang['eng']['confirm'] = 'Confirm';
+        arrLang['eng']['messageSuccessful'] = 'Your message has been delivered.';
+        arrLang['eng']['messageFailed'] = 'There were problems submitting your data. Please try again later.';
+        arrLang['eng']['description1h'] = 'What is the Corona Helpmap?';
+        arrLang['eng']['description1b'] = 'The help map enables people and organizations in the vicinity and a little further to be networked in order to bring together offers and requests for help. The mediation portal can be used by private individuals as well as by relevant companies, for example in the areas of (food) retail, care or pharmacy. The use of the portal itself is always free of charge. The mediated services can be voluntary or chargeable, this is an individual matter of negotiation between helpers and those seeking help. Commercial requests and offers are clearly identified as such.';
+        arrLang['eng']['description2h'] = 'Help, don"t infect!';
+        arrLang['eng']['description2b1'] = 'There are a number of recognized precautions you should take to avoid endangering yourself or infecting other people with the coronavirus. This is especially true if you approach people from the so-called risk groups - i.e. older people and people with previous illnesses. Be responsible. Avoid contact with others if you have cold symptoms yourself! And take your time for this ';
+        arrLang['eng']['description3b2'] = '30-minute hygiene and disinfection training';
+        arrLang['eng']['description3h'] = 'Safety tips';
+        arrLang['eng']['description3b'] = 'The Corona Helpmap connects people who did not know each other before. We believe that most of the participants actually want to provide support. Nevertheless, it certainly makes sense to think about your own security and how to protect yourself from fraud. We have put together a few tips for you.';
+        arrLang['eng']['imprint'] = 'Imprint';
+
+        // French content 
+        arrLang['fra']['lang'] = 'Sprache';
+        arrLang['fra']['plz'] = 'Ort, Land oder PLZ';  //TODO (placeholder)
+        arrLang['fra']['heading1'] = 'Direkte Hilfe aus der Nachbarschaft';
+        arrLang['fra']['heading2'] = 'Wir beweisen, dass unsere Ziele mit gemeinsamer sozialer Verantwortung erreichbar sind.';
+        arrLang['fra']['getHelp'] = 'Hilfe erhalten';
+        arrLang['fra']['giveHelp'] = 'Helfen';
+        arrLang['fra']['privatperson'] = 'Privatperson';
+        arrLang['fra']['organization'] = 'Organisation';
+        arrLang['fra']['job'] = 'Beruf';  //TODO (placeholder)
+        arrLang['fra']['address'] = 'Anschrift*';
+        arrLang['fra']['email'] = 'E-Mail Adresse*';
+        arrLang['fra']['description'] = 'Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen.';
+        arrLang['fra']['offer'] = 'Was bieten Sie an?*';
+        arrLang['fra']['categories'] = 'Kategorien';
+        arrLang['fra']['household'] = 'Haushalt';
+        arrLang['fra']['laundry'] = 'Wäsche';
+        arrLang['fra']['medication'] = 'Medikamente';
+        arrLang['fra']['shopping'] = 'Einkaufen';
+        arrLang['fra']['pets'] = 'Haustiere';
+        arrLang['fra']['escort'] = 'Begleitung (Spaziergänge, Arztbesuche & Ähnliches)';
+        arrLang['fra']['conversations'] = 'Gespräche (telefonisch)';
+        arrLang['fra']['agriculture'] = 'Erntehilfe';
+        arrLang['fra']['other'] = 'Sonstiges';
+        arrLang['fra']['required'] = 'Erforderlich';
+        arrLang['fra']['handicap'] = 'Erfahrung im Umgang mit Behinderten';
+        arrLang['fra']['car'] = 'Auto vorhanden';
+        arrLang['fra']['notificationGetHelp'] = 'Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten wird (kann jederzeit abbestellt werden).';
+        arrLang['fra']['notificationOffer'] = 'Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe benötigt wird (kann jederzeit abbestellt werden)';
+        arrLang['fra']['dataPolicy1'] = 'Ich akzeptiere hiermit die ';
+        arrLang['fra']['dataPolicy2'] = 'Nutzungs- ';
+        arrLang['fra']['dataPolicy1'] = ' Datenschutz-Bestimmungen';
+        arrLang['fra']['confirm'] = 'Senden';
+        arrLang['fra']['messageSuccessful'] = 'Deine Nachricht wurde übermittelt.';
+        arrLang['fra']['messageFailed'] = 'Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später noch ein mal.';
+        arrLang['fra']['description1h'] = 'Was ist die Corona Helpmap?';
+        arrLang['fra']['description1b'] = 'Die Helpmap ermöglicht die Vernetzung von Menschen und Organisationen im näheren und etwas weiteren Umkreis, um Hilfsangebote und -gesuche zusammenzubringen. Das Vermittlungsportal kann von Privatpersonen ebenso wie von relevanten Unternehmen genutzt werden, etwa aus den Bereichen (Lebensmittel-)Einzelhandel, Pflege oder Pharmazie. Die Nutzung des Portals selbst ist immer kostenfrei. Die vermittelten Leistungen können ehrenamtlich oder kostenpflichtig sein, dies ist individuelle Verhandlungssache zwischen Helfern und Hilfesuchenden. Kommerzielle Gesuche und Angebote sind klar als solche gekennzeichnet.';
+        arrLang['fra']['description2h'] = 'Helfen, nicht anstecken!';
+        arrLang['fra']['description2b1'] = 'Es gibt eine Reihe anerkannter Vorsichtsmaßnahmen, die Sie treffen sollten, damit Sie sich nicht selbst gefährden oder andere Menschen mit dem Coronavirus anstecken. Dies gilt besonders, wenn Sie sich Personen aus den sogenannten Risikogruppen nähern – also älteren Menschen und Menschen mit Vorerkrankungen. Seien Sie verantwortungsbewußt. Meiden Sie unbedingt den Kontakt zu anderen, wenn Sie selbst Erkältungssymptome haben! Und nehmen Sie sich Zeit für diese rund';
+        arrLang['fra']['description3b2'] = '30-minütige Hygiene- und Desinfektionsschulung';
+        arrLang['fra']['description3h'] = 'Tipps zur Sicherheit';
+        arrLang['fra']['description3b'] = 'Die Corona Helpmap verbindet Menschen, die sich vorher nicht kannten. Wir glauben, dass die meisten Teilnehmenden tatsächlich Unterstützung leisten wollen. Dennoch ist es sicherlich sinnvoll, sich einige Gedanken zur eigenen Sicherheit zu machen und zu überlegen, wie man sich vor Betrug schützen kann. Wir haben für Sie einige Hinweise zusammengestellt.';
+        arrLang['fra']['imprint'] = 'Impressum';
+
         // Italian content
-        arrLang['itl']['lang'] = 'Linguaggio';
-        arrLang['itl']['titel2'] = 'Aiuto diretto dal quartiere';
-        arrLang['itl']['enterCity'] = 'entra nella tua città';
-        arrLang['itl']['search'] = 'Ricerca';
-        arrLang['itl']['location'] = 'entra nella tua città';
-        arrLang['itl']['button1.1'] = 'Registrati come aiuto';
-        arrLang['itl']['button1.2'] = 'Voglio aiutare!';
-        arrLang['itl']['button2.1'] = 'Inserisci richiesta';
-        arrLang['itl']['button2.2'] = 'Ho bisogno di aiuto!';
-        arrLang['itl']['descr1t'] = 'translation: #TODO';
-        arrLang['itl']['descr1b'] = 'translation: #TODO';
-        arrLang['itl']['descr2t'] = 'translation: #TODO';
-        arrLang['itl']['descr2b'] = 'translation: #TODO';
-        arrLang['itl']['descr2b1'] = 'translation: #TODO';
-        arrLang['itl']['descr3t'] = 'translation: #TODO';
-        arrLang['itl']['descr3b'] = 'translation: #TODO';
-        arrLang['itl']['imprint'] = 'translation: #TODO';
+        arrLang['itl']['lang'] = 'Sprache';
+        arrLang['itl']['plz'] = 'Ort, Land oder PLZ';  //TODO (placeholder)
+        arrLang['itl']['heading1'] = 'Direkte Hilfe aus der Nachbarschaft';
+        arrLang['itl']['heading2'] = 'Wir beweisen, dass unsere Ziele mit gemeinsamer sozialer Verantwortung erreichbar sind.';
+        arrLang['itl']['getHelp'] = 'Hilfe erhalten';
+        arrLang['itl']['giveHelp'] = 'Helfen';
+        arrLang['itl']['privatperson'] = 'Privatperson';
+        arrLang['itl']['organization'] = 'Organisation';
+        arrLang['itl']['job'] = 'Beruf';  //TODO (placeholder)
+        arrLang['itl']['address'] = 'Anschrift*';
+        arrLang['itl']['email'] = 'E-Mail Adresse*';
+        arrLang['itl']['description'] = 'Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen.';
+        arrLang['itl']['offer'] = 'Was bieten Sie an?*';
+        arrLang['itl']['categories'] = 'Kategorien';
+        arrLang['itl']['household'] = 'Haushalt';
+        arrLang['itl']['laundry'] = 'Wäsche';
+        arrLang['itl']['medication'] = 'Medikamente';
+        arrLang['itl']['shopping'] = 'Einkaufen';
+        arrLang['itl']['pets'] = 'Haustiere';
+        arrLang['itl']['escort'] = 'Begleitung (Spaziergänge, Arztbesuche & Ähnliches)';
+        arrLang['itl']['conversations'] = 'Gespräche (telefonisch)';
+        arrLang['itl']['agriculture'] = 'Erntehilfe';
+        arrLang['itl']['other'] = 'Sonstiges';
+        arrLang['itl']['required'] = 'Erforderlich';
+        arrLang['itl']['handicap'] = 'Erfahrung im Umgang mit Behinderten';
+        arrLang['itl']['car'] = 'Auto vorhanden';
+        arrLang['itl']['notificationGetHelp'] = 'Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten wird (kann jederzeit abbestellt werden).';
+        arrLang['itl']['notificationOffer'] = 'Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe benötigt wird (kann jederzeit abbestellt werden)';
+        arrLang['itl']['dataPolicy1'] = 'Ich akzeptiere hiermit die ';
+        arrLang['itl']['dataPolicy2'] = 'Nutzungs- ';
+        arrLang['itl']['dataPolicy1'] = ' Datenschutz-Bestimmungen';
+        arrLang['itl']['confirm'] = 'Senden';
+        arrLang['itl']['messageSuccessful'] = 'Deine Nachricht wurde übermittelt.';
+        arrLang['itl']['messageFailed'] = 'Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später noch ein mal.';
+        arrLang['itl']['description1h'] = 'Was ist die Corona Helpmap?';
+        arrLang['itl']['description1b'] = 'Die Helpmap ermöglicht die Vernetzung von Menschen und Organisationen im näheren und etwas weiteren Umkreis, um Hilfsangebote und -gesuche zusammenzubringen. Das Vermittlungsportal kann von Privatpersonen ebenso wie von relevanten Unternehmen genutzt werden, etwa aus den Bereichen (Lebensmittel-)Einzelhandel, Pflege oder Pharmazie. Die Nutzung des Portals selbst ist immer kostenfrei. Die vermittelten Leistungen können ehrenamtlich oder kostenpflichtig sein, dies ist individuelle Verhandlungssache zwischen Helfern und Hilfesuchenden. Kommerzielle Gesuche und Angebote sind klar als solche gekennzeichnet.';
+        arrLang['itl']['description2h'] = 'Helfen, nicht anstecken!';
+        arrLang['itl']['description2b1'] = 'Es gibt eine Reihe anerkannter Vorsichtsmaßnahmen, die Sie treffen sollten, damit Sie sich nicht selbst gefährden oder andere Menschen mit dem Coronavirus anstecken. Dies gilt besonders, wenn Sie sich Personen aus den sogenannten Risikogruppen nähern – also älteren Menschen und Menschen mit Vorerkrankungen. Seien Sie verantwortungsbewußt. Meiden Sie unbedingt den Kontakt zu anderen, wenn Sie selbst Erkältungssymptome haben! Und nehmen Sie sich Zeit für diese rund';
+        arrLang['itl']['description3b2'] = '30-minütige Hygiene- und Desinfektionsschulung';
+        arrLang['itl']['description3h'] = 'Tipps zur Sicherheit';
+        arrLang['itl']['description3b'] = 'Die Corona Helpmap verbindet Menschen, die sich vorher nicht kannten. Wir glauben, dass die meisten Teilnehmenden tatsächlich Unterstützung leisten wollen. Dennoch ist es sicherlich sinnvoll, sich einige Gedanken zur eigenen Sicherheit zu machen und zu überlegen, wie man sich vor Betrug schützen kann. Wir haben für Sie einige Hinweise zusammengestellt.';
+        arrLang['itl']['imprint'] = 'Impressum';
 
-        // Spanish content
-        arrLang['spn']['lang'] = 'Idioma';
-        arrLang['spn']['titel2'] = 'Ayuda directa del barrio';
-        arrLang['spn']['enterCity'] = 'ingresa tu ciudad';
-        arrLang['spn']['search'] = 'Buscar';
-        arrLang['spn']['location'] = 'ingresa tu ciudad';
-        arrLang['spn']['button1.1'] = 'Registrarse como ayudante';
-        arrLang['spn']['button1.2'] = '¡Quiero ayudar!';
-        arrLang['spn']['button2.1'] = 'Introducir solicitud';
-        arrLang['spn']['button2.2'] = '¡Necesito ayuda!';
-        arrLang['spn']['descr1t'] = 'translation: #TODO';
-        arrLang['spn']['descr1b'] = 'translation: #TODO';
-        arrLang['spn']['descr2t'] = 'translation: #TODO';
-        arrLang['spn']['descr2b'] = 'translation: #TODO';
-        arrLang['spn']['descr2b1'] = 'translation: #TODO';
-        arrLang['spn']['descr3t'] = 'translation: #TODO';
-        arrLang['spn']['descr3b'] = 'translation: #TODO';
-        arrLang['spn']['imprint'] = 'translation: #TODO';
+        //Spanish content
+        arrLang['spn']['lang'] = 'Sprache';
+        arrLang['spn']['plz'] = 'Ort, Land oder PLZ';  //TODO (placeholder)
+        arrLang['spn']['heading1'] = 'Direkte Hilfe aus der Nachbarschaft';
+        arrLang['spn']['heading2'] = 'Wir beweisen, dass unsere Ziele mit gemeinsamer sozialer Verantwortung erreichbar sind.';
+        arrLang['spn']['getHelp'] = 'Hilfe erhalten';
+        arrLang['spn']['giveHelp'] = 'Helfen';
+        arrLang['spn']['privatperson'] = 'Privatperson';
+        arrLang['spn']['organization'] = 'Organisation';
+        arrLang['spn']['job'] = 'Beruf';  //TODO (placeholder)
+        arrLang['spn']['address'] = 'Anschrift*';
+        arrLang['spn']['email'] = 'E-Mail Adresse*';
+        arrLang['spn']['description'] = 'Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen.';
+        arrLang['spn']['offer'] = 'Was bieten Sie an?*';
+        arrLang['spn']['categories'] = 'Kategorien';
+        arrLang['spn']['household'] = 'Haushalt';
+        arrLang['spn']['laundry'] = 'Wäsche';
+        arrLang['spn']['medication'] = 'Medikamente';
+        arrLang['spn']['shopping'] = 'Einkaufen';
+        arrLang['spn']['pets'] = 'Haustiere';
+        arrLang['spn']['escort'] = 'Begleitung (Spaziergänge, Arztbesuche & Ähnliches)';
+        arrLang['spn']['conversations'] = 'Gespräche (telefonisch)';
+        arrLang['spn']['agriculture'] = 'Erntehilfe';
+        arrLang['spn']['other'] = 'Sonstiges';
+        arrLang['spn']['required'] = 'Erforderlich';
+        arrLang['spn']['handicap'] = 'Erfahrung im Umgang mit Behinderten';
+        arrLang['spn']['car'] = 'Auto vorhanden';
+        arrLang['spn']['notificationGetHelp'] = 'Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten wird (kann jederzeit abbestellt werden).';
+        arrLang['spn']['notificationOffer'] = 'Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe benötigt wird (kann jederzeit abbestellt werden)';
+        arrLang['spn']['dataPolicy1'] = 'Ich akzeptiere hiermit die ';
+        arrLang['spn']['dataPolicy2'] = 'Nutzungs- ';
+        arrLang['spn']['dataPolicy1'] = ' Datenschutz-Bestimmungen';
+        arrLang['spn']['confirm'] = 'Senden';
+        arrLang['spn']['messageSuccessful'] = 'Deine Nachricht wurde übermittelt.';
+        arrLang['spn']['messageFailed'] = 'Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später noch ein mal.';
+        arrLang['spn']['description1h'] = 'Was ist die Corona Helpmap?';
+        arrLang['spn']['description1b'] = 'Die Helpmap ermöglicht die Vernetzung von Menschen und Organisationen im näheren und etwas weiteren Umkreis, um Hilfsangebote und -gesuche zusammenzubringen. Das Vermittlungsportal kann von Privatpersonen ebenso wie von relevanten Unternehmen genutzt werden, etwa aus den Bereichen (Lebensmittel-)Einzelhandel, Pflege oder Pharmazie. Die Nutzung des Portals selbst ist immer kostenfrei. Die vermittelten Leistungen können ehrenamtlich oder kostenpflichtig sein, dies ist individuelle Verhandlungssache zwischen Helfern und Hilfesuchenden. Kommerzielle Gesuche und Angebote sind klar als solche gekennzeichnet.';
+        arrLang['spn']['description2h'] = 'Helfen, nicht anstecken!';
+        arrLang['spn']['description2b1'] = 'Es gibt eine Reihe anerkannter Vorsichtsmaßnahmen, die Sie treffen sollten, damit Sie sich nicht selbst gefährden oder andere Menschen mit dem Coronavirus anstecken. Dies gilt besonders, wenn Sie sich Personen aus den sogenannten Risikogruppen nähern – also älteren Menschen und Menschen mit Vorerkrankungen. Seien Sie verantwortungsbewußt. Meiden Sie unbedingt den Kontakt zu anderen, wenn Sie selbst Erkältungssymptome haben! Und nehmen Sie sich Zeit für diese rund';
+        arrLang['spn']['description3b2'] = '30-minütige Hygiene- und Desinfektionsschulung';
+        arrLang['spn']['description3h'] = 'Tipps zur Sicherheit';
+        arrLang['spn']['description3b'] = 'Die Corona Helpmap verbindet Menschen, die sich vorher nicht kannten. Wir glauben, dass die meisten Teilnehmenden tatsächlich Unterstützung leisten wollen. Dennoch ist es sicherlich sinnvoll, sich einige Gedanken zur eigenen Sicherheit zu machen und zu überlegen, wie man sich vor Betrug schützen kann. Wir haben für Sie einige Hinweise zusammengestellt.';
+        arrLang['spn']['imprint'] = 'Impressum';
 
-        // French content
-        arrLang['fra']['lang'] = 'Langue';
-        arrLang['fra']['titel2'] = 'translation: #TODO';
-        arrLang['fra']['enterCity'] = 'translation: #TODO';
-        arrLang['fra']['search'] = 'translation: #TODO';
-        arrLang['fra']['location'] = 'translation: #TODO';
-        arrLang['fra']['button1.1'] = 'translation: #TODO';
-        arrLang['fra']['button1.2'] = 'translation: #TODO';
-        arrLang['fra']['button2.1'] = 'translation: #TODO';
-        arrLang['fra']['button2.2'] = 'translation: #TODO';
-        arrLang['fra']['descr1t'] = 'translation: #TODO';
-        arrLang['fra']['descr1b'] = 'translation: #TODO';
-        arrLang['fra']['descr2t'] = 'translation: #TODO';
-        arrLang['fra']['descr2b'] = 'translation: #TODO';
-        arrLang['fra']['descr2b1'] = 'translation: #TODO';
-        arrLang['fra']['descr3t'] = 'translation: #TODO';
-        arrLang['fra']['descr3b'] = 'translation: #TODO';
-        arrLang['fra']['imprint'] = 'translation: #TODO';
+        //Arabic content
+        arrLang['arb']['lang'] = 'Sprache';
+        arrLang['arb']['plz'] = 'Ort, Land oder PLZ';  //TODO (placeholder)
+        arrLang['arb']['heading1'] = 'Direkte Hilfe aus der Nachbarschaft';
+        arrLang['arb']['heading2'] = 'Wir beweisen, dass unsere Ziele mit gemeinsamer sozialer Verantwortung erreichbar sind.';
+        arrLang['arb']['getHelp'] = 'Hilfe erhalten';
+        arrLang['arb']['giveHelp'] = 'Helfen';
+        arrLang['arb']['privatperson'] = 'Privatperson';
+        arrLang['arb']['organization'] = 'Organisation';
+        arrLang['arb']['job'] = 'Beruf';  //TODO (placeholder)
+        arrLang['arb']['address'] = 'Anschrift*';
+        arrLang['arb']['email'] = 'E-Mail Adresse*';
+        arrLang['arb']['description'] = 'Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen.';
+        arrLang['arb']['offer'] = 'Was bieten Sie an?*';
+        arrLang['arb']['categories'] = 'Kategorien';
+        arrLang['arb']['household'] = 'Haushalt';
+        arrLang['arb']['laundry'] = 'Wäsche';
+        arrLang['arb']['medication'] = 'Medikamente';
+        arrLang['arb']['shopping'] = 'Einkaufen';
+        arrLang['arb']['pets'] = 'Haustiere';
+        arrLang['arb']['escort'] = 'Begleitung (Spaziergänge, Arztbesuche & Ähnliches)';
+        arrLang['arb']['conversations'] = 'Gespräche (telefonisch)';
+        arrLang['arb']['agriculture'] = 'Erntehilfe';
+        arrLang['arb']['other'] = 'Sonstiges';
+        arrLang['arb']['required'] = 'Erforderlich';
+        arrLang['arb']['handicap'] = 'Erfahrung im Umgang mit Behinderten';
+        arrLang['arb']['car'] = 'Auto vorhanden';
+        arrLang['arb']['notificationGetHelp'] = 'Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten wird (kann jederzeit abbestellt werden).';
+        arrLang['arb']['notificationOffer'] = 'Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe benötigt wird (kann jederzeit abbestellt werden)';
+        arrLang['arb']['dataPolicy1'] = 'Ich akzeptiere hiermit die ';
+        arrLang['arb']['dataPolicy2'] = 'Nutzungs- ';
+        arrLang['arb']['dataPolicy1'] = ' Datenschutz-Bestimmungen';
+        arrLang['arb']['confirm'] = 'Senden';
+        arrLang['arb']['messageSuccessful'] = 'Deine Nachricht wurde übermittelt.';
+        arrLang['arb']['messageFailed'] = 'Es gab Probleme bei der Übermittlung deiner Daten. Versuche es später noch ein mal.';
+        arrLang['arb']['description1h'] = 'Was ist die Corona Helpmap?';
+        arrLang['arb']['description1b'] = 'Die Helpmap ermöglicht die Vernetzung von Menschen und Organisationen im näheren und etwas weiteren Umkreis, um Hilfsangebote und -gesuche zusammenzubringen. Das Vermittlungsportal kann von Privatpersonen ebenso wie von relevanten Unternehmen genutzt werden, etwa aus den Bereichen (Lebensmittel-)Einzelhandel, Pflege oder Pharmazie. Die Nutzung des Portals selbst ist immer kostenfrei. Die vermittelten Leistungen können ehrenamtlich oder kostenpflichtig sein, dies ist individuelle Verhandlungssache zwischen Helfern und Hilfesuchenden. Kommerzielle Gesuche und Angebote sind klar als solche gekennzeichnet.';
+        arrLang['arb']['description2h'] = 'Helfen, nicht anstecken!';
+        arrLang['arb']['description2b1'] = 'Es gibt eine Reihe anerkannter Vorsichtsmaßnahmen, die Sie treffen sollten, damit Sie sich nicht selbst gefährden oder andere Menschen mit dem Coronavirus anstecken. Dies gilt besonders, wenn Sie sich Personen aus den sogenannten Risikogruppen nähern – also älteren Menschen und Menschen mit Vorerkrankungen. Seien Sie verantwortungsbewußt. Meiden Sie unbedingt den Kontakt zu anderen, wenn Sie selbst Erkältungssymptome haben! Und nehmen Sie sich Zeit für diese rund';
+        arrLang['arb']['description3b2'] = '30-minütige Hygiene- und Desinfektionsschulung';
+        arrLang['arb']['description3h'] = 'Tipps zur Sicherheit';
+        arrLang['arb']['description3b'] = 'Die Corona Helpmap verbindet Menschen, die sich vorher nicht kannten. Wir glauben, dass die meisten Teilnehmenden tatsächlich Unterstützung leisten wollen. Dennoch ist es sicherlich sinnvoll, sich einige Gedanken zur eigenen Sicherheit zu machen und zu überlegen, wie man sich vor Betrug schützen kann. Wir haben für Sie einige Hinweise zusammengestellt.';
+        arrLang['arb']['imprint'] = 'Impressum';
 
-        // Arabic content
-        arrLang['arb']['lang'] = 'لغة';
-        arrLang['arb']['titel2'] = 'translation: #TODO';
-        arrLang['arb']['enterCity'] = 'translation: #TODO';
-        arrLang['arb']['search'] = 'translation: #TODO';
-        arrLang['arb']['location'] = 'translation: #TODO';
-        arrLang['arb']['button1.1'] = 'translation: #TODO';
-        arrLang['arb']['button1.2'] = 'translation: #TODO';
-        arrLang['arb']['button2.1'] = 'translation: #TODO';
-        arrLang['arb']['button2.2'] = 'translation: #TODO';
-        arrLang['arb']['descr1t'] = 'translation: #TODO';
-        arrLang['arb']['descr1b'] = 'translation: #TODO';
-        arrLang['arb']['descr2t'] = 'translation: #TODO';
-        arrLang['arb']['descr2b'] = 'translation: #TODO';
-        arrLang['arb']['descr2b1'] = 'translation: #TODO';
-        arrLang['arb']['descr3t'] = 'translation: #TODO';
-        arrLang['arb']['descr3b'] = 'translation: #TODO';
-        arrLang['arb']['imprint'] = 'translation: #TODO';
+        
 
-
+                
+                        
+                
+                
+                
+                
+                
         // Process translation
         $(function () {
             $('.translate').click(function () {
@@ -211,236 +371,240 @@ zusammenzubringen." />
 
 
 </head>
-
-<body>
-
-    <nav class="navbar navbar-light d-flex justify-content-space justify-content-between"
-        style="background-color: #ffffff;">
-        <a class="navbar-brand order-1" href="#">
-            <img src="image1.svg" width="50" height="50" class="d-inline-block align-center mr-3" alt=""><strong>Corona
-                Helpmap</strong></a>
-        <div class="input-group order-3 order-md-2">
-            <input id="searchCity" type="search" class="form-control search lang" key="enterCity"
-                placeholder="Ort, Land oder PLZ" aria-label="Recipient's username" aria-describedby="searchCity-button">
-            <div class="input-group-append">
-                <button class="btn btn-success lang" key="search" type="button" id="searchCity-button">Suche</button>
-            </div>
-        </div>
-
-        <button class="navbar-toggler order-2 order-md-3" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-
-        <div class="collapse navbar-collapse justify-content-end order-2 order-md-3" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-
-                <!-- ↓ Code to change the Language ↓ -->
-                <li class="nav-item dropdown text-right">
-                    <a class="nav-link dropdown-toggle lang" key="lang" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Language
-                    </a>
-                    <div class="dropdown-menu text-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item translate" id="eng">English</a>
-                        <a class="dropdown-item translate" id="ger">German</a>
-                        <a class="dropdown-item translate" id="itl">Italian</a>
-                        <a class="dropdown-item translate" id="spn">Spanish</a>
-                        <a class="dropdown-item translate" id="fra">French</a>
-                        <a class="dropdown-item translate" id="arb">Arabic</a>
-                </li>
-                <!-- ↑ Code to change the Language ↑ -->
-
-            </ul>
-
-        </div>
-    </nav>
-
-
-
-    <div id="Wrapper" class="bg-light" style="background-color: #ffffff !important;">
-
-        <div class="map-wrapper">
-
-            <div id="mapid"></div>
-
-        </div>
-        <section class="info-section bg-light p-5" style="background-color: #ffffff !important;">
-            <div class="row">
-                <!-- Website Description -->
-                <div class="col-12 col-lg-4 website-description">
-                    <div class="head">
-                        <h1 class="logo" data-toggle="tooltip" style="font-weight:600"><a href="/">Direkte Hilfe aus
-                                der Nachbarschaft.</a></h1>
-                        <p class="description lang" key="titel2">Wir beweisen, dass unsere Ziele mit gemeinsamer
-                            sozialer Verantwortung erreichbar sind. </p><br>
-                    </div>
-                </div>
-                <!-- Forms -->
-                <div class="col-12 col-lg-7 offset-lg-1">
-                    <ul class="nav nav-tabs form-nav" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                aria-controls="home" aria-selected="true">Hilfe erhalten</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                aria-controls="profile" aria-selected="false">Helfen</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <!-- CONTENT 1 -->
-
-
-
-
-
-                            <div class="signup-form">
-                                <form id="input_fields_seeker">
-                                    <!--<h2>Hilfe erhalten</h2>-->
-                                    <!--<p class="text-muted" style="font-size:90%;"></p>-->
-
-                                    <!-- Type of Helper -->
-                                    <div class="form-check form-check-inline mb-3">
-                                        <input class="form-check-input" type="radio" name="typeOfPerson" id="private"
-                                            value="private" checked>
-                                        <label class="form-check-label text-body" for="private">
-                                            Privatperson</label>
+                
+                <body>
+                
+                    <nav class="navbar navbar-light d-flex justify-content-space justify-content-between"
+                        style="background-color: #ffffff;">
+                        <a class="navbar-brand order-1" href="#">
+                            <img src="image1.svg" width="50" height="50" class="d-inline-block align-center mr-3" alt=""><strong>Corona
+                                Helpmap</strong></a>
+                        <div class="input-group order-3 order-md-2">
+                            <input id="searchCity" type="search" class="form-control search lang" key="enterCity"
+                                placeholder="Ort, Land oder PLZ" aria-label="Recipient's username" aria-describedby="searchCity-button">
+                            <div class="input-group-append">
+                                <button class="btn btn-success lang" key="search" type="button" id="searchCity-button">Suche</button>
+                            </div>
+                        </div>
+                
+                        <button class="navbar-toggler order-2 order-md-3" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                
+                
+                
+                        <div class="collapse navbar-collapse justify-content-end order-2 order-md-3" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                
+                                <!-- ↓ Code to change the Language ↓ -->
+                                <li class="nav-item dropdown text-right">
+                                    <a class="nav-link dropdown-toggle lang" key="lang" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Language
+                                    </a>
+                                    <div class="dropdown-menu text-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item translate" id="eng">English</a>
+                                        <a class="dropdown-item translate" id="ger">German</a>
+                                        <a class="dropdown-item translate" id="itl">Italian</a>
+                                        <a class="dropdown-item translate" id="spn">Spanish</a>
+                                        <a class="dropdown-item translate" id="fra">French</a>
+                                        <a class="dropdown-item translate" id="arb">Arabic</a>  
+                                </li>
+                                <!-- ↑ Code to change the Language ↑ -->
+                
+                            </ul>
+                
+                        </div>
+                    </nav>
+                
+                
+                
+                    <div id="Wrapper" class="bg-light" style="background-color: #ffffff !important;">
+                
+                        <div class="map-wrapper">
+                
+                            <div id="mapid"></div>
+                
+                        </div>
+                        <section class="info-section bg-light p-5" style="background-color: #ffffff !important;">
+                            <div class="row">
+                                <!-- Website Description -->
+                                <div class="col-12 col-lg-4 website-description">
+                                    <div class="head">
+                                        <h1 class="logo lang" key="heading1" data-toggle="tooltip" style="font-weight:600"><a href="/">Direkte Hilfe aus
+                                                der Nachbarschaft.</a></h1>
+                                        <p class="description lang" key="heading2">Wir beweisen, dass unsere Ziele mit gemeinsamer
+                                            sozialer Verantwortung erreichbar sind. </p><br>
                                     </div>
-                                    <div class="form-check form-check-inline mb-3">
-                                        <input class="form-check-input" type="radio" name="typeOfPerson"
-                                            id="organisation" value="organisation">
-                                        <label class="form-check-label text-body" for="organisation">
-                                            Organisation</label>
-                                    </div>
-
-                                    <!-- Job -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="work" placeholder="Beruf*"
-                                            required="required"></div>
-
-                                    <!-- PLZ -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="address" placeholder="Anschrift*"
-                                            required="required"></div>
-
-                                    <!-- E-Mail -->
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" name="contactInfo"
-                                            placeholder="E-Mail Adresse*" required="required">
-                                    </div>
-                                    <!-- Type of Help -->
-                                    <div class="form-group">
-                                        <textarea type="text" class="form-control" name="typeOfHelp"
-                                            placeholder="Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen."
-                                            required="required" rows="4"></textarea></div>
-                                    <!-- Bezahlung 
-                    <p class="text-body"><strong>Aufwandsentschädigung</strong></p>
-                    <div class="input-group mb-3">
-                        <select class="custom-select" id="paid">
-                            <option selected>Wähle aus ...</option>
-                            <option value="paid">Ich möchte gerne etwas bezahlen</option>
-                            <option value="unpaid">Ich suche nach unentgeltlicher Hilfe</option>
-                            <option value="both">Beides</option>
-                        </select>
-                    </div>-->
+                                </div>
+                                <!-- Forms -->
+                                <div class="col-12 col-lg-7 offset-lg-1">
+                                    <ul class="nav nav-tabs form-nav" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active lang" key="getHelp" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                                aria-controls="home" aria-selected="true">Hilfe erhalten</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link help lang" key="giveHelp" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                                aria-controls="profile" aria-selected="false">Helfen</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                            <!-- CONTENT 1 -->
+                
+                
+                
+                
+                
+                                            <div class="signup-form">
+                                                <form id="input_fields_seeker">
+                                                    <!--<h2>Hilfe erhalten</h2>-->
+                                                    <!--<p class="text-muted" style="font-size:90%;"></p>-->
+                
+                                                    <!-- Type of Helper -->
+                                                    <div class="form-check form-check-inline mb-3">
+                                                        <input class="form-check-input" type="radio" name="typeOfPerson" id="private"
+                                                            value="private" checked>
+                                                        <label class="form-check-label text-body lang" key="privatperson" for="private">
+                                                            Privatperson</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline mb-3">
+                                                        <input class="form-check-input" type="radio" name="typeOfPerson"
+                                                            id="organisation" value="organisation">
+                                                        <label class="form-check-label text-body lang" key="organization" for="organisation">
+                                                            Organisation</label>
+                                                    </div>
+                
+                                                    <!-- Job -->
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="work" placeholder="Beruf*"
+                                                            required="required"></div>
+                
+                                                    <!-- PLZ -->
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="address" placeholder="Anschrift*"
+                                                            required="required"></div>
+                
+                                                    <!-- E-Mail -->
+                                                    <div class="form-group">
+                                                        <input type="email" class="form-control" name="contactInfo"
+                                                            placeholder="E-Mail Adresse*" required="required">
+                                                    </div>
+                                                    <!-- Type of Help -->
+                                                    <div class="form-group">
+                                                        <textarea type="text" class="form-control" name="typeOfHelp"
+                                                            placeholder="Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen."
+                                                            required="required" rows="4"></textarea></div>
+                                                    <!-- Bezahlung 
+                                    <p class="text-body"><strong>Aufwandsentschädigung</strong></p>
+                                    <div class="input-group mb-3">
+                                        <select class="custom-select" id="paid">
+                                            <option selected>Wähle aus ...</option>
+                                            <option value="paid">Ich möchte gerne etwas bezahlen</option>
+                                            <option value="unpaid">Ich suche nach unentgeltlicher Hilfe</option>
+                                            <option value="both">Beides</option>
+                                        </select>
+                                    </div>-->
+                
                                     <!-- Kategorien -->
                                     <div class="form-group category">
-                                        <div class="title mb-1">
+                                        <div class="title mb-1 lang" key="categories">
                                             Kategorien
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="household"
-                                                value="household">
-                                            <label class="form-check-label" for="household">
-                                                <i class="material-icons">house</i> Haushalt
+                                            <input class="form-check-input" type="checkbox" id="household" value="household">
+                                            <i class="material-icons">house</i>
+                                            <label class="form-check-label lang" key="household" for="household">
+                                                Haushalt
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="laundry"
-                                                value="laundry">
-                                            <label class="form-check-label" for="laundry">
-                                                <i class="material-icons">local_laundry_service</i> Wäsche
+                                            <input class="form-check-input" type="checkbox" id="laundry" value="laundry">
+                                            <i class="material-icons">local_laundry_service</i>
+                                            <label class="form-check-label lang" key="laundry" for="laundry">
+                                                Wäsche
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="medication"
-                                                value="medication">
-                                            <label class="form-check-label" for="medication">
-                                                <i class="material-icons">local_pharmacy</i> Medikamente
+                                            <input class="form-check-input" type="checkbox" id="medication" value="medication">
+                                            <i class="material-icons">local_pharmacy</i>
+                                            <label class="form-check-label label lang" key="medication" for="medication">
+                                                Medikamente
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="shopping"
-                                                value="shopping">
-                                            <label class="form-check-label" for="shopping">
-                                                <i class="material-icons">shopping_cart</i> Einkaufen
+                                            <input class="form-check-input" type="checkbox" id="shopping" value="shopping">
+                                            <i class="material-icons">shopping_cart</i>
+                                            <label class="form-check-label lang" key="shopping" for="shopping">
+                                                Einkaufen
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="pets" value="pets">
-                                            <label class="form-check-label" for="pets">
-                                                <i class="material-icons">pets</i> Haustiere
+                                            <i class="material-icons">pets</i>
+                                            <label class="form-check-label lang" key="pets" for="pets">
+                                                Haustiere
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="escort" value="escort">
-                                            <label class="form-check-label" for="escort">
-                                                <i class="material-icons">supervisor_account</i> Begleitung
-                                                (Spaziergänge, Arztbesuche &
+                                            <i class="material-icons">supervisor_account</i>
+                                            <label class="form-check-label lang" key="escort" for="escort">
+                                                Begleitung (Spaziergänge, Arztbesuche &
                                                 Ähnliches)
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="conversations"
-                                                value="conversations">
-                                            <label class="form-check-label" for="conversations">
-                                                <i class="material-icons">phone</i> Gespräche (telefonisch)
+                                            <input class="form-check-input" type="checkbox" id="conversations" value="conversations">
+                                            <i class="material-icons">phone</i>
+                                            <label class="form-check-label lang" key="conversations" for="conversations">
+                                                Gespräche (telefonisch)
                                             </label>
                                         </div>
-
+                                        
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="agriculture"
-                                                value="agriculture">
-                                            <label class="form-check-label" for="agriculture">
-                                                <i class="material-icons">eco</i> Erntehilfe
+                                            <input class="form-check-input" type="checkbox" id="agriculture" value="agriculture">
+                                            <i class="material-icons">eco</i> 
+                                            <label class="form-check-label lang" key="agriculture" for="agriculture">
+                                                Erntehilfe
                                             </label>
                                         </div>
-
+                                        
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="other" value="other">
-                                            <label class="form-check-label" for="other">
-                                                <i class="material-icons">help</i> Sonstiges
+                                            <i class="material-icons">help</i>
+                                            <label class="form-check-label lang" key="other" for="other">
+                                                Sonstiges
                                             </label>
                                         </div>
-                                        <div class="title mb-1">
+                                        <div class="title mb-1 lang" key="required">
                                             Erforderlich
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="handicap"
-                                                value="handicap">
-                                            <label class="form-check-label" for="handicap">
-                                                <i class="material-icons">accessible</i> Erfahrung im Umgang mit
-                                                Behinderten
+                                            <input class="form-check-input" type="checkbox" id="handicap" value="handicap">
+                                            <i class="material-icons">accessible</i>
+                                            <label class="form-check-label lang" key="handicap" for="handicap">
+                                                 Erfahrung im Umgang mit Behinderten
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="car" value="car">
-                                            <label class="form-check-label" for="car">
-                                                <i class="material-icons">directions_car</i> Auto
+                                            <i class="material-icons">directions_car</i>
+                                            <label class="form-check-label lang" key="car" for="car">
+                                                 Auto vorhanden
                                             </label>
                                         </div>
                                     </div>
+
                                     <!-- Notifications -->
                                     <div class="form-group">
                                         <label class="checkbox-inline"><input type="checkbox" required="required">
                                             Ich möchte eine
                                             Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten
-                                            wird (kann jederzeit abbestellt werden).*</label>
+                                            wird (kann jederzeit abbestellt werden).</label>
                                     </div>
                                     <!-- Datenschutz -->
                                     <div class="form-group">
@@ -452,17 +616,15 @@ zusammenzubringen." />
                                     </div>
                                     <!-- Submit Button -->
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg">Senden</button>
+                                        <button type="submit" class="btn btn-primary btn-lg lang" key="confirm">Senden</button>
                                     </div>
-                                    <div id="success-message" class="alert success">Deine Nachricht wurde
+                                    <div id="success-message" class="alert success lang" key="messageSuccessful">Deine Nachricht wurde
                                         übermittelt.</div>
-                                    <div id="error-message" class="alert error">Es gab Probleme bei der Übermittlung
+                                    <div id="error-message" class="alert error lang" key="messageFailed">Es gab Probleme bei der Übermittlung
                                         deiner Daten.
                                         Versuche es später noch
                                         ein mal.</div>
                                 </form>
-                                <!--<div class="hint-text">Angebot wieder von der Karte entfernen? <a href="#">Hier wieder abmelden</a>
-                </div>-->
                             </div>
 
                             <!--FORMULAR ENDE-->
@@ -545,7 +707,7 @@ zusammenzubringen." />
                                             <input class="form-check-input" type="checkbox" id="medication"
                                                 value="medication">
                                             <i class="material-icons">local_pharmacy</i>
-                                            <label class="form-check-label label" key="medication" for="medication">
+                                            <label class="form-check-label label lang" key="medication" for="medication">
                                                 Medikamente
                                             </label>
                                         </div>
@@ -620,7 +782,7 @@ zusammenzubringen." />
 
                                     <!-- Notifications -->
                                     <div class="form-group">
-                                        <label class="checkbox-inline"><input type="checkbox" required="required">
+                                        <label class="checkbox-inline lang" key="notificationOffer"><input type="checkbox" required="required">
                                             Ich möchte eine
                                             Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe benötigt
                                             wird (kann jederzeit abbestellt werden).*</label>
@@ -639,14 +801,14 @@ zusammenzubringen." />
                                         <button type="submit" class="btn btn-primary btn-lg lang"
                                             key="confirm">Senden</button>
                                     </div>
-                                    <div id="success-message" class="alert success lang" key="success">Deine
+                                    <div id="success-message" class="alert success lang" key="messageSuccessful">Deine
                                         Nachricht wurde übermittelt.</div>
-                                    <div id="error-message" class="alert error lang" key="failed">Es gab Probleme
+                                    <div id="error-message" class="alert error lang" key="messageFailed">Es gab Probleme
                                         bei der Übermittlung deiner Daten.
                                         Versuche es später noch ein mal.</div>
                                 </form>
                                 <!--<div class="lang" key="delete1">Angebot wieder von der Karte entfernen? 
-                </div><a class="hint-text lang" key="unsubscribe" href="#">Hier wieder abmelden</a>-->
+                                </div><a class="hint-text lang" key="unsubscribe" href="#">Hier wieder abmelden</a>-->
                             </div>
                             <!--FORMULAR 2 ENDE-->
 
@@ -664,8 +826,8 @@ zusammenzubringen." />
                     <img src="image1.svg" alt="Logo">
                 </div>
                 <div class="col-12 col-sm-8 col-md-9">
-                    <h2 class="lang" key="descr1t">Was ist die Corona Helpmap?</h2>
-                    <p class="lang" key="descr1b"> Die Helpmap ermöglicht die Vernetzung von Menschen und Organisationen
+                    <h2 class="lang" key="description1h">Was ist die Corona Helpmap?</h2>
+                    <p class="lang" key="description1b"> Die Helpmap ermöglicht die Vernetzung von Menschen und Organisationen
                         im näheren und etwas
                         weiteren
                         Umkreis, um Hilfsangebote und -gesuche zusammenzubringen. Das Vermittlungsportal kann von
@@ -686,8 +848,8 @@ zusammenzubringen." />
                     <img src="help-icon.svg" alt="">
                 </div>
                 <div class="col-12 col-sm-8 col-md-9">
-                    <h2 class="lang" key="descr2t">Helfen, nicht anstecken!</h2>
-                    <p class="lang" key="descr2b">Es gibt eine Reihe anerkannter Vorsichtsmaßnahmen, die Sie treffen
+                    <h2 class="lang" key="description2h">Helfen, nicht anstecken!</h2>
+                    <p class="lang" key="description2b1">Es gibt eine Reihe anerkannter Vorsichtsmaßnahmen, die Sie treffen
                         sollten, damit Sie sich nicht
                         selbst
                         gefährden oder andere Menschen mit dem Coronavirus anstecken. Dies gilt besonders, wenn Sie sich
@@ -710,8 +872,8 @@ zusammenzubringen." />
                     <img src="tips.svg" alt="">
                 </div>
                 <div class="col-12 col-sm-8 col-md-9">
-                    <h2 class="lang" key="descr3t">Tipps zur Sicherheit</h2>
-                    <p class="lang" key="descr3b">Die Corona Helpmap verbindet Menschen, die sich vorher nicht kannten.
+                    <h2 class="lang" key="description3h">Tipps zur Sicherheit</h2>
+                    <p class="lang" key="description3b">Die Corona Helpmap verbindet Menschen, die sich vorher nicht kannten.
                         Wir glauben, dass die
                         meisten
                         Teilnehmenden tatsächlich Unterstützung leisten wollen. Dennoch ist es sicherlich
