@@ -1,137 +1,48 @@
 const functions = require('firebase-functions');
 const admin = require("firebase-admin")
 const nodemailer = require('nodemailer');
-const openGeocoder = require('node-open-geocoder');
-
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
-
-
+const fetch = require('fetch');
 
 admin.initializeApp();
 let db = admin.firestore();
 
 //google account credentials used to send email
 var transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        user: '',
-        pass: ''
-    }
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  auth: {
+    user: '',
+    pass: ''
+  }
 });
 
-
-
-/*
-...
-const location = await getLocationData('135 pilkington avenue, birmingham')
-console.log(location) // => {lat: ..., long: ...}
-*/
-function getLocationData(address) {
-    return new Promise((resolve, reject) => {
-        openGeocoder()
-      .geocode(address)
-      .end((err, res) => {
-        if(err){
-          reject(err)
-        }
-        resolve({
-                  lat: res[0].lat,
-                  lon: res[0].lon,  
-              })
-      })
-    })
+async function searchAddressCoordinates(address) {
+  address = address.replace(/ /g, '+');
+  const result = await fetch.fetchUrl(`https://nominatim.openstreetmap.org/search/search?q=${address}&format=json`);
+  const json = await result.json();
+  if (json && json.length > 0) {
+      return {
+          lat: parseFloat(json[0].lat),
+          lon: parseFloat(json[0].lon),
+      };
+  } else {
+      return null;
+  }
 }
 
-exports.addZipHelper = functions.firestore
-    .document('helpersPreZip/{Id}')
-    .onCreate(async (snap, context) => {
-        const location = await getLocationData(snap.data().address)
-        console.log(snap.data().timestamp);
-          let data = {
-          
-            address: snap.data().address,
-            addressLat: location.lat,
-            addressLong: location.lon,
-            typeOfProfession: snap.data().typeOfProfession,
-            contactInfo: snap.data().contactInfo,
-            id: snap.id,
-            typeOfHelp: snap.data().typeOfHelp,
-            typeOfPerson: snap.data().typeOfPerson,
-            
-            categories: {
-              household: snap.data().categories.household,
-              laundry: snap.data().categories.laundry,
-              medication: snap.data().categories.medication,
-              shopping: snap.data().categories.shopping,
-              pets: snap.data().categories.pets,
-              escort: snap.data().categories.escort,
-              conversations: snap.data().categories.conversations,
-              handicap: snap.data().categories.handicap,
-              agriculture: snap.data().categories.agriculture,
-              car: snap.data().categories.car,
-              other: snap.data().categories.other,
-            },
-            timestamp: snap.data().timestamp
-
-          };
-
-
-        db.collection('helpers').doc(snap.id).set(data, {merge: true});
-
-
-        
-    })
-
-
-
-exports.addZipSearcher = functions.firestore
-    .document('searcherPreZip/{Id}')
-    .onCreate(async (snap, context) => {
-        const location = await getLocationData(snap.data().address)
-        console.log(snap.data().timestamp);
-          let data = {
-          
-            address: snap.data().address,
-            addressLat: location.lat,
-            addressLong: location.lon,
-            contactInfo: snap.data().contactInfo,
-            typeOfProfession: snap.data().typeOfProfession,
-            id: snap.id,
-            typeOfHelp: snap.data().typeOfHelp,
-            typeOfPerson: snap.data().typeOfPerson,
-            
-            categories: {
-              household: snap.data().categories.household,
-              laundry: snap.data().categories.laundry,
-              medication: snap.data().categories.medication,
-              shopping: snap.data().categories.shopping,
-              pets: snap.data().categories.pets,
-              escort: snap.data().categories.escort,
-              conversations: snap.data().categories.conversations,
-              handicap: snap.data().categories.handicap,
-              agriculture: snap.data().categories.agriculture,
-              car: snap.data().categories.car,
-              other: snap.data().categories.other,
-            },
-            timestamp: snap.data().timestamp
-
-          };
-
-
-        db.collection('searcher').doc(snap.id).set(data, {merge: true});
-
-
-        
-    })
+// Adds coordinate data to new user document if there is none set already.
+exports.addLocationData = functions.firestore
+  .document('users/{Id}')
+  .onCreate(async (snap, context) => {
+    let coords = snap.data().location;
+    if (!coords) {
+      location = await searchAddressCoordinates(snap.data().address);
+      await db.collection('users').doc(snap.id).update({
+        location: new firebase.firestore.GeoPoint(coords.lat, coords.lon),
+      });
+    }
+  })
 
 /*
 
@@ -662,8 +573,8 @@ exports.sendMessageToSearcher = functions.firestore
 */
 
 exports.sendConfirmationToSearcher = functions.firestore
-    .document('searcher/{Id}')
-    .onCreate(async (snap, context) => {
+  .document('searcher/{Id}')
+  .onCreate(async (snap, context) => {
 
 
 
@@ -672,12 +583,12 @@ exports.sendConfirmationToSearcher = functions.firestore
 
 
 
-        const mailOptions = {
-            from: '"Corona Helpmap" <mbellogularte@gmail.com>',
-            to: snap.data().contactInfo,
-            
-            subject: "Registrierungsbestätigung für Suchende",
-            html: `
+    const mailOptions = {
+      from: '"Corona Helpmap" <mbellogularte@gmail.com>',
+      to: snap.data().contactInfo,
+
+      subject: "Registrierungsbestätigung für Suchende",
+      html: `
 
             <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html data-editor-version="2" class="sg-campaigns" xmlns="http://www.w3.org/1999/xhtml"><head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -868,23 +779,23 @@ exports.sendConfirmationToSearcher = functions.firestore
 
                                 `
 
-            
-        };
-        return transporter.sendMail(mailOptions, (error, data) => {
+
+    };
+    return transporter.sendMail(mailOptions, (error, data) => {
 
 
-            if (error) {
-                console.log(error)
-                return
-            }
-            console.log("Sent!")
-        });
-    })
+      if (error) {
+        console.log(error)
+        return
+      }
+      console.log("Sent!")
+    });
+  })
 
 
 exports.sendConfirmationToHelper = functions.firestore
-    .document('helpers/{Id}')
-    .onCreate(async (snap, context) => {
+  .document('helpers/{Id}')
+  .onCreate(async (snap, context) => {
 
 
 
@@ -893,12 +804,12 @@ exports.sendConfirmationToHelper = functions.firestore
 
 
 
-        const mailOptions = {
-            from: '"Corona Helpmap" <mbellogularte@gmail.com>',
-            to: snap.data().contactInfo,
-            
-            subject: "Registrierungsbestätigung für Helfende",
-            html: `
+    const mailOptions = {
+      from: '"Corona Helpmap" <mbellogularte@gmail.com>',
+      to: snap.data().contactInfo,
+
+      subject: "Registrierungsbestätigung für Helfende",
+      html: `
 
             <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html data-editor-version="2" class="sg-campaigns" xmlns="http://www.w3.org/1999/xhtml"><head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -1089,15 +1000,15 @@ exports.sendConfirmationToHelper = functions.firestore
 
                                 `
 
-            
-        };
-        return transporter.sendMail(mailOptions, (error, data) => {
+
+    };
+    return transporter.sendMail(mailOptions, (error, data) => {
 
 
-            if (error) {
-                console.log(error)
-                return
-            }
-            console.log("Sent!")
-        });
+      if (error) {
+        console.log(error)
+        return
+      }
+      console.log("Sent!")
     });
+  });
