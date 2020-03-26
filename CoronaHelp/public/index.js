@@ -145,7 +145,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 // Loads all users and shows them on the map
 async function loadUsers() {
-    const snapshot = await db.collection('usersPublic').get();
+    const snapshot = await db.collection('users').get();
     snapshot.forEach((doc) => {
         const url = "send.html?id=";
         const customId = doc.id;
@@ -161,28 +161,28 @@ async function loadUsers() {
         else {
             accountTypeConverted = "Organisation";
         }
-        
+
         if (doc.isHelper) {
             markers.addLayer(
                 L.marker(
-                    [doc.data().location.latitude, doc.data().location.longitude], 
+                    [doc.data().location.latitude, doc.data().location.longitude],
                     { icon: greenIcon })
-                .bindPopup( accountTypeConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">' 
-                            + doc.data().profession + '</span>' + '<br><br><i>"' + doc.data().helpDescription
-                            + '"</i><br><br><a href=' + urlFinal 
-                            + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>')
-                .openPopup());
+                    .bindPopup(accountTypeConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">'
+                        + doc.data().profession + '</span>' + '<br><br><i>"' + doc.data().helpDescription
+                        + '"</i><br><br><a href=' + urlFinal
+                        + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>')
+                    .openPopup());
         } else if (doc.isRequester) {
             markers.addLayer(
                 L.marker(
                     [doc.data().location.latitude, doc.data().location.longitude],
                     { icon: blueIcon })
-                .bindPopup(
-                    accountTypeConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">'
-                    + doc.data().profession + '</span>' + '<br><br><i>"' + doc.data().requestDescription
-                    + '"<br><br><a href=' + urlFinal
-                    + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>')
-                .openPopup());
+                    .bindPopup(
+                        accountTypeConverted + '<br>' + '<span style="font-size:12pt;font-weight:bold">'
+                        + doc.data().profession + '</span>' + '<br><br><i>"' + doc.data().requestDescription
+                        + '"<br><br><a href=' + urlFinal
+                        + ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>')
+                    .openPopup());
         }
     });
     mymap.addLayer(markers);
@@ -247,9 +247,9 @@ formHelper.addEventListener('submit', async (e) => {
                 car: formHelper.car.checked,
                 other: formHelper.other.checked,
             }
-        }, formHelper.email.value,).then(() => formHelper.querySelector('#success-message').style.display = 'block');
+        }, formHelper.email.value).then(() => formHelper.querySelector('#success-message').style.display = 'block');
         formHelper.reset();
-    } catch(error) {
+    } catch (error) {
         formHelper.querySelector('#error-message').style.display = 'block';
         console.error("Error adding document: ", error)
     }
