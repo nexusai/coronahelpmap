@@ -75,9 +75,10 @@ color: #fff;}
 height: 4px;
 width: 4px;}
 ::-webkit-scrollbar-track {
-background:#1e1e1e;}
-::-webkit-scrollbar-thumb {
 background:#FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+background:#df2600bd;
 cursor:pointer;}
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -665,5 +666,8 @@ border-width: 0 5px 5px;}
 
 /* Info Section */
 .info-section img{
-  width: 80%;
+  width: 44%;
+}
+.coronahelpmap-red {
+    color: #DE2A00;
 }
