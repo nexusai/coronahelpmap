@@ -101,6 +101,7 @@ margin: 0;}
     .signup-form{
         /* width: 390px; */
         margin: 30px auto;
+        border-radius: 1em;
     }
     .signup-form form{
         color: #0c062f;
