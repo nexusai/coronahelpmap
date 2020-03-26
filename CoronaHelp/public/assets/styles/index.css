@@ -671,3 +671,7 @@ border-width: 0 5px 5px;}
 .coronahelpmap-red {
     color: #DE2A00;
 }
+
+.info-section a, .info-section p{
+    display: inline;
+}
