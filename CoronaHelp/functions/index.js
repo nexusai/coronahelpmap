@@ -265,39 +265,10 @@ exports.sendMessageToHelper = functions.firestore
       </tr>
     </tbody>
   </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="8b5181ed-0827-471c-972b-74c77e326e3d">
-    
-  
-  
         </div>
       </center>
-    
-  
 </body></html>
-
-                                `
-
-            
         };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         try {
             await transporter.sendMail(mailOptions);
             console.log('Sent!');
@@ -527,39 +498,10 @@ exports.sendMessageToSearcher = functions.firestore
       </tr>
     </tbody>
   </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="8b5181ed-0827-471c-972b-74c77e326e3d">
-    
-  
-  
         </div>
       </center>
-    
-  
-</body></html>
-
-                                `
-
-            
+</body></html>`
         };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         try {
             await transporter.sendMail(mailOptions);
             console.log('Sent!');
@@ -575,14 +517,6 @@ exports.sendMessageToSearcher = functions.firestore
 exports.sendConfirmationToSearcher = functions.firestore
   .document('searcher/{Id}')
   .onCreate(async (snap, context) => {
-
-
-
-
-
-
-
-
     const mailOptions = {
       from: '"Corona Helpmap" <mbellogularte@gmail.com>',
       to: snap.data().contactInfo,
@@ -768,22 +702,11 @@ exports.sendConfirmationToSearcher = functions.firestore
       </tr>
     </tbody>
   </table><table class="module" role="module" data-type="text" border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;" data-muid="8b5181ed-0827-471c-972b-74c77e326e3d">
-    
-  
-  
         </div>
       </center>
-    
-  
-</body></html>
-
-                                `
-
-
+</body></html>`
     };
     return transporter.sendMail(mailOptions, (error, data) => {
-
-
       if (error) {
         console.log(error)
         return
