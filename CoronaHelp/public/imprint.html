@@ -13,7 +13,7 @@
     <meta name="googlebot" content="index, follow, noodp, noydir" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="shortcut icon" href="image1.svg" />
+    <link rel="shortcut icon" href="assets/svg/image1.svg" />
 
     <link rel="canonical" href="https://furcan.github.io/Markers-On-Map/" />
 
@@ -29,7 +29,123 @@
     <link id="FontMuli" href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&display=swap&subset=latin-ext" rel="stylesheet">
     <link id="FontConsolas" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin-ext" rel="stylesheet">
 
-    <link rel="stylesheet" href="imprint.css?v=1.3.0">
+    <link rel="stylesheet" href="assets/styles/imprint.css?v=1.3.0">
+
+
+     <!-- ↓ Code to change the Language ↓ -->
+
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+     <script type="text/javascript">
+         var arrLang = new Array();
+         arrLang['eng'] = new Array();
+         arrLang['ger'] = new Array();
+         arrLang['fra'] = new Array();
+         arrLang['itl'] = new Array();
+         arrLang['spn'] = new Array();
+         arrLang['arb'] = new Array();
+
+         // German content
+        arrLang['ger']['imprint'] = 'Impressum';
+        arrLang['ger']['according'] = 'Angaben gemäß § 5 TMG';
+        arrLang['ger']['contact'] = 'Kontakt';
+        arrLang['ger']['phone'] = 'Telefon: +49 177 337 4041';
+        arrLang['ger']['dispute1'] = 'EU-Streitschlichtung';
+        arrLang['ger']['dispute2'] = 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: ';
+        arrLang['ger']['dispute3'] = 'Unsere E-Mail-Adresse finden Sie oben im Impressum.';
+        arrLang['ger']['arbitration1'] = 'Verbraucherstreitbeilegung/';
+        arrLang['ger']['arbitration2'] = 'Universalschlichtungsstelle';
+        arrLang['ger']['arbitration3'] = 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.';
+        arrLang['ger']['liability1'] = 'Haftung fuer Inhalte';
+        arrLang['ger']['liability2'] = 'Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, uebermittelte oder gespeicherte fremde Informationen zu ueberwachen oder nach Umstaenden zu forschen, die auf eine rechtswidrige Taetigkeit hinweisen.';
+        arrLang['ger']['liability3'] = 'Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.';
+        
+        // English content 
+        arrLang['eng']['imprint'] = 'Imprint';
+        arrLang['eng']['according'] = 'According to § 5 TMG';
+        arrLang['eng']['contact'] = 'Contact';
+        arrLang['eng']['phone'] = 'Phone: +49 177 337 4041';
+        arrLang['eng']['dispute1'] = 'EU dispute settlement';
+        arrLang['eng']['dispute2'] = 'The European Commission provides a platform for online dispute resolution (OS): ';
+        arrLang['eng']['dispute3'] = 'You can find our email address in the imprint above.';
+        arrLang['eng']['arbitration1'] = 'Consumer dispute resolution /';
+        arrLang['eng']['arbitration2'] = 'Universal arbitration board';
+        arrLang['eng']['arbitration3'] = 'We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.';
+        arrLang['eng']['liability1'] = 'Liability for content';
+        arrLang['eng']['liability2'] = 'As a service provider, we are responsible for our own content on these pages in accordance with general laws in accordance with Section 7 (1) TMG. According to §§ 8 to 10 TMG, we as a service provider are not obliged to monitor transmitted or stored third-party information or to search for circumstances that indicate illegal activity.';
+        arrLang['eng']['liability3'] = 'Obligations to remove or block the use of information according to general laws remain unaffected. However, liability in this regard is only possible from the time we become aware of a specific legal violation. As soon as we become aware of such violations, we will remove this content immediately.'
+
+        // French content 
+        arrLang['fra']['imprint'] = 'Impressum';
+        arrLang['fra']['according'] = 'Angaben gemäß § 5 TMG';
+        arrLang['fra']['contact'] = 'Kontakt';
+        arrLang['fra']['phone'] = 'Telefon: +49 177 337 4041';
+        arrLang['fra']['dispute1'] = 'EU-Streitschlichtung';
+        arrLang['fra']['dispute2'] = 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: ';
+        arrLang['fra']['dispute3'] = 'Unsere E-Mail-Adresse finden Sie oben im Impressum.';
+        arrLang['fra']['arbitration1'] = 'Verbraucherstreitbeilegung/';
+        arrLang['fra']['arbitration2'] = 'Universalschlichtungsstelle';
+        arrLang['fra']['arbitration3'] = 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.';
+        arrLang['fra']['liability1'] = 'Haftung fuer Inhalte';
+        arrLang['fra']['liability2'] = 'Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, uebermittelte oder gespeicherte fremde Informationen zu ueberwachen oder nach Umstaenden zu forschen, die auf eine rechtswidrige Taetigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberuehrt. Eine diesbezuegliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung moeglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.';
+        arrLang['fra']['liability3'] = 'Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.';
+
+        // Italian content 
+        arrLang['itl']['imprint'] = 'Impressum';
+        arrLang['itl']['according'] = 'Angaben gemäß § 5 TMG';
+        arrLang['itl']['contact'] = 'Kontakt';
+        arrLang['itl']['phone'] = 'Telefon: +49 177 337 4041';
+        arrLang['itl']['dispute1'] = 'EU-Streitschlichtung';
+        arrLang['itl']['dispute2'] = 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: ';
+        arrLang['itl']['dispute3'] = 'Unsere E-Mail-Adresse finden Sie oben im Impressum.';
+        arrLang['itl']['arbitration1'] = 'Verbraucherstreitbeilegung/';
+        arrLang['itl']['arbitration2'] = 'Universalschlichtungsstelle';
+        arrLang['itl']['arbitration3'] = 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.';
+        arrLang['itl']['liability1'] = 'Haftung fuer Inhalte';
+        arrLang['itl']['liability2'] = 'Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, uebermittelte oder gespeicherte fremde Informationen zu ueberwachen oder nach Umstaenden zu forschen, die auf eine rechtswidrige Taetigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberuehrt. Eine diesbezuegliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung moeglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.';
+        arrLang['itl']['liability3'] = 'Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.';
+
+        // Spanish content 
+        arrLang['spn']['imprint'] = 'Impressum';
+        arrLang['spn']['according'] = 'Angaben gemäß § 5 TMG';
+        arrLang['spn']['contact'] = 'Kontakt';
+        arrLang['spn']['phone'] = 'Telefon: +49 177 337 4041';
+        arrLang['spn']['dispute1'] = 'EU-Streitschlichtung';
+        arrLang['spn']['dispute2'] = 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: ';
+        arrLang['spn']['dispute3'] = 'Unsere E-Mail-Adresse finden Sie oben im Impressum.';
+        arrLang['spn']['arbitration1'] = 'Verbraucherstreitbeilegung/';
+        arrLang['spn']['arbitration2'] = 'Universalschlichtungsstelle';
+        arrLang['spn']['arbitration3'] = 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.';
+        arrLang['spn']['liability1'] = 'Haftung fuer Inhalte';
+        arrLang['spn']['liability2'] = 'Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, uebermittelte oder gespeicherte fremde Informationen zu ueberwachen oder nach Umstaenden zu forschen, die auf eine rechtswidrige Taetigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberuehrt. Eine diesbezuegliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung moeglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.';
+        arrLang['spn']['liability3'] = 'Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.';
+
+        // Arab content 
+        arrLang['arb']['imprint'] = 'Impressum';
+        arrLang['arb']['according'] = 'Angaben gemäß § 5 TMG';
+        arrLang['arb']['contact'] = 'Kontakt';
+        arrLang['arb']['phone'] = 'Telefon: +49 177 337 4041';
+        arrLang['arb']['dispute1'] = 'EU-Streitschlichtung';
+        arrLang['arb']['dispute2'] = 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: ';
+        arrLang['arb']['dispute3'] = 'Unsere E-Mail-Adresse finden Sie oben im Impressum.';
+        arrLang['arb']['arbitration1'] = 'Verbraucherstreitbeilegung/';
+        arrLang['arb']['arbitration2'] = 'Universalschlichtungsstelle';
+        arrLang['arb']['arbitration3'] = 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.';
+        arrLang['arb']['liability1'] = 'Haftung fuer Inhalte';
+        arrLang['arb']['liability2'] = 'Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, uebermittelte oder gespeicherte fremde Informationen zu ueberwachen oder nach Umstaenden zu forschen, die auf eine rechtswidrige Taetigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberuehrt. Eine diesbezuegliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung moeglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.';
+        arrLang['arb']['liability3'] = 'Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.';
+
+
+    // Process translation
+    $(function () {
+                var lang = "eng";
+
+                $('.lang').each(function (index, item) {
+                    $(this).text(arrLang[lang][$(this).attr('key')]);
+                });
+        });
+    </script>
+
+    <!-- ↑ Code to change the Language ↑ -->
 
 </head>
 
@@ -38,7 +154,7 @@
     <div id="Wrapper">
 
         <footer id="Footer">
-            <p><b><span style="font-size: small;">Impressum</span></b><br /><br /><span>Angaben gem&auml;&szlig; &sect; 5 TMG</span><br /><br /><span>Mateo Bello Gularte</span><br /><span>Graefestrasse 7</span><br /><span>10967 Berlin</span><br /><br /><span>Kontakt</span><br /><span>Telefon: +49 177 337 4041</span><br /><span>E-Mail:&nbsp;</span><a href="mailto:mbellogularte@gmail.com" target="_blank" rel="noopener">mbellogularte@gmail.com</a><span></span><br /><br /><span>EU-Streitschlichtung</span><br /><span>Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:&nbsp;</span><a href="https://ec.europa.eu/consumers/odr" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://ec.europa.eu/consumers/odr&amp;source=gmail&amp;ust=1584743915410000&amp;usg=AFQjCNFWQGKBQCX4XRfN9idzb-BN3mZJFw" rel="noopener">https://ec.europa.eu/<wbr />consumers/odr</a><span>.</span><br /><span>Unsere E-Mail-Adresse finden Sie oben im Impressum.</span><br /><br /><span>Verbraucherstreitbeilegung/</span><wbr /><span>Universalschlichtungsstelle</span><br /><span>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</span><br /><br /><span>Haftung f&uuml;r Inhalte</span><br /><span>Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs.1 TMG f&uuml;r eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach &sect;&sect; 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, &uuml;bermittelte oder gespeicherte fremde Informationen zu &uuml;berwachen oder nach Umst&auml;nden zu forschen, die auf eine rechtswidrige T&auml;tigkeit hinweisen.</span><br /><span>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unber&uuml;hrt. Eine diesbez&uuml;gliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung m&ouml;glich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</span></p>
+            <p><b><span class="lang" key="imprint" style="font-size: small;">Impressum</span></b><br /><br /><span class="lang" key="according">Angaben gem&auml;&szlig; &sect; 5 TMG</span><br /><br /><span>Mateo Bello Gularte</span><br /><span>Graefestrasse 7</span><br /><span>10967 Berlin</span><br /><br /><span class="lang" key="contact">Kontakt</span><br /><span class="lang" key="phone" >Telefon: +49 177 337 4041</span><br /><span>E-Mail:&nbsp;</span><a href="mailto:mbellogularte@gmail.com" target="_blank" rel="noopener">mbellogularte@gmail.com</a><span></span><br /><br /><span class="lang" key="dispute1">EU-Streitschlichtung</span><br /><span class="lang" key="dispute2">Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:&nbsp;</span><a href="https://ec.europa.eu/consumers/odr" target="_blank" data-saferedirecturl="https://www.google.com/url?q=https://ec.europa.eu/consumers/odr&amp;source=gmail&amp;ust=1584743915410000&amp;usg=AFQjCNFWQGKBQCX4XRfN9idzb-BN3mZJFw" rel="noopener">https://ec.europa.eu/<wbr />consumers/odr</a><span>.</span><br /><span class="lang" key="dispute3">Unsere E-Mail-Adresse finden Sie oben im Impressum.</span><br /><br /><span class="lang" key="arbitration1">Verbraucherstreitbeilegung/</span><wbr /><span class="lang" key="arbitration2" >Universalschlichtungsstelle</span><br /><span class="lang" key="arbitration3">Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</span><br /><br /><span class="lang" key="liability1">Haftung f&uuml;r Inhalte</span><br /><span class="lang" key="liability2">Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs.1 TMG f&uuml;r eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach &sect;&sect; 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, &uuml;bermittelte oder gespeicherte fremde Informationen zu &uuml;berwachen oder nach Umst&auml;nden zu forschen, die auf eine rechtswidrige T&auml;tigkeit hinweisen.</span><br /><span class="lang" key="liability3">Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unber&uuml;hrt. Eine diesbez&uuml;gliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung m&ouml;glich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</span></p>
         </footer>
 
         
@@ -51,7 +167,7 @@
 
 
         <footer id="Footer">
-            <p class="copyright">&copy; 2020 Corona Helpmap. All rights reserved.</p>
+            <p class="copyright lang" key="test">&copy; 2020 Corona Helpmap. All rights reserved.</p>
         </footer>
 
     </div>
@@ -62,9 +178,9 @@
     <script src="https://cdn.jsdelivr.net/npm/notiflix/dist/notiflix-aio-1.8.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://kit.fontawesome.com/833245c2e4.js"></script>
-    <script src="index-tooltip.js"></script>
+    <script src="assets/js/index-tooltip.js"></script>
     <script src="dist/markers-on-map-1.3.0.js"></script>
-    <script src="index.js?v=1.3.0"></script>
+    <script src="assets/js/index.js?v=1.3.0"></script>
     
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 
