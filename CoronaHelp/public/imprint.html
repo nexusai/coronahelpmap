@@ -72,7 +72,7 @@
         arrLang['eng']['arbitration3'] = 'We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.';
         arrLang['eng']['liability1'] = 'Liability for content';
         arrLang['eng']['liability2'] = 'As a service provider, we are responsible for our own content on these pages in accordance with general laws in accordance with Section 7 (1) TMG. According to §§ 8 to 10 TMG, we as a service provider are not obliged to monitor transmitted or stored third-party information or to search for circumstances that indicate illegal activity.';
-        arrLang['eng']['liability2'] = 'Obligations to remove or block the use of information according to general laws remain unaffected. However, liability in this regard is only possible from the time we become aware of a specific legal violation. As soon as we become aware of such violations, we will remove this content immediately.'
+        arrLang['eng']['liability3'] = 'Obligations to remove or block the use of information according to general laws remain unaffected. However, liability in this regard is only possible from the time we become aware of a specific legal violation. As soon as we become aware of such violations, we will remove this content immediately.'
 
         // French content 
         arrLang['fra']['imprint'] = 'Impressum';
@@ -137,7 +137,7 @@
 
     // Process translation
     $(function () {
-                var lang = "ger";
+                var lang = "eng";
 
                 $('.lang').each(function (index, item) {
                     $(this).text(arrLang[lang][$(this).attr('key')]);
