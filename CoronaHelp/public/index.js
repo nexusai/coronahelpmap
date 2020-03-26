@@ -236,16 +236,17 @@ formHelper.addEventListener('submit', async (e) => {
             accountType: formHelper.accountType.value,
             categories: {
                 household: formHelper.household.checked,
-                laundry: formHelper.laundry.checked,
-                medication: formHelper.medication.checked,
-                shopping: formHelper.shopping.checked,
+                courier_services: formHelper.courier_services.checked,
                 pets: formHelper.pets.checked,
-                escort: formHelper.escort.checked,
-                conversations: formHelper.conversations.checked,
-                handicap: formHelper.handicap.checked,
+                craft: formHelper.craft.checked,
                 agriculture: formHelper.agriculture.checked,
-                car: formHelper.car.checked,
+                retail: formHelper.retail.checked,
+                health: formHelper.health.checked,
+                care: formHelper.care.checked,
+                consultation: formHelper.consultation.checked,
                 other: formHelper.other.checked,
+                handicap: formHelper.handicap.checked,
+                car: formHelper.car.checked
             }
         }, formHelper.email.value).then(() => formHelper.querySelector('#success-message').style.display = 'block');
         formHelper.reset();
@@ -265,17 +266,18 @@ formSeeker.addEventListener('submit', (e) => {
             requestDescription: formSeeker.requestDescription.value,
             accountType: formSeeker.accountType.value,
             categories: {
-                household: formSeeker.household.checked,
-                laundry: formSeeker.laundry.checked,
-                medication: formSeeker.medication.checked,
-                shopping: formSeeker.shopping.checked,
-                pets: formSeeker.pets.checked,
-                escort: formSeeker.escort.checked,
-                conversations: formSeeker.conversations.checked,
-                handicap: formSeeker.handicap.checked,
-                agriculture: formSeeker.agriculture.checked,
-                car: formSeeker.car.checked,
-                other: formSeeker.other.checked,
+                household: formHelper.household.checked,
+                courier_services: formHelper.courier_services.checked,
+                pets: formHelper.pets.checked,
+                craft: formHelper.craft.checked,
+                agriculture: formHelper.agriculture.checked,
+                retail: formHelper.retail.checked,
+                health: formHelper.health.checked,
+                care: formHelper.care.checked,
+                consultation: formHelper.consultation.checked,
+                other: formHelper.other.checked,
+                handicap: formHelper.handicap.checked,
+                car: formHelper.car.checked
             },
         }, formSeeker.email.value).then(() => formHelper.querySelector('#success-message').style.display = 'block');
         formHelper.reset();
@@ -290,35 +292,38 @@ function renderCategories(categories) {
     if (categories.household) {
         icons += '<i class="material-icons">house</i>';
     }
-    if (categories.laundry) {
-        icons += '<i class="material-icons">local_laundry_service</i>';
-    }
-    if (categories.medication) {
-        icons += '<i class="material-icons">local_pharmacy</i>';
-    }
-    if (categories.shopping) {
-        icons += '<i class="material-icons">shopping_cart</i>';
+    if (categories.courier_services) {
+        icons += '<i class="material-icons">directions_run</i>';
     }
     if (categories.pets) {
         icons += '<i class="material-icons">pets</i>';
     }
-    if (categories.escort) {
-        icons += '<i class="material-icons">supervisor_account</i>';
-    }
-    if (categories.conversations) {
-        icons += '<i class="material-icons">phone</i>';
-    }
-    if (categories.handicap) {
-        icons += '<i class="material-icons">accessible</i>';
+    if (categories.craft) {
+        icons += '<i class="material-icons">build</i>';
     }
     if (categories.agriculture) {
         icons += '<i class="material-icons">eco</i>';
     }
-    if (categories.car) {
-        icons += '<i class="material-icons">directions_car</i>';
+    if (categories.retail) {
+        icons += '<i class="material-icons">shopping_cart</i>';
+    }
+    if (categories.health) {
+        icons += '<i class="material-icons">local_pharmacy</i>';
+    }
+    if (categories.care) {
+        icons += '<i class="material-icons">local_hotel</i>';
+    }
+    if (categories.consultation) {
+        icons += '<i class="material-icons">local_phone</i>';
     }
     if (categories.other) {
         icons += '<i class="material-icons">help</i>';
+    }
+    if (categories.handicap) {
+        icons += '<i class="material-icons">accessible</i>';
+    }
+    if (categories.car) {
+        icons += '<i class="material-icons">directions_car</i>';
     }
     return icons;
 }
