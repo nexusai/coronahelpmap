@@ -39,7 +39,7 @@ exports.addLocationData = functions.firestore
   });
 
 exports.makeContact = functions.firestore
-  .document("contactRequests")
+  .document("contactRequests/{Id}")
   .onCreate(async (snap, context) => {
     try {
       const receiverEmailAddress = (
