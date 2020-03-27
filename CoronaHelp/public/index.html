@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Corona Helpmap. Bringt Menschen und Nachbarschaften zusammen.</title> 
+    <title>Corona Helpmap. Bringt Menschen und Nachbarschaften zusammen.</title>
     <meta name="description" content="Corona Helpmap ermöglicht die Vernetzung von Menschen und Organisationen im
 näheren und etwas weiteren Umkreis, um Hilfsangebote und -gesuche
 zusammenzubringen." />
@@ -384,31 +384,29 @@ zusammenzubringen." />
                 
                 <body>
                 
-                    <nav class="navbar navbar-light d-flex justify-content-space justify-content-between" style="background-color: #ffffff;">
+
+                    <nav class="navbar navbar-light d-flex justify-content-space justify-content-between"
+                        style="background-color: #ffffff;">
                         <a class="navbar-brand order-1" href="#">
                             <img src="assets/svg/image1.svg" width="50" height="50" class="d-inline-block align-center mr-3" alt=""><strong>Corona
                                 Helpmap</strong></a>
-                        <div class="input-group order-4 order-md-2">
+                        <div class="input-group order-3 order-md-2">
                             <input id="searchCity" type="search" class="form-control search lang" key="enterCity"
                                 placeholder="Ort, Land oder PLZ" aria-label="Recipient's username" aria-describedby="searchCity-button">
                             <div class="input-group-append">
-                                <button class="btn btn-success lang" key="searchButton" type="button" id="searchCity-button">Suchen</button>
+                                <button class="btn btn-success lang" key="search" type="button" id="searchCity-button">Suche</button>
                             </div>
                         </div>
-                
-                        <button id="language-switcher"
-                            class="btn order-2 order-md-3 d-flex align-items-center" 
-                            type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
-                            aria-controls="collapseExample">
+                        <button id="language-switcher" class="btn order-2 order-md-3 d-flex align-items-center" type="button"
+                            data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             <span class="material-icons mr-2">
                                 language
                             </span>
                             Language
                         </button>
-                
+                        
                         <!-- ↓ Code to change the Language ↓ -->
-                        <ul id="collapseExample"
-                            class="list-group btn-group list-group-horizontal-sm collapse order-3 order-md-4 w-100 my-2">
+                        <ul id="collapseExample" class="list-group btn-group list-group-horizontal-sm collapse order-3 order-md-4 w-100 my-2">
                             <li id="eng" class="list-group-item btn-outline-dark translate">English</li>
                             <li id="ger" class="list-group-item btn-outline-dark translate">German</li>
                             <li id="itl" class="list-group-item btn-outline-dark translate">Italian</li>
@@ -418,391 +416,320 @@ zusammenzubringen." />
                         </ul>
                         <!-- ↑ Code to change the Language ↑ -->
                     </nav>
-                
-                
-                
-                    <div id="Wrapper" class="bg-light" style="background-color: #ffffff !important;">
-                
-                        <div class="map-wrapper">
-                
-                            <div id="mapid"></div>
-                
-                        </div>
-                        <!-- Form Section -->
-                        <section class="form-section bg-light px-4 py-5" style="background-color: #ffffff !important;">
 
-                            <!-- Website Description -->
-                            <div class="row">
-                                <div class="col-12 website-description">
-                                    <div class="head">
-                                        <h1 class="logo lang" key="heading1" data-toggle="tooltip" style="font-weight:600"><a href="/">Direkte Hilfe aus
-                                                der Nachbarschaft.</a></h1>
-                                        <p class="description lang" key="heading2">Wir beweisen, dass unsere Ziele mit gemeinsamer
-                                            sozialer Verantwortung erreichbar sind. </p><br>
-                                    </div>
+
+
+    <div id="Wrapper" class="bg-light" style="background-color: #ffffff !important;">
+
+        <div class="map-wrapper">
+
+            <div id="mapid"></div>
+
+        </div>
+        <section class="info-section bg-light p-5" style="background-color: #ffffff !important;">
+            <div class="row">
+                <!-- Website Description -->
+                <div class="col-12 website-description">
+                    <div class="head">
+                        <h1 class="logo" data-toggle="tooltip" style="font-weight:600"><a href="/">Direkte Hilfe aus
+                                der Nachbarschaft.</a></h1>
+                        <p class="description lang" key="titel2">Wir beweisen, dass unsere Ziele mit gemeinsamer
+                            sozialer Verantwortung erreichbar sind. </p><br>
+                    </div>
+                </div>
+            </div>
+            <!-- Forms -->
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <!--FORMULAR 1 START-->
+                    <div class="signup-form box-shadow-h pt-4 px-5">
+                        <h2>Hilfe Erhalten</h2>
+                        <p>Trage dich hier ein, wenn du Hilfe oder Unterstützung brauchst.</p>
+                        <form id="input_fields_seeker">
+                            <!--<h2>Hilfe erhalten</h2>-->
+                            <!--<p class="text-muted" style="font-size:90%;"></p>-->
+                    
+                            <!-- Type of Helper -->
+                            <div class="form-check form-check-inline mb-3">
+                                <input class="form-check-input" type="radio" name="accountType" id="private" value="private" checked>
+                                <label class="form-check-label text-body" for="private">
+                                    Privatperson</label>
+                            </div>
+                            <div class="form-check form-check-inline mb-3">
+                                <input class="form-check-input" type="radio" name="accountType" id="organisation" value="organisation">
+                                <label class="form-check-label text-body" for="organisation">
+                                    Organisation</label>
+                            </div>
+                    
+                            <!-- Job -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="profession" placeholder="Beruf*" required="required"></div>
+                    
+                            <!-- PLZ -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="address" placeholder="Anschrift*" required="required"></div>
+                    
+                            <!-- E-Mail -->
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="E-Mail Adresse*" required="required">
+                            </div>
+                            <!-- Type of Help -->
+                            <div class="form-group">
+                                <textarea type="text" class="form-control" name="requestDescription"
+                                    placeholder="Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen."
+                                    required="required" rows="4"></textarea></div>
+                            <!-- Kategorien -->
+                            <div class="form-group category">
+                                <div class="title mb-1 lang" key="categories">
+                                    Kategorien
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="household" value="household">
+                                    <label class="form-check-label" for="household">
+                                        <i class="material-icons">house</i> Haushalt
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="courier_services" value="courier_services">
+                                    <label class="form-check-label" for="courier_services">
+                                        <i class="material-icons">directions_run</i> Botendienste
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="pets" value="pets">
+                                    <label class="form-check-label" for="pets">
+                                        <i class="material-icons">pets</i> Tiere
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="craft" value="craft">
+                                    <label class="form-check-label" for="craft">
+                                        <i class="material-icons">build</i> Handwerk
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="agriculture" value="agriculture">
+                                    <label class="form-check-label" for="agriculture">
+                                        <i class="material-icons">eco</i> Landwirtschaft
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="retail" value="retail">
+                                    <label class="form-check-label" for="retail">
+                                        <i class="material-icons">shopping_cart</i> Einzelhandel
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="health" value="health">
+                                    <label class="form-check-label" for="health">
+                                        <i class="material-icons">local_pharmacy</i> Gesundheit
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="care" value="care">
+                                    <label class="form-check-label" for="care">
+                                        <i class="material-icons">local_hotel</i> Pflege
+                                    </label>
+                                </div>
+                    
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="consultation" value="consultation">
+                                    <label class="form-check-label" for="consultation">
+                                        <i class="material-icons">local_phone</i> Beratung und Hilfe
+                                    </label>
+                                </div>
+                    
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="other" value="other">
+                                    <label class="form-check-label" for="other">
+                                        <i class="material-icons">help</i> Sonstiges
+                                    </label>
+                                </div>
+                                <div class="title mb-1">
+                                    Erforderlich
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="handicap" value="handicap">
+                                    <label class="form-check-label" for="handicap">
+                                        <i class="material-icons">accessible</i> Erfahrung im Umgang mit
+                                        Behinderten
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="car" value="car">
+                                    <label class="form-check-label" for="car">
+                                        <i class="material-icons">directions_car</i> Auto
+                                    </label>
                                 </div>
                             </div>
-
-                            <!-- Forms -->
-                            <div class="row">
-                                <div class="col-12 col-lg-6">
-                                    <!--FORMULAR 1 START-->
-                                    <div class="signup-form box-shadow-h pt-4 px-5">
-                                        <h2>Hilfe Erhalten</h2>
-                                        <p>Trage dich hier ein, wenn du Hilfe oder Unterstützung brauchst.</p>
-                                        <form id="input_fields_seeker">
-                                            <!--<h2>Hilfe erhalten</h2>-->
-                                            <!--<p class="text-muted" style="font-size:90%;"></p>-->
-
-                                            <!-- Type of Helper -->
-                                            <div class="form-check form-check-inline mb-3">
-                                                <input class="form-check-input" type="radio" name="typeOfPerson"
-                                                    id="private" value="private" checked>
-                                                <label class="form-check-label text-body lang" key="privatperson"
-                                                    for="private">
-                                                    Privatperson</label>
-                                            </div>
-                                            <div class="form-check form-check-inline mb-3">
-                                                <input class="form-check-input" type="radio" name="typeOfPerson"
-                                                    id="organisation" value="organisation">
-                                                <label class="form-check-label text-body lang" key="organization"
-                                                    for="organisation">
-                                                    Organisation</label>
-                                            </div>
-
-                                            <!-- Job -->
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="work" placeholder="Beruf*"
-                                                    required="required"></div>
-
-                                            <!-- PLZ -->
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="address"
-                                                    placeholder="Anschrift*" required="required"></div>
-
-                                            <!-- E-Mail -->
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" name="contactInfo"
-                                                    placeholder="E-Mail Adresse*" required="required">
-                                            </div>
-                                            <!-- Type of Help -->
-                                            <div class="form-group">
-                                                <textarea type="text" class="form-control" name="typeOfHelp"
-                                                    placeholder="Beschreibung: z.B. Hilfe bei der Betreuung und Alltagsbegleitung von Kranken, Senioren, Behinderten oder einsamen Menschen."
-                                                    required="required" rows="4"></textarea></div>
-
-                                            <!-- Kategorien -->
-                                            <div class="form-group category">
-                                                <div class="title mb-1 lang" key="categories">
-                                                    Kategorien
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="household"
-                                                        value="household">
-                                                    <i class="material-icons">house</i>
-                                                    <label class="form-check-label lang" key="household"
-                                                        for="household">
-                                                        Haushalt
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="laundry"
-                                                        value="laundry">
-                                                    <i class="material-icons">local_laundry_service</i>
-                                                    <label class="form-check-label lang" key="laundry" for="laundry">
-                                                        Wäsche
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="medication"
-                                                        value="medication">
-                                                    <i class="material-icons">local_pharmacy</i>
-                                                    <label class="form-check-label label lang" key="medication"
-                                                        for="medication">
-                                                        Medikamente
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="shopping"
-                                                        value="shopping">
-                                                    <i class="material-icons">shopping_cart</i>
-                                                    <label class="form-check-label lang" key="shopping" for="shopping">
-                                                        Einkaufen
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="pets"
-                                                        value="pets">
-                                                    <i class="material-icons">pets</i>
-                                                    <label class="form-check-label lang" key="pets" for="pets">
-                                                        Haustiere
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="escort"
-                                                        value="escort">
-                                                    <i class="material-icons">supervisor_account</i>
-                                                    <label class="form-check-label lang" key="escort" for="escort">
-                                                        Begleitung (Spaziergänge, Arztbesuche &
-                                                        Ähnliches)
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="conversations"
-                                                        value="conversations">
-                                                    <i class="material-icons">phone</i>
-                                                    <label class="form-check-label lang" key="conversations"
-                                                        for="conversations">
-                                                        Gespräche (telefonisch)
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="agriculture"
-                                                        value="agriculture">
-                                                    <i class="material-icons">eco</i>
-                                                    <label class="form-check-label lang" key="agriculture"
-                                                        for="agriculture">
-                                                        Erntehilfe
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="other"
-                                                        value="other">
-                                                    <i class="material-icons">help</i>
-                                                    <label class="form-check-label lang" key="other" for="other">
-                                                        Sonstiges
-                                                    </label>
-                                                </div>
-                                                <div class="title mb-1 lang" key="required">
-                                                    Erforderlich
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="handicap"
-                                                        value="handicap">
-                                                    <i class="material-icons">accessible</i>
-                                                    <label class="form-check-label lang" key="handicap" for="handicap">
-                                                        Erfahrung im Umgang mit Behinderten
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="car"
-                                                        value="car">
-                                                    <i class="material-icons">directions_car</i>
-                                                    <label class="form-check-label lang" key="car" for="car">
-                                                        Auto vorhanden
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <!-- Notifications -->
-                                            <div class="form-group">
-                                                <label class="checkbox-inline"><input type="checkbox"
-                                                        required="required">
-                                                    Ich möchte eine
-                                                    Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten
-                                                    wird (kann jederzeit abbestellt werden).</label>
-                                            </div>
-                                            <!-- Datenschutz -->
-                                            <div class="form-group">
-                                                <label class="checkbox-inline"><input type="checkbox"
-                                                        required="required">
-                                                    Ich akzeptiere
-                                                    hiermit die <a href="#">Nutzungs- </a> &amp; <a
-                                                        href="#">Datenschutz-Bestimmungen
-                                                    </a>*</label>
-                                            </div>
-                                            <!-- Submit Button -->
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary btn-lg lang"
-                                                    key="confirm">Senden</button>
-                                            </div>
-                                            <div id="success-message" class="alert success lang"
-                                                key="messageSuccessful">Deine Nachricht wurde
-                                                übermittelt.</div>
-                                            <div id="error-message" class="alert error lang" key="messageFailed">Es gab
-                                                Probleme bei der Übermittlung
-                                                deiner Daten.
-                                                Versuche es später noch
-                                                ein mal.
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <!--FORMULAR 1 ENDE-->
+                            <!-- Notifications -->
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" required="required">
+                                    Ich möchte eine Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe angeboten wird (kann jederzeit
+                                    abbestellt werden).*</label>
+                            </div>
+                            <!-- Datenschutz -->
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" required="required">
+                                    Hiermit akzeptiere ich die <a href="#">Nutzungs- </a> &amp; <a href="#">Datenschutz-Bestimmungen
+                                    </a>*</label>
+                            </div>
+                            <!-- Submit Button -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-lg">Senden</button>
+                            </div>
+                            <div id="success-message" class="alert success">Deine Nachricht wurde übermittelt.</div>
+                            <div id="error-message" class="alert error">Es gab Probleme bei der Übermittlung deiner Daten. Versuche es
+                                später erneut.</div>
+                        </form>
+                        <!--<div class="hint-text">Angebot wieder von der Karte entfernen? <a href="#">Hier wieder abmelden</a>
+                                    </div>-->
+                    </div>
+                    <!--FORMULAR 1 ENDE-->
+                </div>
+                <div class="col-12 col-lg-6">
+                    <!--FORMULAR 2 START-->
+                    <div class="signup-form box-shadow-h pt-4 px-5">
+                        <h2>Helfen</h2>
+                        <p>Trage dich hier ein, wenn du anderen Menschen in Not helfen möchtest.</p>
+                        <form id="input_fields_helper">
+                            <!--<h2 class="lang" key="heading2">Als Helfer eintragen</h2>-->
+                            <!--<p class="text-muted lang" key="paragraph2" style="font-size:90%;"></p>-->
+                    
+                            <div class="form-check form-check-inline mb-3">
+                                <input class="form-check-input" type="radio" name="accountType" id="private" value="private" checked>
+                                <label class="form-check-label text-body lang" key="privatperson" for="private">
+                                    Privatperson</label>
+                            </div>
+                            <div class="form-check form-check-inline mb-3">
+                                <input class="form-check-input" type="radio" name="accountType" id="organisation" value="organisation">
+                                <label class="form-check-label text-body lang" key="organization" for="organisation"> Organisation</label>
+                            </div>
+                            <!-- Job -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="profession" placeholder="Beruf*" required="required"></div>
+                            <!-- PLZ -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="address" placeholder="Anschrift*" required="required"></div>
+                            <!-- E-Mail -->
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="E-Mail Adresse*" required="required">
+                            </div>
+                            <!-- Type of Help -->
+                            <div class="form-group">
+                                <textarea type="text" class="form-control" name="helpDescription" placeholder="Was bieten Sie an?*"
+                                    required="required" rows="4"></textarea>
+                            </div>
+                            <!-- Kategorien -->
+                            <div class="form-group category">
+                                <div class="title mb-1 lang" key="categories">
+                                    Kategorien
                                 </div>
-                                <div class="col-12 col-lg-6">
-                                    <!--FORMULAR 2 START-->
-                                    <div class="signup-form box-shadow-h pt-4 px-5">
-                                        <h2>Helfen</h2>
-                                        <p>Trage dich hier ein, wenn du anderen Menschen in Not helfen möchtest.</p>
-                                        <form id="input_fields_helper">
-                                            <!--<h2 class="lang" key="heading2">Als Helfer eintragen</h2>-->
-                                            <!--<p class="text-muted lang" key="paragraph2" style="font-size:90%;"></p>-->
-
-                                            <div class="form-check form-check-inline mb-3">
-                                                <input class="form-check-input" type="radio" name="typeOfPerson" id="private"
-                                                    value="private" checked>
-                                                <label class="form-check-label text-body lang" key="privatperson" for="private">
-                                                    Privatperson</label>
-                                            </div>
-                                            <div class="form-check form-check-inline mb-3">
-                                                <input class="form-check-input" type="radio" name="typeOfPerson"
-                                                    id="organisation" value="organisation">
-                                                <label class="form-check-label text-body lang" key="organization"
-                                                    for="organisation"> Organisation</label>
-                                            </div>
-                                            <!-- Job -->
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="work" placeholder="Beruf*"
-                                                    required="required"></div>
-                                            <!-- PLZ -->
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="address" placeholder="Anschrift*"
-                                                    required="required"></div>
-                                            <!-- E-Mail -->
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" name="contactInfo"
-                                                    placeholder="E-Mail Adresse*" required="required">
-                                            </div>
-                                            <!-- Type of Help -->
-                                            <div class="form-group">
-                                                <textarea type="text" class="form-control" name="typeOfHelp"
-                                                    placeholder="Was bieten Sie an?*" required="required" rows="4"></textarea>
-                                            </div>
-                                            <!-- Kategorien -->
-                                            <div class="form-group category">
-                                                <div class="title mb-1 lang" key="categories">
-                                                    Kategorien
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="household"
-                                                        value="household">
-                                                    <i class="material-icons">house</i>
-                                                    <label class="form-check-label lang" key="household" for="household">
-                                                        Haushalt
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="laundry"
-                                                        value="laundry">
-                                                    <i class="material-icons">local_laundry_service</i>
-                                                    <label class="form-check-label lang" key="laundry" for="laundry">
-                                                        Wäsche
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="medication"
-                                                        value="medication">
-                                                    <i class="material-icons">local_pharmacy</i>
-                                                    <label class="form-check-label label lang" key="medication" for="medication">
-                                                        Medikamente
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="shopping"
-                                                        value="shopping">
-                                                    <i class="material-icons">shopping_cart</i>
-                                                    <label class="form-check-label lang" key="shopping" for="shopping">
-                                                        Einkaufen
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="pets" value="pets">
-                                                    <i class="material-icons">pets</i>
-                                                    <label class="form-check-label lang" key="pets" for="pets">
-                                                        Haustiere
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="escort" value="escort">
-                                                    <i class="material-icons">supervisor_account</i>
-                                                    <label class="form-check-label lang" key="escort" for="escort">
-                                                        Begleitung (Spaziergänge, Arztbesuche &
-                                                        Ähnliches)
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="conversations"
-                                                        value="conversations">
-                                                    <i class="material-icons">phone</i>
-                                                    <label class="form-check-label lang" key="conversations"
-                                                        for="conversations">
-                                                        Gespräche (telefonisch)
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="agriculture"
-                                                        value="agriculture">
-                                                    <i class="material-icons">eco</i>
-                                                    <label class="form-check-label lang" key="agriculture" for="agriculture">
-                                                        Erntehilfe
-                                                    </label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="other" value="other">
-                                                    <i class="material-icons">help</i>
-                                                    <label class="form-check-label lang" key="other" for="other">
-                                                        Sonstiges
-                                                    </label>
-                                                </div>
-                                                <div class="title mb-1 lang" key="skills">
-                                                    Fähigkeiten
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="handicap"
-                                                        value="handicap">
-                                                    <i class="material-icons">accessible</i>
-                                                    <label class="form-check-label lang" key="handicap" for="handicap">
-                                                        Erfahrung im Umgang mit Behinderten
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="car" value="car">
-                                                    <i class="material-icons">directions_car</i>
-                                                    <label class="form-check-label lang" key="car" for="car">
-                                                        Auto vorhanden
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <!-- Notifications -->
-                                            <div class="form-group">
-                                                <label class="checkbox-inline lang" key="notificationOffer"><input type="checkbox" required="required">
-                                                    Ich möchte eine
-                                                    Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe benötigt
-                                                    wird (kann jederzeit abbestellt werden).*</label>
-                                            </div>
-
-                                            <!-- Datenschutz -->
-                                            <div class="form-group">
-                                                <label class="checkbox-inline"><input type="checkbox" required="required">
-                                                    Ich akzeptiere
-                                                    hiermit die <a href="#">Nutzungs- </a> &amp; <a
-                                                        href="#">Datenschutz-Bestimmungen
-                                                    </a>*</label>
-                                            </div>
-                                            <!-- Submit Button -->
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary btn-lg lang"
-                                                    key="confirm">Senden</button>
-                                            </div>
-                                            <div id="success-message" class="alert success lang" key="messageSuccessful">Deine
-                                                Nachricht wurde übermittelt.</div>
-                                            <div id="error-message" class="alert error lang" key="messageFailed">Es gab Probleme
-                                                bei der Übermittlung deiner Daten.
-                                                Versuche es später noch ein mal.</div>
-                                        </form>
-                                        <!--<div class="lang" key="delete1">Angebot wieder von der Karte entfernen? 
-                                        </div><a class="hint-text lang" key="unsubscribe" href="#">Hier wieder abmelden</a>-->
-                                    </div>
-                                    <!--FORMULAR 2 ENDE-->
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="household" value="household">
+                                    <label class="form-check-label" for="household">
+                                        <i class="material-icons">house</i> Haushalt
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="courier_services" value="courier_services">
+                                    <label class="form-check-label" for="courier_services">
+                                        <i class="material-icons">directions_run</i> Botendienste
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="pets" value="pets">
+                                    <label class="form-check-label" for="pets">
+                                        <i class="material-icons">pets</i> Tiere
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="craft" value="craft">
+                                    <label class="form-check-label" for="craft">
+                                        <i class="material-icons">build</i> Handwerk
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="agriculture" value="agriculture">
+                                    <label class="form-check-label" for="agriculture">
+                                        <i class="material-icons">eco</i> Landwirtschaft
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="retail" value="retail">
+                                    <label class="form-check-label" for="retail">
+                                        <i class="material-icons">shopping_cart</i> Einzelhandel
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="health" value="health">
+                                    <label class="form-check-label" for="health">
+                                        <i class="material-icons">local_pharmacy</i> Gesundheit
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="care" value="care">
+                                    <label class="form-check-label" for="care">
+                                        <i class="material-icons">local_hotel</i> Pflege
+                                    </label>
+                                </div>
+                    
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="consultation" value="consultation">
+                                    <label class="form-check-label" for="consultation">
+                                        <i class="material-icons">local_phone</i> Beratung und Hilfe
+                                    </label>
+                                </div>
+                    
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="other" value="other">
+                                    <label class="form-check-label" for="other">
+                                        <i class="material-icons">help</i> Sonstiges
+                                    </label>
+                                </div>
+                                <div class="title mb-1">
+                                    Fähigkeiten
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="handicap" value="handicap">
+                                    <label class="form-check-label" for="handicap">
+                                        <i class="material-icons">accessible</i> Erfahrung im Umgang mit
+                                        Behinderten
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="car" value="car">
+                                    <label class="form-check-label" for="car">
+                                        <i class="material-icons">directions_car</i> Auto
+                                    </label>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                            <!-- Notifications -->
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" required="required">
+                                    Ich möchte eine
+                                    Nachricht bekommen, wenn in meiner Nachbarschaft Hilfe benötigt
+                                    wird (kann jederzeit abbestellt werden).*</label>
+                            </div>
+                            <!-- Datenschutz -->
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" required="required">
+                                    Hiermit akzeptiere ich die <a href="#">Nutzungs- </a> &amp; <a href="#">Datenschutz-Bestimmungen
+                                    </a>*</label>
+                            </div>
+                            <!-- Submit Button -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-lg">Senden</button>
+                            </div>
+                            <div id="success-message" class="alert success">Deine Nachricht wurde übermittelt.</div>
+                            <div id="error-message" class="alert error">Es gab Probleme bei der Übermittlung deiner Daten. Versuche es
+                                später erneut.</div>
+                    </div>
+                </div>
+                    <!--FORMULAR 2 ENDE-->
+                </div>
+            </div>
+        </section>
         <!-- Info Section -->
         <section class="info-section bg-light px-5 " style="background-color: #ffffff !important;">
             <div class="row">
@@ -865,16 +792,15 @@ zusammenzubringen." />
             </div>
         </section>
 
-            
-
-        
 
 
-        <footer id="Footer">
-            <p class="copyright">&copy; 2020 Corona Helpmap. All rights reserved.</p>
-            <a class="github lang" key="imprint" target="_self" rel="noopener"
-                href="imprint.html">Impressum</a>
-        </footer>
+
+
+
+            <footer id="Footer">
+                <p class="copyright">&copy; 2020 Corona Helpmap. All rights reserved.</p>
+                <a class="github lang" key="imprint" target="_self" rel="noopener" href="imprint.html">Impressum</a>
+            </footer>
 
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
