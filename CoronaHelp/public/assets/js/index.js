@@ -251,7 +251,7 @@ async function createUser(data, email) {
       createdAt: new firebase.firestore.FieldValue.serverTimestamp()
     });
     const actionCodeSettings = {
-      url: `https://www.coronahelpmap.com/finishSignup?uid=${user.uid}`,
+      url: `https://www.coronahelpmap.com/finishSignup.html?uid=${user.uid}`,
       handleCodeInApp: true
     };
     await auth.sendSignInLinkToEmail(email, actionCodeSettings);
