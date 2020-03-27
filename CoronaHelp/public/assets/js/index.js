@@ -223,17 +223,6 @@ async function loadUsers() {
     }
   });
   mymap.addLayer(markers);
-  MarkersOnMap.Init({
-    googleApiKey: "AIzaSyBDWpSKKqmaBHmKwBobTEjxToXSRk2GkPc", // this key restricted except this project
-    googlePlacesApiEnabled: true,
-    mapTypeId: "terrain",
-    mapHeight: "500px",
-    markerOverlay: false,
-    mapZoomControl: true,
-    mapScrollWheel: false,
-    markerObjects: markers
-  });
-  furcanTooltip('[data-toggle="tooltip"]');
 }
 
 async function createUser(data, email) {
@@ -416,48 +405,3 @@ function renderCategories(categories) {
   }
   return icons;
 }
-
-// DEMO: Markers On Map - Init and Run off
-function add(
-  markerUrl,
-  markerSize,
-  markerLat,
-  markerLong,
-  markerTitle,
-  markerContent
-) {
-  this.markerUrl = markerUrl;
-  this.markerSize = markerSize;
-  this.markerLat = markerLat;
-  this.markerLong = markerLong;
-  this.markerTitle = markerTitle;
-  this.markerContent = markerContent;
-}
-
-// DEMO: Tooltip on
-function furcanTooltip(tooltip) {
-  $("body > .tooltip").remove();
-  $(tooltip).tooltip({
-    trigger: "hover",
-    container: "body"
-  });
-}
-
-$(document).on("click", function() {
-  if ($("body > .tooltip").length > 0) {
-    $("body > .tooltip").remove();
-  }
-});
-// DEMO: Tooltip off
-
-// DEMO: Map Markers Title Tooltip on
-$(window).on("load", function() {
-  var tooltipTimeout = setTimeout(function() {
-    $(document).on("mouseenter", "div#GoogleMaps", function() {
-      furcanTooltip($("div#GoogleMaps *[title]"));
-      clearTimeout(tooltipTimeout);
-    });
-  }, 1000);
-});
-
-// DEMO: Map Markers Title Tooltip off
