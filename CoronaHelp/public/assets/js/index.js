@@ -166,7 +166,8 @@ L.tileLayer(
 async function loadUsers() {
   const snapshot = await db.collection("users").get();
   snapshot.forEach(doc => {
-    if (doc.data().isPublished) { // Only show published posts
+    if (doc.data().isPublished) {
+      // Only show published posts
       const url = "send.html?id=";
       const customId = doc.id;
       const urlFinal = url + customId;
@@ -268,7 +269,7 @@ formHelper.addEventListener("submit", async e => {
       {
         isHelper: true,
         address: formHelper.address_helper.value,
-        profession: formHelper.work_helper.value,
+        profession: formHelper.profession_helper.value,
         helpDescription: formHelper.helpDescription_helper.value,
         accountType: formHelper.accountType_helper.value,
         categories: {
