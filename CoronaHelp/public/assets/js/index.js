@@ -186,6 +186,7 @@ async function loadUsers() {
           [doc.data().location.latitude, doc.data().location.longitude],
           { icon: greenIcon }
         )
+        /*
           .bindPopup(
             accountTypeConverted +
               "<br>" +
@@ -199,6 +200,7 @@ async function loadUsers() {
               ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>'
           )
           .openPopup()
+          */
       );
     } else if (doc.isRequester) {
       markers.addLayer(
@@ -206,6 +208,7 @@ async function loadUsers() {
           [doc.data().location.latitude, doc.data().location.longitude],
           { icon: blueIcon }
         )
+        /*
           .bindPopup(
             accountTypeConverted +
               "<br>" +
@@ -219,6 +222,7 @@ async function loadUsers() {
               ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>'
           )
           .openPopup()
+          */
       );
     }
   });
