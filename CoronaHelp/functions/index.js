@@ -1,69 +1,70 @@
-const functions = require('firebase-functions');
-const admin = require("firebase-admin")
-const nodemailer = require('nodemailer');
-const fetch = require('fetch');
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+const nodemailer = require("nodemailer");
+const fetch = require("fetch");
 
 admin.initializeApp();
 let db = admin.firestore();
 
-//google account credentials used to send email
-var transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: '',
-    pass: ''
-  }
-});
-
 async function searchAddressCoordinates(address) {
-  address = address.replace(/ /g, '+');
-  const result = await fetch.fetchUrl(`https://nominatim.openstreetmap.org/search/search?q=${address}&format=json`);
+  address = address.replace(/ /g, "+");
+  const result = await fetch.fetchUrl(
+    `https://nominatim.openstreetmap.org/search/search?q=${address}&format=json`
+  );
   const json = await result.json();
   if (json && json.length > 0) {
-      return {
-          lat: parseFloat(json[0].lat),
-          lon: parseFloat(json[0].lon),
-      };
+    return {
+      lat: parseFloat(json[0].lat),
+      lon: parseFloat(json[0].lon)
+    };
   } else {
-      return null;
+    return null;
   }
 }
 
 // Adds coordinate data to new user document if there is none set already.
 exports.addLocationData = functions.firestore
-  .document('users/{Id}')
+  .document("users/{Id}")
   .onCreate(async (snap, context) => {
     let coords = snap.data().location;
     if (!coords) {
       location = await searchAddressCoordinates(snap.data().address);
-      await db.collection('users').doc(snap.id).update({
-        location: new firebase.firestore.GeoPoint(coords.lat, coords.lon),
-      });
+      await db
+        .collection("users")
+        .doc(snap.id)
+        .update({
+          location: new firebase.firestore.GeoPoint(coords.lat, coords.lon)
+        });
     }
   });
 
-exports.makeContact = functions.firestore.
-  document('contactRequests')
+exports.makeContact = functions.firestore
+  .document("contactRequests")
   .onCreate(async (snap, context) => {
     try {
-      const receiverEmailAddress = (await admin.auth().getUser(snap.data().receiverUid)).email;
-      const senderEmailAddress = (await admin.auth().getUser(snap.data().senderUid)).email;
+      const receiverEmailAddress = (
+        await admin.auth().getUser(snap.data().receiverUid)
+      ).email;
+      const senderEmailAddress = (
+        await admin.auth().getUser(snap.data().senderUid)
+      ).email;
       const message = snap.data().message;
       if (receiverEmailAddress) {
-        admin.firestore().collection('mail').add({
-          to: senderEmailAddress,
-          message: {
-            subject: 'You received a message from a user of coronahelpmap.com',
-            html: `Message: ${message}. Please send your answer to the user directly: ${receiverEmailAdress}`,
-          },
-        });
+        admin
+          .firestore()
+          .collection("mail")
+          .add({
+            to: senderEmailAddress,
+            message: {
+              subject:
+                "You received a message from a user of coronahelpmap.com",
+              html: `Message: ${message}. Please send your answer to the user directly: ${receiverEmailAdress}`
+            }
+          });
       }
     } catch (err) {
       console.log(err);
     }
-    
   });
 
 /*
@@ -537,7 +538,7 @@ exports.sendMessageToSearcher = functions.firestore
 */
 
 exports.sendConfirmationToSearcher = functions.firestore
-  .document('searcher/{Id}')
+  .document("searcher/{Id}")
   .onCreate(async (snap, context) => {
     const mailOptions = {
       from: '"Corona Helpmap" <mbellogularte@gmail.com>',
@@ -730,25 +731,16 @@ exports.sendConfirmationToSearcher = functions.firestore
     };
     return transporter.sendMail(mailOptions, (error, data) => {
       if (error) {
-        console.log(error)
-        return
+        console.log(error);
+        return;
       }
-      console.log("Sent!")
+      console.log("Sent!");
     });
-  })
-
+  });
 
 exports.sendConfirmationToHelper = functions.firestore
-  .document('helpers/{Id}')
+  .document("helpers/{Id}")
   .onCreate(async (snap, context) => {
-
-
-
-
-
-
-
-
     const mailOptions = {
       from: '"Corona Helpmap" <mbellogularte@gmail.com>',
       to: snap.data().contactInfo,
@@ -944,16 +936,12 @@ exports.sendConfirmationToHelper = functions.firestore
 </body></html>
 
                                 `
-
-
     };
     return transporter.sendMail(mailOptions, (error, data) => {
-
-
       if (error) {
-        console.log(error)
-        return
+        console.log(error);
+        return;
       }
-      console.log("Sent!")
+      console.log("Sent!");
     });
   });
