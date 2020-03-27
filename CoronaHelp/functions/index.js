@@ -34,7 +34,6 @@ exports.addLocationData = functions.firestore
         .doc(snap.id)
         .update({
           location: new firebase.firestore.GeoPoint(coords.lat, coords.lon),
-          visibility: "public"
         });
     }
   });

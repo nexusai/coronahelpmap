@@ -166,64 +166,66 @@ L.tileLayer(
 async function loadUsers() {
   const snapshot = await db.collection("users").get();
   snapshot.forEach(doc => {
-    const url = "send.html?id=";
-    const customId = doc.id;
-    const urlFinal = url + customId;
-    console.log(urlFinal);
+    if (doc.data().isPublished) { // Only show published posts
+      const url = "send.html?id=";
+      const customId = doc.id;
+      const urlFinal = url + customId;
+      // console.log(urlFinal);
 
-    const accountType = doc.data().accountType;
+      const accountType = doc.data().accountType;
 
-    let accountTypeConverted;
-    if (accountType == "private") {
-      accountTypeConverted = "Privatperson";
-    } else {
-      accountTypeConverted = "Organisation";
-    }
+      let accountTypeConverted;
+      if (accountType == "private") {
+        accountTypeConverted = "Privatperson";
+      } else {
+        accountTypeConverted = "Organisation";
+      }
 
-    if (doc.isHelper) {
-      markers.addLayer(
-        L.marker(
-          [doc.data().location.latitude, doc.data().location.longitude],
-          { icon: greenIcon }
-        )
-        /*
-          .bindPopup(
-            accountTypeConverted +
-              "<br>" +
-              '<span style="font-size:12pt;font-weight:bold">' +
-              doc.data().profession +
-              "</span>" +
-              '<br><br><i>"' +
-              doc.data().helpDescription +
-              '"</i><br><br><a href=' +
-              urlFinal +
-              ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>'
+      if (doc.isHelper) {
+        markers.addLayer(
+          L.marker(
+            [doc.data().location.latitude, doc.data().location.longitude],
+            { icon: greenIcon }
           )
-          .openPopup()
-          */
-      );
-    } else if (doc.isRequester) {
-      markers.addLayer(
-        L.marker(
-          [doc.data().location.latitude, doc.data().location.longitude],
-          { icon: blueIcon }
-        )
-        /*
-          .bindPopup(
-            accountTypeConverted +
-              "<br>" +
-              '<span style="font-size:12pt;font-weight:bold">' +
-              doc.data().profession +
-              "</span>" +
-              '<br><br><i>"' +
-              doc.data().requestDescription +
-              '"<br><br><a href=' +
-              urlFinal +
-              ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>'
+          /*
+            .bindPopup(
+              accountTypeConverted +
+                "<br>" +
+                '<span style="font-size:12pt;font-weight:bold">' +
+                doc.data().profession +
+                "</span>" +
+                '<br><br><i>"' +
+                doc.data().helpDescription +
+                '"</i><br><br><a href=' +
+                urlFinal +
+                ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>'
+            )
+            .openPopup()
+            */
+        );
+      } else if (doc.isRequester) {
+        markers.addLayer(
+          L.marker(
+            [doc.data().location.latitude, doc.data().location.longitude],
+            { icon: blueIcon }
           )
-          .openPopup()
-          */
-      );
+          /*
+            .bindPopup(
+              accountTypeConverted +
+                "<br>" +
+                '<span style="font-size:12pt;font-weight:bold">' +
+                doc.data().profession +
+                "</span>" +
+                '<br><br><i>"' +
+                doc.data().requestDescription +
+                '"<br><br><a href=' +
+                urlFinal +
+                ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>'
+            )
+            .openPopup()
+            */
+        );
+      }
     }
   });
   mymap.addLayer(markers);
@@ -248,7 +250,7 @@ async function createUser(data, email) {
       createdAt: new firebase.firestore.FieldValue.serverTimestamp()
     });
     const actionCodeSettings = {
-      url: `https://www.coronahelpmap.com/finishSignUp?id=${user.uid}`,
+      url: `https://www.coronahelpmap.com/finishSignup?uid=${user.uid}`,
       handleCodeInApp: true
     };
     await auth.sendSignInLinkToEmail(email, actionCodeSettings);
