@@ -33,7 +33,7 @@ exports.addLocationData = functions.firestore
         .collection("users")
         .doc(snap.id)
         .update({
-          location: new firebase.firestore.GeoPoint(coords.lat, coords.lon),
+          location: new firebase.firestore.GeoPoint(coords.lat, coords.lon)
         });
     }
   });
@@ -67,14 +67,13 @@ exports.makeContact = functions.firestore
     }
   });
 
-
-  exports.publishUser = functions.firestore
+exports.publishUser = functions.firestore
   .document("publishRequests/{Id}")
   .onCreate(async (snap, context) => {
     const email = snap.data().email;
     const uid = snap.data().uid;
 
-    if(!email || !uid) return;
+    if (!email || !uid) return;
 
     let user;
     try {
@@ -83,21 +82,25 @@ exports.makeContact = functions.firestore
       if (user.email !== email) return;
 
       if (email) {
-        const unpublishedUserRef = db.collection('unpublishedUsers').doc(snap.data().email);
+        const unpublishedUserRef = db
+          .collection("unpublishedUsers")
+          .doc(snap.data().email);
         const unpublishedUserData = unpublishedUserRef.get();
         if (unpublishedUserData.exists) {
           let { email, ...publicData } = snap.data();
-          let userDocRef = db.collection('users').doc(uid);
-          await userDocRef.set({
-              ...publicData,
-          }, {merge: true});
+          let userDocRef = db.collection("users").doc(uid);
+          await userDocRef.set(
+            {
+              ...publicData
+            },
+            { merge: true }
+          );
         }
         unpublishedUserRef.delete();
       }
     } catch (error) {
       console.log(error);
     }
-    
   });
 /*
 
