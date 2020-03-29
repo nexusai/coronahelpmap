@@ -152,8 +152,12 @@ L.tileLayer(
 
 // Loads all users and shows them on the map
 async function loadUsers() {
-  const snapshot = await db.collection("users").get();
-  snapshot.forEach(doc => {
+  console.log('loadUsers');
+  const usersCollection = await db.collection("users").get();
+  console.log('usersCollection', usersCollection);
+  console.log('usersCollection.size', usersCollection.size);
+  usersCollection.forEach(doc => {
+    console.log('doc.data', doc.data());
     // Only show published posts
     const url = "send.html?id=";
     const customId = doc.id;
@@ -169,7 +173,7 @@ async function loadUsers() {
       accountTypeConverted = "Organisation";
     }
 
-    if (doc.isHelper) {
+    if (doc.data().isHelper) {
       markers.addLayer(
         L.marker([doc.data().latTest, doc.data().longTest], { icon: greenIcon })
         /*
@@ -188,7 +192,7 @@ async function loadUsers() {
           .openPopup()
           */
       );
-    } else if (doc.isRequester) {
+    } else if (doc.data().isRequester) {
       markers.addLayer(
         L.marker(
           [doc.data().location.latitude, doc.data().location.longitude],

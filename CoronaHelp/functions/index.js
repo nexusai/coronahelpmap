@@ -70,13 +70,8 @@ exports.makeContact = functions.firestore
 exports.publishUser = functions.firestore
   .document("publishRequests/{Id}")
   .onCreate(async (snap, context) => {
-    console.log("publishRequests function started");
-    console.log("snap.data()", snap.data());
     const email = snap.data().email;
     const uid = snap.data().uid;
-
-    console.log("email", email);
-    console.log("uid", uid);
 
     if (!email || !uid) return;
 
@@ -98,9 +93,6 @@ exports.publishUser = functions.firestore
         .collection("unpublishedUsers")
         .doc(snap.data().email);
       const unpublishedUserData = await unpublishedUserRef.get();
-
-      console.log("unpublishedUserRef", unpublishedUserRef);
-      console.log("unpublishedUserData", unpublishedUserData);
 
       if (unpublishedUserData.exists) {
         const userDocRef = db.collection("users").doc(uid);
