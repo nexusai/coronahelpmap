@@ -83,7 +83,8 @@ exports.makeContact = functions.firestore
       if (user.email !== email) return;
 
       if (email) {
-        const unpublishedUserData = await db.collection('unpublishedUsers').doc(snap.data().email).get();
+        const unpublishedUserRef = db.collection('unpublishedUsers').doc(snap.data().email);
+        const unpublishedUserData = unpublishedUserRef.get();
         if (unpublishedUserData.exists) {
           let { email, ...publicData } = snap.data();
           let userDocRef = db.collection('users').doc(uid);
@@ -91,6 +92,7 @@ exports.makeContact = functions.firestore
               ...publicData,
           }, {merge: true});
         }
+        unpublishedUserRef.delete();
       }
     } catch (error) {
       console.log(error);
