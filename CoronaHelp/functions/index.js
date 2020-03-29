@@ -68,36 +68,47 @@ exports.makeContact = functions.firestore
   });
 
 
-  exports.publishUser = functions.firestore
+exports.publishUser = functions.firestore
   .document("publishRequests/{Id}")
   .onCreate(async (snap, context) => {
+    console.log('publishRequests function started');
+    console.log('snap.data()', snap.data());
     const email = snap.data().email;
     const uid = snap.data().uid;
 
-    if(!email || !uid) return;
+    console.log('email', email);
+    console.log('uid', uid);
+
+    if (!email || !uid) return;
 
     let user;
     try {
       user = await admin.auth().getUser(uid);
-
-      if (user.email !== email) return;
-
-      if (email) {
-        const unpublishedUserRef = db.collection('unpublishedUsers').doc(snap.data().email);
-        const unpublishedUserData = unpublishedUserRef.get();
-        if (unpublishedUserData.exists) {
-          let { email, ...publicData } = snap.data();
-          let userDocRef = db.collection('users').doc(uid);
-          await userDocRef.set({
-              ...publicData,
-          }, {merge: true});
-        }
-        unpublishedUserRef.delete();
+      if (!user) {
+        console.log(`user with uid ${uid} doesnt exist`);
+        return;
       }
+      if (user.email !== email) {
+        console.log(`emails dont match: user.email: ${user.email}, doc.email: ${email}`);
+        return;
+      }
+      
+      const unpublishedUserRef = db.collection('unpublishedUsers').doc(snap.data().email);
+      const unpublishedUserData = unpublishedUserRef.get();
+
+      console.log('unpublishedUserRef', unpublishedUserRef);
+      console.log('unpublishedUserData', unpublishedUserData);
+
+      if (unpublishedUserData.exists) {
+        let { email, ...publicData } = snap.data();
+        let userDocRef = db.collection('users').doc(uid);
+        await userDocRef.set(publicData, { merge: true });
+        await unpublishedUserRef.delete();
+      }
+
     } catch (error) {
-      console.log(error);
+      console.log('error', error);
     }
-    
   });
 /*
 
