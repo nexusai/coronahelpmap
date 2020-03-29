@@ -86,10 +86,10 @@ exports.makeContact = functions.firestore
         const unpublishedUserData = await db.collection('unpublishedUsers').doc(snap.data().email).get();
         if (unpublishedUserData.exists) {
           let { email, ...publicData } = snap.data();
-          await admin.database().ref(`users/${uid}`).set({
+          let userDocRef = db.collection('users').doc(uid);
+          await userDocRef.set({
               ...publicData,
-              
-          });
+          }, {merge: true});
         }
       }
     } catch (error) {
