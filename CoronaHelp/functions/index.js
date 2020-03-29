@@ -68,24 +68,29 @@ exports.makeContact = functions.firestore
   });
 
 exports.publishUser = functions.firestore
-  .document("users/{Id}")
+  .document("unpublishedUsers/{Id}")
   .onCreate(async (snap, context) => {
     const email = snap.data().email;
-    const uid = snap.data().uid;
-
-    if (!email || !uid) return;
 
     admin
       .auth()
       .createUser({
-        uid: uid,
         email: email
         //phoneNumber: '+11234567890'
       })
       .then(function(userRecord) {
         // See the UserRecord reference doc for the contents of userRecord.
         console.log("Successfully created new user:", userRecord.uid);
+        const uid = userRecord.uid;
+        const userDocRef = db.collection("users").doc(uid);
+
+        let { email, ...publicData } = snap.data();
+
+        userDocRef.set({ ...publicData }, { merge: true });
+        //unpublishedUserRef.delete();
+        // snap.ref.delete();
       })
+
       .catch(function(error) {
         console.log("Error creating new user:", error);
       });

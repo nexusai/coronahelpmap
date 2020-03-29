@@ -153,7 +153,7 @@ L.tileLayer(
 // Loads all users and shows them on the map
 async function loadUsers() {
   console.log("loadUsers");
-  const usersCollection = await db.collection("users").get();
+  const usersCollection = await db.collection("unpublishedUsers").get();
   console.log("usersCollection", usersCollection);
   console.log("usersCollection.size", usersCollection.size);
   usersCollection.forEach(doc => {
@@ -175,7 +175,10 @@ async function loadUsers() {
 
     if (doc.data().isHelper) {
       markers.addLayer(
-        L.marker([doc.data().latTest, doc.data().longTest], { icon: greenIcon })
+        L.marker(
+          [doc.data().location.latitude, doc.data().location.longitude],
+          { icon: greenIcon }
+        )
         /*
           .bindPopup(
             accountTypeConverted +
@@ -224,7 +227,7 @@ async function createUser(data, email) {
   try {
     const coordinates = await searchAddressCoordinates(data.address);
     console.log("coordinates", coordinates);
-    const ref = db.collection("users").doc(email);
+    const ref = db.collection("unpublishedUsers").doc(email);
     await ref.set({
       ...data,
       location: new firebase.firestore.GeoPoint(
@@ -294,26 +297,26 @@ formSeeker.addEventListener("submit", e => {
         requestDescription: formSeeker.requestDescription_seeker.value,
         accountType: formSeeker.accountType_seeker.value,
         categories: {
-          household: formHelper.household_seeker.checked,
-          courier_services: formHelper.courier_services_seeker.checked,
-          pets: formHelper.pets_seeker.checked,
-          craft: formHelper.craft_seeker.checked,
-          agriculture: formHelper.agriculture_seeker.checked,
-          retail: formHelper.retail_seeker.checked,
-          health: formHelper.health_seeker.checked,
-          care: formHelper.care_seeker.checked,
-          consultation: formHelper.consultation_seeker.checked,
-          other: formHelper.other_seeker.checked,
-          handicap: formHelper.handicap_seeker.checked,
-          car: formHelper.car_seeker.checked
+          household: formSeeker.household_seeker.checked,
+          courier_services: formSeeker.courier_services_seeker.checked,
+          pets: formSeeker.pets_seeker.checked,
+          craft: formSeeker.craft_seeker.checked,
+          agriculture: formSeeker.agriculture_seeker.checked,
+          retail: formSeeker.retail_seeker.checked,
+          health: formSeeker.health_seeker.checked,
+          care: formSeeker.care_seeker.checked,
+          consultation: formSeeker.consultation_seeker.checked,
+          other: formSeeker.other_seeker.checked,
+          handicap: formSeeker.handicap_seeker.checked,
+          car: formSeeker.car_seeker.checked
         }
       },
       formSeeker.email_seeker.value
     ).then(
       () =>
-        (formHelper.querySelector("#success-message").style.display = "block")
+        (formSeeker.querySelector("#success-message").style.display = "block")
     );
-    formHelper.reset();
+    formSeeker.reset();
   } catch (error) {
     formSeeker.querySelector("#error-message").style.display = "block";
     console.error("Error adding document: ", error);
