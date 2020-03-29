@@ -311,14 +311,14 @@ position:relative;}
 
 .website-description .head h1.logo {
   color: #0c062f;
-  font-size: 38px;
+  font-size: 43px;
   line-height: 38px;
   font-weight: 900;
   margin: 0 0 25px;
 }
 
 .website-description .head h1.logo a {
-  color: #df2600bd;
+  color: #0c062f;
 }
 
 .website-description .head h1.logo a:hover {
@@ -833,7 +833,7 @@ footer#Footer a.github i {
   border-top: 1px solid rgb(223, 38, 0);
 }
 .info-section img {
-  width: 44%;
+  width: 66%;
 }
 .coronahelpmap-red {
   color: #de2a00 !important;
