@@ -10,7 +10,7 @@ let fallbackCoordinates = [50.627540588378906, 9.958450317382812];
 // The precise coordinates. Is set by the updateMapPrecisely(), if the Geolocation API query was successful and precise coordinates are known.
 let preciseCoordinates;
 
-let mymap = L.map("mapid").setView(fallbackCoordinates, 5);
+let mymap = L.map("mapid").setView(fallbackCoordinates, 2);
 // Center the approximate location of the user without using the Geolocation API, which might not be allowed by the user
 updateMapApproximately();
 // Try to get more precise coordinates via the Geolocation API
@@ -98,7 +98,7 @@ async function mapUpdateForQuery(query, zoomLevel = 13) {
 
 // Tries to get an approximate geolocation via external APIs without using the Geolocation API of the browser.
 // Updates the map accordingly.
-async function updateMapApproximately(zoomLevel = 12) {
+async function updateMapApproximately(zoomLevel = 5) {
   try {
     const ipResponse = await fetch("https://api.ipify.org/?format=json");
     const ip = (await ipResponse.json()).ip;
