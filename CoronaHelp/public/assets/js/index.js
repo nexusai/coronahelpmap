@@ -5,9 +5,6 @@ const formSeeker = document.querySelector("#input_fields_seeker");
 const formHelper = document.querySelector("#input_fields_helper");
 const apiKey = "6Lee_eIUAAAAAKER_ubQ1xR10bsikHiH3Fi-beBq";
 
-// The currently logged in (firebase) user
-let user;
-
 // The coordinates the map centers on by default.
 let fallbackCoordinates = [50.627540588378906, 9.958450317382812];
 // The precise coordinates. Is set by the updateMapPrecisely(), if the Geolocation API query was successful and precise coordinates are known.
@@ -42,15 +39,6 @@ let markers = L.markerClusterGroup({
   spiderfyOnMaxZoom: true,
   showCoverageOnHover: false,
   zoomToBoundsOnClick: true
-});
-
-// Guarantees that there is always a user signed in (anonymously)
-auth.onAuthStateChanged(updatedUser => {
-  if (updatedUser) {
-    user = updatedUser;
-  } else {
-    auth.signInAnonymously();
-  }
 });
 
 var blueIcon = L.icon({
@@ -233,8 +221,6 @@ async function loadUsers() {
 
 async function createUser(data, email) {
   console.log("data", data);
-  if (!user)
-    throw new Exception("No user is logged in (not even anonymously).");
   try {
     const coordinates = await searchAddressCoordinates(data.address);
     console.log("coordinates", coordinates);
@@ -249,7 +235,7 @@ async function createUser(data, email) {
       createdAt: new firebase.firestore.FieldValue.serverTimestamp()
     });
     const actionCodeSettings = {
-      url: `https://www.coronahelpmap.com/finishSignup.html?uid=${user.uid}`,
+      url: `https://www.coronahelpmap.com/finishSignup.html`,
       handleCodeInApp: true
     };
     await auth.sendSignInLinkToEmail(email, actionCodeSettings);
