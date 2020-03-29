@@ -103,10 +103,13 @@ exports.publishUser = functions.firestore
       console.log("unpublishedUserData", unpublishedUserData);
 
       if (unpublishedUserData.exists) {
-        let { email, ...publicData } = snap.data();
-        let userDocRef = db.collection("users").doc(uid);
-        await userDocRef.set(publicData, { merge: true });
+        const userDocRef = db.collection("users").doc(uid);
+
+        let { email, ...publicData } = unpublishedUserData.data();
+
+        await userDocRef.set({...publicData}, { merge: true });
         await unpublishedUserRef.delete();
+        await snap.ref.delete();
       }
     } catch (error) {
       console.log("error", error);
