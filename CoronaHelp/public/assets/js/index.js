@@ -22,7 +22,7 @@ updateMapPrecisely();
 loadUsers();
 
 let markers = L.markerClusterGroup({
-  iconCreateFunction: function(cluster) {
+  iconCreateFunction: function (cluster) {
     var childCount = cluster.getChildCount();
     var c = " markerGreen-cluster-";
     if (childCount < 10) {
@@ -85,7 +85,7 @@ async function searchAddressCoordinates(address) {
   }
 }
 // Search handler
-document.querySelector("#searchCity").addEventListener("keypress", function(e) {
+document.querySelector("#searchCity").addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     // code for enter
     var cityInputField = document.getElementById("searchCity").value;
@@ -94,7 +94,7 @@ document.querySelector("#searchCity").addEventListener("keypress", function(e) {
 });
 document
   .querySelector("#searchCity-button")
-  .addEventListener("click", function(e) {
+  .addEventListener("click", function (e) {
     var cityInputField = document.getElementById("searchCity").value;
     mapUpdateForQuery(cityInputField);
   });
@@ -166,68 +166,67 @@ L.tileLayer(
 async function loadUsers() {
   const snapshot = await db.collection("users").get();
   snapshot.forEach(doc => {
-    if (doc.data().isPublished) {
-      // Only show published posts
-      const url = "send.html?id=";
-      const customId = doc.id;
-      const urlFinal = url + customId;
-      // console.log(urlFinal);
+    // Only show published posts
+    const url = "send.html?id=";
+    const customId = doc.id;
+    const urlFinal = url + customId;
+    // console.log(urlFinal);
 
-      const accountType = doc.data().accountType;
+    const accountType = doc.data().accountType;
 
-      let accountTypeConverted;
-      if (accountType == "private") {
-        accountTypeConverted = "Privatperson";
-      } else {
-        accountTypeConverted = "Organisation";
-      }
-
-      if (doc.isHelper) {
-        markers.addLayer(
-          L.marker(
-            [doc.data().location.latitude, doc.data().location.longitude],
-            { icon: greenIcon }
-          )
-          /*
-            .bindPopup(
-              accountTypeConverted +
-                "<br>" +
-                '<span style="font-size:12pt;font-weight:bold">' +
-                doc.data().profession +
-                "</span>" +
-                '<br><br><i>"' +
-                doc.data().helpDescription +
-                '"</i><br><br><a href=' +
-                urlFinal +
-                ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>'
-            )
-            .openPopup()
-            */
-        );
-      } else if (doc.isRequester) {
-        markers.addLayer(
-          L.marker(
-            [doc.data().location.latitude, doc.data().location.longitude],
-            { icon: blueIcon }
-          )
-          /*
-            .bindPopup(
-              accountTypeConverted +
-                "<br>" +
-                '<span style="font-size:12pt;font-weight:bold">' +
-                doc.data().profession +
-                "</span>" +
-                '<br><br><i>"' +
-                doc.data().requestDescription +
-                '"<br><br><a href=' +
-                urlFinal +
-                ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>'
-            )
-            .openPopup()
-            */
-        );
-      }
+    let accountTypeConverted;
+    if (accountType == "private") {
+      accountTypeConverted = "Privatperson";
+    } else {
+      accountTypeConverted = "Organisation";
     }
+
+    if (doc.isHelper) {
+      markers.addLayer(
+        L.marker(
+          [doc.data().location.latitude, doc.data().location.longitude],
+          { icon: greenIcon }
+        )
+        /*
+          .bindPopup(
+            accountTypeConverted +
+              "<br>" +
+              '<span style="font-size:12pt;font-weight:bold">' +
+              doc.data().profession +
+              "</span>" +
+              '<br><br><i>"' +
+              doc.data().helpDescription +
+              '"</i><br><br><a href=' +
+              urlFinal +
+              ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#75cb3d;border:none">Nachricht</button></a>'
+          )
+          .openPopup()
+          */
+      );
+    } else if (doc.isRequester) {
+      markers.addLayer(
+        L.marker(
+          [doc.data().location.latitude, doc.data().location.longitude],
+          { icon: blueIcon }
+        )
+        /*
+          .bindPopup(
+            accountTypeConverted +
+              "<br>" +
+              '<span style="font-size:12pt;font-weight:bold">' +
+              doc.data().profession +
+              "</span>" +
+              '<br><br><i>"' +
+              doc.data().requestDescription +
+              '"<br><br><a href=' +
+              urlFinal +
+              ' target="_parent"><button type="submit" class="btn btn-primary btn-lg" style="height:35px;width:100px;font-size:12px;background-color:#0095e1;border:none">Nachricht</button></a>'
+          )
+          .openPopup()
+          */
+      );
+    }
+
   });
   mymap.addLayer(markers);
 }
@@ -239,15 +238,14 @@ async function createUser(data, email) {
   try {
     const coordinates = await searchAddressCoordinates(data.address);
     console.log("coordinates", coordinates);
-    const ref = db.collection("users").doc(user.uid);
+    const ref = db.collection("unpublishedUsers").doc(email);
     await ref.set({
       ...data,
       location: new firebase.firestore.GeoPoint(
         coordinates.lat,
         coordinates.lon
       ),
-      uid: user.uid,
-      emailValidated: false,
+      email: email,
       createdAt: new firebase.firestore.FieldValue.serverTimestamp()
     });
     const actionCodeSettings = {

@@ -1,17 +1,12 @@
-let db = firebase.firestore();
-let auth = firebase.auth();
-let user;
-
-
 if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
   // Additional state parameters can also be passed via URL.
   // This can be used to continue the user's intended action before triggering
   // the sign-in operation.
   // Get the email if available. This should be available if the user completes
   // the flow on the same device where they started it.
-  var email = window.localStorage.getItem("emailForSignIn");
+  let email = window.localStorage.getItem("emailForSignIn");
   console.log('email', email);
-  if (!email) {
+  while (!email) {
     // User opened the link on a different device. To prevent session fixation
     // attacks, ask the user to provide the associated email again. For example:
     email = window.prompt("Please provide your email for confirmation");
@@ -27,24 +22,11 @@ if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
       user = result.user;
 
       try {
-        let ref = db.collection("users").doc(uid);
-        const snapshot = ref.once("value");
-        if (snapshot.exists()) {
-          ref.update({
-            isPublished: true
-          });
-          console.log("Offer published");
-  
-          document.getElementById("msg").innerHTML =
-           "Your account is now created and your post is published. Thank you very much!";
-        } else {
-          auth.signInAnonymously();
-  
-          document.getElementById("msg").innerHTML = "Something went wrong.";
-          console.log("Something went wrong");
-        }
+        firebase.firestore().collection('publishRequests').add({
+          uid: result.user.uid,
+          email: email,
+        });
       } catch (err) {
-        document.getElementById("msg").innerHTML = "Something went wrong.";
         console.log("Something went wrong");
       }
     })
@@ -53,4 +35,6 @@ if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
       // Some error occurred, you can inspect the code: error.code
       // Common errors could be invalid email and invalid or expired OTPs.
     });
+} else {
+  console.log('Not a valid signin link');
 }

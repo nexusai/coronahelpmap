@@ -67,6 +67,36 @@ exports.makeContact = functions.firestore
     }
   });
 
+
+  exports.makeContact = functions.firestore
+  .document("publishRequests/{Id}")
+  .onCreate(async (snap, context) => {
+    const email = snap.data().email;
+    const uid = snap.data().uid;
+
+    if(!email || !uid) return;
+
+    let user;
+    try {
+      user = await admin.auth().getUser(uid);
+
+      if (user.email !== email) return;
+
+      if (email) {
+        const unpublishedUserData = await db.collection('unpublishedUsers').doc(snap.data().email).get();
+        if (unpublishedUserData.exists) {
+          let { email, ...publicData } = snap.data();
+          await admin.database().ref(`users/${uid}`).set({
+              ...publicData,
+              
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    
+  });
 /*
 
 exports.sendMessageToHelper = functions.firestore
