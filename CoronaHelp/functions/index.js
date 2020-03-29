@@ -68,7 +68,7 @@ exports.makeContact = functions.firestore
   });
 
 
-  exports.makeContact = functions.firestore
+  exports.publishUser = functions.firestore
   .document("publishRequests/{Id}")
   .onCreate(async (snap, context) => {
     const email = snap.data().email;
