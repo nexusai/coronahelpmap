@@ -19,7 +19,7 @@ updateMapPrecisely();
 loadUsers();
 
 let markers = L.markerClusterGroup({
-  iconCreateFunction: function (cluster) {
+  iconCreateFunction: function(cluster) {
     var childCount = cluster.getChildCount();
     var c = " markerGreen-cluster-";
     if (childCount < 10) {
@@ -73,7 +73,7 @@ async function searchAddressCoordinates(address) {
   }
 }
 // Search handler
-document.querySelector("#searchCity").addEventListener("keypress", function (e) {
+document.querySelector("#searchCity").addEventListener("keypress", function(e) {
   if (e.key === "Enter") {
     // code for enter
     var cityInputField = document.getElementById("searchCity").value;
@@ -82,7 +82,7 @@ document.querySelector("#searchCity").addEventListener("keypress", function (e) 
 });
 document
   .querySelector("#searchCity-button")
-  .addEventListener("click", function (e) {
+  .addEventListener("click", function(e) {
     var cityInputField = document.getElementById("searchCity").value;
     mapUpdateForQuery(cityInputField);
   });
@@ -171,10 +171,7 @@ async function loadUsers() {
 
     if (doc.isHelper) {
       markers.addLayer(
-        L.marker(
-          [doc.data().location.latitude, doc.data().location.longitude],
-          { icon: greenIcon }
-        )
+        L.marker([doc.data().latTest, doc.data().longTest], { icon: greenIcon })
         /*
           .bindPopup(
             accountTypeConverted +
@@ -214,7 +211,6 @@ async function loadUsers() {
           */
       );
     }
-
   });
   mymap.addLayer(markers);
 }
