@@ -68,44 +68,27 @@ exports.makeContact = functions.firestore
   });
 
 exports.publishUser = functions.firestore
-  .document("publishRequests/{Id}")
+  .document("users/{Id}")
   .onCreate(async (snap, context) => {
     const email = snap.data().email;
     const uid = snap.data().uid;
 
     if (!email || !uid) return;
 
-    let user;
-    try {
-      user = await admin.auth().getUser(uid);
-      if (!user) {
-        console.log(`user with uid ${uid} doesnt exist`);
-        return;
-      }
-      if (user.email !== email) {
-        console.log(
-          `emails dont match: user.email: ${user.email}, doc.email: ${email}`
-        );
-        return;
-      }
-
-      const unpublishedUserRef = db
-        .collection("unpublishedUsers")
-        .doc(snap.data().email);
-      const unpublishedUserData = await unpublishedUserRef.get();
-
-      if (unpublishedUserData.exists) {
-        const userDocRef = db.collection("users").doc(uid);
-
-        let { email, ...publicData } = unpublishedUserData.data();
-
-        await userDocRef.set({...publicData}, { merge: true });
-        await unpublishedUserRef.delete();
-        await snap.ref.delete();
-      }
-    } catch (error) {
-      console.log("error", error);
-    }
+    admin
+      .auth()
+      .createUser({
+        uid: uid,
+        email: email
+        //phoneNumber: '+11234567890'
+      })
+      .then(function(userRecord) {
+        // See the UserRecord reference doc for the contents of userRecord.
+        console.log("Successfully created new user:", userRecord.uid);
+      })
+      .catch(function(error) {
+        console.log("Error creating new user:", error);
+      });
   });
 /*
 

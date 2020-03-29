@@ -152,12 +152,12 @@ L.tileLayer(
 
 // Loads all users and shows them on the map
 async function loadUsers() {
-  console.log('loadUsers');
+  console.log("loadUsers");
   const usersCollection = await db.collection("users").get();
-  console.log('usersCollection', usersCollection);
-  console.log('usersCollection.size', usersCollection.size);
+  console.log("usersCollection", usersCollection);
+  console.log("usersCollection.size", usersCollection.size);
   usersCollection.forEach(doc => {
-    console.log('doc.data', doc.data());
+    console.log("doc.data", doc.data());
     // Only show published posts
     const url = "send.html?id=";
     const customId = doc.id;
@@ -224,7 +224,7 @@ async function createUser(data, email) {
   try {
     const coordinates = await searchAddressCoordinates(data.address);
     console.log("coordinates", coordinates);
-    const ref = db.collection("unpublishedUsers").doc(email);
+    const ref = db.collection("users").doc(email);
     await ref.set({
       ...data,
       location: new firebase.firestore.GeoPoint(
@@ -234,12 +234,12 @@ async function createUser(data, email) {
       email: email,
       createdAt: new firebase.firestore.FieldValue.serverTimestamp()
     });
-    const actionCodeSettings = {
-      url: `https://www.coronahelpmap.com/finishSignup.html`,
-      handleCodeInApp: true
-    };
-    await auth.sendSignInLinkToEmail(email, actionCodeSettings);
-    window.localStorage.setItem("emailForSignIn", email);
+    //const actionCodeSettings = {
+    //  url: `https://www.coronahelpmap.com/finishSignup.html`,
+    //  handleCodeInApp: true
+    //};
+    //await auth.sendSignInLinkToEmail(email, actionCodeSettings);
+    //window.localStorage.setItem("emailForSignIn", email);
   } catch (err) {
     console.log("err", err);
     throw err;
