@@ -97,7 +97,7 @@ exports.publishUser = functions.firestore
       const unpublishedUserRef = db
         .collection("unpublishedUsers")
         .doc(snap.data().email);
-      const unpublishedUserData = unpublishedUserRef.get();
+      const unpublishedUserData = await unpublishedUserRef.get();
 
       console.log("unpublishedUserRef", unpublishedUserRef);
       console.log("unpublishedUserData", unpublishedUserData);
